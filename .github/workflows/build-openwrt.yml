@@ -18,7 +18,7 @@ on:
       url:
         description: 'OpenWrt Repository URL'
         required: true
-        default: 'https://github.com/openwrt/openwrt'
+        default: 'https://github.com/coolsnowwolf/lede'
       branch:
         description: 'OpenWrt Repository Branch'
         required: true
