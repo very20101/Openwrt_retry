@@ -49,7 +49,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
       
-     - name: Check server configuration
+    - name: Check server configuration
       run: |
         echo "警告⚠"
         echo "若分配的服务器性能不足，务必及时取消，重新运行！"
