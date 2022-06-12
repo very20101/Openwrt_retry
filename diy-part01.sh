@@ -13,6 +13,17 @@
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
+# default feed
+echo 'src-git packages https://github.com/coolsnowwolf/packages' >>feeds.conf.default
+echo 'src-git luci https://github.com/coolsnowwolf/luci' >>feeds.conf.default
+echo 'src-git routing https://git.openwrt.org/feed/routing.git' >>feeds.conf.default
+echo 'src-git telephony https://git.openwrt.org/feed/telephony.git' >>feeds.conf.default
+#src-git video https://github.com/openwrt/video.git
+#src-git targets https://github.com/openwrt/targets.git
+#src-git oldpackages http://git.openwrt.org/packages.git
+#src-link custom /usr/src/openwrt/custom-feed
+#src-git helloworld https://github.com/fw876/helloworld
+
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
