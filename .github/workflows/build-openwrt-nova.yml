@@ -43,7 +43,7 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
-  build:
+  build1:
     runs-on: ubuntu-22.04
 
     steps:
