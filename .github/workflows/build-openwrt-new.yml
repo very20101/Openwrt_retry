@@ -188,14 +188,15 @@ jobs:
     - name: Create release
       id: release
       uses: ncipollo/release-action@v1
+      env:
+        token: ${{ secrets.RELEASES_TOKEN }}
       with:
         name: R${{ env.DATE }} for ${{ env.PRODUCT_NAME }}
         allowUpdates: true
         tag: ${{ env.FILE_NAME }}
         commit: main
-        token: ${{ secrets.RELEASES_TOKEN }}
         body: |
-          - 自编译固件，只包含常用插件
+          - 自编译精简固件，只包含常用插件
           - 当前使用版本:【编译前的最后一次[➦主源码](https://git.openwrt.org/openwrt/openwrt)更新记录】
           ${{ env.useVersionInfo }}
         artifacts: ${{ env.FIRMWARE }}/*
@@ -233,8 +234,9 @@ jobs:
           
     - name: Delete workflow runs
       uses: GitRML/delete-workflow-runs@main
-      with:
+      env:
         token: ${{ secrets.GITHUB_TOKEN }}
+      with:
         repository: ${{ github.repository }}
         retain_days: 3
         keep_minimum_runs: 3
