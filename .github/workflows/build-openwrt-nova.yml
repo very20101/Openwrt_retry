@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build OpenWrt Nova
+name: Build OpenWrt-Nova
 
 on:
   repository_dispatch:
