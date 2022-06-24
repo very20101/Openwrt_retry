@@ -31,7 +31,7 @@ env:
   REPO_URL: ${{github.event.inputs.url}}
   REPO_BRANCH: ${{github.event.inputs.branch}}
   FEEDS_CONF: feedsopenwrt.conf.default
-  CONFIG_FILE: .configopenwrtnew
+  CONFIG_FILE: .configopwrt0624
   DIY_P1_SH: diy-part01new.sh
   DIY_P2_SH: diy-part02new.sh
   UPLOAD_BIN_DIR: false
