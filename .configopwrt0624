@@ -6017,7 +6017,7 @@ CONFIG_PACKAGE_luci-app-wrtbwmon=y
 # 4. Themes
 #
 # CONFIG_PACKAGE_luci-theme-argon is not set
-CONFIG_PACKAGE_luci-theme-argonne=y
+# CONFIG_PACKAGE_luci-theme-argonne is not set
 CONFIG_PACKAGE_luci-theme-atmaterial_new=y
 CONFIG_PACKAGE_luci-theme-bootstrap=y
 CONFIG_PACKAGE_luci-theme-edge=y
