@@ -7714,12 +7714,6 @@ CONFIG_PACKAGE_odhcp6c=y
 CONFIG_PACKAGE_odhcp6c_ext_cer_id=0
 # CONFIG_PACKAGE_odhcpd is not set
 
-#
-# Configuration
-#
-# CONFIG_PACKAGE_odhcpd_full_ext_cer_id=0 is not set
-# end of Configuration
-
 CONFIG_PACKAGE_odhcpd-ipv6only=y
 
 #
