@@ -4959,7 +4959,7 @@ CONFIG_PACKAGE_libyaml=y
 # CONFIG_PACKAGE_libulfius-gnutls is not set
 # CONFIG_PACKAGE_libulfius-nossl is not set
 CONFIG_PACKAGE_libunbound=y
-# CONFIG_PACKAGE_libunbound_dnscrypt is not set
+CONFIG_PACKAGE_libunbound_dnscrypt=y
 CONFIG_PACKAGE_libunbound_ipset=y
 CONFIG_PACKAGE_libunbound_libevent=y
 CONFIG_PACKAGE_libunbound_libpthread=y
@@ -7683,7 +7683,7 @@ CONFIG_PACKAGE_libipset=y
 # CONFIG_PACKAGE_mosquitto-nossl is not set
 # CONFIG_PACKAGE_mosquitto-ssl is not set
 # CONFIG_PACKAGE_mstpd is not set
-# CONFIG_PACKAGE_mtr-json is not set
+CONFIG_PACKAGE_mtr-json=y
 # CONFIG_PACKAGE_mtr-nojson is not set
 # CONFIG_PACKAGE_nbd is not set
 # CONFIG_PACKAGE_nbd-server is not set
