@@ -4969,7 +4969,7 @@ CONFIG_PACKAGE_libunbound_libpthread=y
 # CONFIG_PACKAGE_libunbound_dnstap is not set
 # CONFIG_PACKAGE_libuwsc-mbedtls is not set
 # CONFIG_PACKAGE_libuwsc-nossl is not set
-# CONFIG_PACKAGE_libuwsc-openssl is not set
+CONFIG_PACKAGE_libuwsc-openssl=y
 # CONFIG_PACKAGE_libuwsc-wolfssl is not set
 # end of Networking
 
