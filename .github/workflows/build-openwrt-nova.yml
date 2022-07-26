@@ -52,12 +52,13 @@ jobs:
     - name: reinstall mysql-server
       run: |
         sudo systemctl stop mysql
-        sudo apt purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
+        sudo apt-get purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
         sudo rm -rf /etc/mysql /var/lib/mysql /var/log/mysql
         sudo apt-get remove --purge mysql-\* 
-        sudo apt autoremove
-        sudo apt autoclean
+        sudo apt-get autoremove
+        sudo apt-get autoclean
         sudo apt-get install mysql-server mysql-client
+        sudo systemctl daemon-reload
       
     - name: 检查服务器配置
       run: |
@@ -84,9 +85,7 @@ jobs:
 
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /etc/mysql /etc/php /usr/local/lib/android /opt/ghc
         sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
-        sudo rm -rf mysql
-        sudo ln -s ./mysql.bak/ mysql
-        sudo dpkg --configure -a
+        #sudo cp /etc/mysql/mysql.cnf /etc/mysql/my.cnf.fallback
         sudo -E apt-get -qq update
         sudo -E apt-get -qq upgrade -y
         sudo -E apt-get -qq install -y $(curl -fsSL https://raw.githubusercontent.com/very20101/Openwrt_retry/main/ubutun2204-update)
