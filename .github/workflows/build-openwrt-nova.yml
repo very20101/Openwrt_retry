@@ -74,7 +74,9 @@ jobs:
 
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /etc/mysql /etc/php /usr/local/lib/android /opt/ghc
         sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
-        sudo -E apt-get -qq install --reinstall mysql-common
+        sudo rm -rf mysql
+        sudo ln -s ./mysql.bak/ mysql
+        sudo dpkg --configure -a
         sudo -E apt-get -qq update
         sudo -E apt-get -qq upgrade -y
         sudo -E apt-get -qq install -y $(curl -fsSL https://raw.githubusercontent.com/very20101/Openwrt_retry/main/ubutun2204-update)
