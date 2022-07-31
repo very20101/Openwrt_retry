@@ -43,7 +43,7 @@ env:
   
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu@latest
 
     steps:
     - name: Checkout
@@ -83,7 +83,7 @@ jobs:
         sudo apt-get install mysql-server mysql-client
         sudo systemctl daemon-reload
         
-        sudo -E apt-get -qq update --fix-missing
+        sudo -E apt-get -qq update
         sudo -E apt-get -qq upgrade -y
         sudo -E apt-get -qq install -y $(curl -fsSL https://raw.githubusercontent.com/very20101/Openwrt_retry/main/ubutun2204-update)
         sudo -E apt-get -qq autoremove --purge
