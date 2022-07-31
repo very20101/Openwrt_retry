@@ -71,17 +71,17 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
       
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-        #sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /etc/mysql /etc/php /usr/local/lib/android /opt/ghc
-        #sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
-        #sudo systemctl stop mysql
-        #sudo apt-get purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
-        #sudo rm -rf /etc/mysql /var/lib/mysql /var/log/mysql
-        #sudo apt-get remove --purge mysql-\* 
-        #sudo apt-get autoremove
-        #sudo apt-get autoclean
-        #sudo apt-get install mysql-server mysql-client
-        #sudo systemctl daemon-reload
+        #sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /etc/mysql /etc/php /usr/local/lib/android /opt/ghc
+        sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
+        sudo systemctl stop mysql
+        sudo apt-get purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
+        sudo rm -rf /etc/mysql /var/lib/mysql /var/log/mysql
+        sudo apt-get remove --purge mysql-\* 
+        sudo apt-get autoremove
+        sudo apt-get autoclean
+        sudo apt-get install mysql-server mysql-client
+        sudo systemctl daemon-reload
         
         sudo -E apt-get -qq update
         sudo -E apt-get -qq upgrade -y
