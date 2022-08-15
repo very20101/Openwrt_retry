@@ -1479,7 +1479,7 @@ CONFIG_BUSYBOX_DEFAULT_LOGGER=y
 # CONFIG_BUSYBOX_DEFAULT_FEATURE_REMOTE_LOG is not set
 # CONFIG_BUSYBOX_DEFAULT_FEATURE_SYSLOGD_DUP is not set
 # CONFIG_BUSYBOX_DEFAULT_FEATURE_SYSLOGD_CFG is not set
-# CONFIG_BUSYBOX_DEFAULT_FEATURE_SYSLOGD_PRECISE_TIMESTAMPS is not set
+CONFIG_BUSYBOX_DEFAULT_FEATURE_SYSLOGD_PRECISE_TIMESTAMPS=y
 CONFIG_BUSYBOX_DEFAULT_FEATURE_SYSLOGD_READ_BUFFER_SIZE=0
 # CONFIG_BUSYBOX_DEFAULT_FEATURE_IPC_SYSLOG is not set
 CONFIG_BUSYBOX_DEFAULT_FEATURE_IPC_SYSLOG_BUFFER_SIZE=0
@@ -3437,10 +3437,10 @@ CONFIG_PACKAGE_kmod-mmc=y
 # CONFIG_PACKAGE_kmod-mtdtests is not set
 # CONFIG_PACKAGE_kmod-parport-pc is not set
 # CONFIG_PACKAGE_kmod-ppdev is not set
-# CONFIG_PACKAGE_kmod-pps is not set
+CONFIG_PACKAGE_kmod-pps=y
 # CONFIG_PACKAGE_kmod-pps-gpio is not set
 # CONFIG_PACKAGE_kmod-pps-ldisc is not set
-# CONFIG_PACKAGE_kmod-ptp is not set
+CONFIG_PACKAGE_kmod-ptp=y
 # CONFIG_PACKAGE_kmod-ramoops is not set
 CONFIG_PACKAGE_kmod-random-core=y
 # CONFIG_PACKAGE_kmod-reed-solomon is not set
@@ -7901,7 +7901,7 @@ CONFIG_PACKAGE_adblock=y
 # CONFIG_PACKAGE_etherwake is not set
 # CONFIG_PACKAGE_etherwake-nfqueue is not set
 # CONFIG_PACKAGE_ethtool is not set
-# CONFIG_PACKAGE_ethtool-full is not set
+CONFIG_PACKAGE_ethtool-full=y
 # CONFIG_PACKAGE_fail2ban is not set
 # CONFIG_PACKAGE_fakeidentd is not set
 # CONFIG_PACKAGE_fakepop is not set
