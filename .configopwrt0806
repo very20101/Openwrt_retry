@@ -4347,7 +4347,7 @@ CONFIG_PACKAGE_ruby-enc=y
 # CONFIG_PACKAGE_ruby-erb is not set
 # CONFIG_PACKAGE_ruby-error_highlight is not set
 # CONFIG_PACKAGE_ruby-etc is not set
-# CONFIG_PACKAGE_ruby-expect is not set
+CONFIG_PACKAGE_ruby-expect=y
 # CONFIG_PACKAGE_ruby-fcntl is not set
 # CONFIG_PACKAGE_ruby-fiddle is not set
 # CONFIG_PACKAGE_ruby-fileutils is not set
