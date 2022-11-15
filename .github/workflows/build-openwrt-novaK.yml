@@ -9,7 +9,7 @@
 # Original Code from https://github.com/ophub/amlogic-s9xxx-openwrt
 #
 
-name: BuildOpenWrt-NovaK
+name: Build OpenWrt-NovaK
 
 on:
   repository_dispatch:
@@ -28,7 +28,7 @@ on:
         required: false
         default: 'false'
         
-   openwrt_board:
+      openwrt_board:
         description: "Select Amlogic board"
         required: false
         default: "s905d"
