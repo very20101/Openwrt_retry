@@ -94,15 +94,16 @@ jobs:
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
+        sudo chown ${USER}:${GROUPS} /workdir
+        echo "status=success" >> ${GITHUB_OUTPUT}
         df -Th
         
     - name: Clone source code
       working-directory: /workdir
       run: |
-        df -hT $PWD
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        df -hT ${PWD}
+        git clone ${REPO_URL} -b ${REPO_BRANCH} openwrt
+        ln -sf /workdir/openwrt ${GITHUB_WORKSPACE}/openwrt
         
     - name: toolchain cache
       uses: klever1988/cachewrtbuild@main
@@ -116,7 +117,7 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         #make distclean
-        $GITHUB_WORKSPACE/$DIY_P1_SH
+        ${GITHUB_WORKSPACE}/$DIY_P1_SH
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
@@ -129,7 +130,7 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
-        $GITHUB_WORKSPACE/$DIY_P2_SH
+        ${GITHUB_WORKSPACE}/$DIY_P2_SH
         
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
@@ -203,8 +204,7 @@ jobs:
         name: R${{ env.DATE }} for ${{ env.PRODUCT_NAME }}
         allowUpdates: true
         tag: ${{ env.FILE_NAME }}
-        token: ${{ secrets.GH_TOKEN }}
-        commit: main
+        token: ${{ secrets.GITHUB_TOKEN }}
         body: |
           - OpenWrt Master 官方源底包，非完整固件
           ${{ env.useVersionInfo }}
@@ -217,6 +217,13 @@ jobs:
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> ${GITHUB_OUTPUT}
         touch release.txt
         echo "status=success" >> ${GITHUB_OUTPUT}
+        
+    - name: Clean up server space
+      if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
+      run: |
+          cd openwrt/
+          rm -rf $(ls . | grep -v "^bin$" | xargs) 2>/dev/null
+          df -hT ${PWD}
         
     - name: Package Armvirt as OpenWrt
       uses: unifreq/openwrt_packit@master
@@ -231,7 +238,7 @@ jobs:
         tag: openwrt_armvirt_v8_${{ env.PACKAGED_OUTPUTDATE }}
         artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
         allowUpdates: true
-        token: ${{ secrets.GH_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         body: |
          This is OpenWrt firmware for Armvirt 64 
           * Firmware information
