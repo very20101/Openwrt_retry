@@ -10,7 +10,7 @@
 # Original Code from https://github.com/ophub/amlogic-s9xxx-openwrt
 #
 
-name: Build OpenWrt-NovaK
+name: Build OpenWrt-Nova
 
 on:
   repository_dispatch:
