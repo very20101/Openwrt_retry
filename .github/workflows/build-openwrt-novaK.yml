@@ -131,15 +131,15 @@ jobs:
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
-        df -Th
+        sudo chown ${USER}:${GROUPS} /workdir
+        echo "status=success" >> ${GITHUB_OUTPUT}
         
     - name: Clone source code
       working-directory: /workdir
       run: |
-        df -hT $PWD
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        df -hT ${PWD}
+        git clone ${REPO_URL} -b ${REPO_BRANCH} openwrt
+        ln -sf /workdir/openwrt ${GITHUB_WORKSPACE}/openwrt
         
     #- name: toolchain cache
      # uses: klever1988/cachewrtbuild@main
@@ -149,11 +149,11 @@ jobs:
         
     - name: Load custom feeds
       run: |
-        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
-        chmod +x $DIY_P1_SH
+        [ -e ${FEEDS_CONF} ] && mv ${FEEDS_CONF} openwrt/feeds.conf.default
+        chmod +x ${DIY_P1_SH}
         cd openwrt
         #make distclean
-        $GITHUB_WORKSPACE/$DIY_P1_SH
+        ${GITHUB_WORKSPACE}/${DIY_P1_SH}
         
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -164,10 +164,10 @@ jobs:
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x $DIY_P2_SH
-        cd openwrt
-        $GITHUB_WORKSPACE/$DIY_P2_SH
+        [ -e ${CONFIG_FILE}] && mv ${CONFIG_FILE} openwrt/.config
+        chmod +x ${DIY_P2_SH}
+        cd openwrt/
+        ${GITHUB_WORKSPACE}/${DIY_P2_SH}
         
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
@@ -179,7 +179,7 @@ jobs:
     - name: Download package
       id: package
       run: |
-        cd openwrt
+        cd openwrt/
         make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
@@ -189,7 +189,7 @@ jobs:
       id: compile
       run: |
       
-        cd openwrt
+        cd openwrt/
         #rm -rf package/kernel/linux/modules/fs.mk
         #wget -O package/kernel/linux/modules/fs.mk https://raw.githubusercontent.com/very20101/Openwrt_retry/main/fs.mk
         #rm -rf package/kernel/linux/modules/crypto.mk
@@ -222,7 +222,7 @@ jobs:
       run: |
          cd openwrt/
          rm -rf $(ls . | grep -v "^bin$" | xargs) 2>/dev/null
-         df -hT $PWD 
+         df -hT ${PWD} 
         
     - name: Build OpenWrt firmware
       if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
