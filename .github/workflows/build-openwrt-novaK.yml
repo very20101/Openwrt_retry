@@ -73,7 +73,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
-  TZ: Asia/Shanghai
+  TZ: America/New_York
   FILE_NAME: openWrt_armvirt
   PRODUCT_NAME: openWrt_armvirt
   
