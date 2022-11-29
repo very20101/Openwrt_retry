@@ -363,7 +363,7 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           **This is Temporary Firmware for Armvirt 64**
-          * 这是 ARMv8_mini 多功能版打包临时固件，不可直刷
+          * 这是 ARMv8_mini 精简版版打包临时固件，不可直刷
           直刷固件参见 Tag 名为 ARMv8_mini 的 Releases
           当前使用版本:【编译前的最后一次[➦主源码](https://github.com/openwrt/openwrt)更新记录】
           ${{ env.VERSION_INFO }}
@@ -431,7 +431,7 @@ jobs:
         artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
         body: |
           **This is OpenWrt Firmware for Armvirt 64**
-          * 这是 ARMv8 多功能版
+          * 这是 ARMv8 精简版
           默认 IP：192.168.1.100 默认密码：password
           安装到 EMMC：系统 → 晶晨宝盒 → 安装 OpenWrt → 选择型号 → 安装
           升级 OpenWrt：系统 → 晶晨宝盒 → 手动上传更新 或者 在线下载更新
