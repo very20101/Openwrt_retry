@@ -365,7 +365,7 @@ jobs:
           **This is Temporary Firmware for Armvirt 64**
           * 这是 ARMv8_PLUS 多功能版打包临时固件，不可直刷
           直刷固件参见 Tag 名为 ARMv8_PLUS 的 Releases
-          当前使用版本:【编译前的最后一次[➦主源码](https://github.com/coolsnowwolf/lede)更新记录】
+          当前使用版本:【编译前的最后一次[➦主源码](https://github.com/openwrt/openwrt)更新记录】
           ${{ env.VERSION_INFO }}
 
   Package:
