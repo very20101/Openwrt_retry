@@ -16,7 +16,7 @@ on:
 
 env:
   SOURCE_URL: https://github.com/openwrt/openwrt
-  SOURCE_BRANCH: openwrt-22.03
+  SOURCE_BRANCH: master
   CONFIG_FILE: .config
   DIY_SCRIPT: diy-script.sh
   TOOLCHAIN_TAG: Toolchain
