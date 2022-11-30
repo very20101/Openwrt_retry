@@ -141,7 +141,7 @@ jobs:
         swap-size-mb: 1024
         remove-dotnet: 'true'
           
-    - name: Build
+    - name: Free Space info
       run: |
         echo "Free space:"
         df -Th
