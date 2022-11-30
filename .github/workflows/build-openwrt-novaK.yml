@@ -88,7 +88,6 @@ jobs:
       
     - name: 检查服务器配置
       run: |
-        make distclean
         echo "警告⚠"
         echo "若分配的服务器性能不足，务必及时取消，重新运行！"
         echo "已知编译成功CPU型号：8370C,8272CL"
@@ -114,7 +113,7 @@ jobs:
         sudo -E apt-get -qq full-upgrade -y
         
         #sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /etc/mysql /etc/php /usr/local/lib/android /opt/ghc
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /etc/mysql /etc/php /usr/local/lib/android /opt/ghc 
         sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
         sudo systemctl stop mysql
         sudo apt-get purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
@@ -134,6 +133,18 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown ${USER}:${GROUPS} /workdir
         echo "status=success" >> ${GITHUB_OUTPUT}
+        
+    - name: Maximize build space
+      uses: easimon/maximize-build-space@master
+      with:
+        root-reserve-mb: 512
+        swap-size-mb: 1024
+        remove-dotnet: 'true'
+          
+    - name: Build
+      run: |
+        echo "Free space:"
+        df -Th
         
     - name: Clone source code
       working-directory: /workdir
