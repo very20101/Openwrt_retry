@@ -20,7 +20,7 @@ on:
 env:
   SOURCE_URL: https://github.com/openwrt/openwrt
   SOURCE_BRANCH: master
-  CONFIG_FILE: .config
+  CONFIG_FILE: official-gcc11.config
   DIY_SCRIPT: diy-script-official.sh
   TOOLCHAIN_TAG: Toolchain_openwrt
   CLASH_KERNEL: armv8
