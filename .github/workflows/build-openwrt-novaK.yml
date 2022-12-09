@@ -189,6 +189,8 @@ jobs:
       run: |
         cd openwrt/
         make defconfig
+        rm -rf tools/sed/Makefile
+        wget -O tools/sed/Makefile https://raw.githubusercontent.com/very20101/Openwrt_retry/main/Makefiel-sed
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "status=success" >> ${GITHUB_OUTPUT}
