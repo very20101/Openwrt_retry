@@ -192,8 +192,10 @@ jobs:
       run: |
         cd openwrt/
         make defconfig
-        rm -rf tools/libressl/Makefile
-        wget -O tools/libressl/Makefile https://github.com/very20101/Openwrt_retry/blob/main/Makefile-libressl
+        #rm -rf tools/libressl/Makefile
+        #wget -O tools/libressl/Makefile https://github.com/very20101/Openwrt_retry/blob/main/Makefile-libressl
+        rm -rf feeds/packages/lang/python/python3/patches/026-openssl-feature-flags.patch 
+        rm -rf feeds/packages/lang/python/python3/patches/028-host-python-support-ssl-with-libressl.patch
         rm -rf tools/sed/Makefile
         wget -O tools/sed/Makefile https://raw.githubusercontent.com/very20101/Openwrt_retry/main/Makefiel-sed
         echo -e "$(nproc) thread compile"
