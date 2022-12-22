@@ -190,6 +190,8 @@ jobs:
       run: |
       
         cd openwrt
+        rm -rf feeds/packages/lang/python/python3/patches/026-openssl-feature-flags.patch 
+        rm -rf feeds/packages/lang/python/python3/patches/028-host-python-support-ssl-with-libressl.patch
         #rm -rf package/kernel/linux/modules/fs.mk
         #wget -O package/kernel/linux/modules/fs.mk https://raw.githubusercontent.com/very20101/Openwrt_retry/main/fs.mk
         #rm -rf package/kernel/linux/modules/crypto.mk
