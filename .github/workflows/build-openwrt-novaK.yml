@@ -50,8 +50,8 @@ on:
         type: choice
         options:
           - 5.4.210
-          - 5.10.135
-          - 5.15.70
+          - 5.10.140
+          - 5.15.80
           - 6.0.1
       auto_kernel:
         description: "Auto use the latest kernel"
