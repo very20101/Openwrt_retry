@@ -12,6 +12,8 @@
 name: Build OpenWrt-NovaK
 
 on:
+  schedule:
+    - cron: 0 16 */2 * *
   repository_dispatch:
   workflow_dispatch:
     inputs:
