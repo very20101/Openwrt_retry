@@ -14,19 +14,19 @@ name: Build OpenWrt-NovaK
 on:
   repository_dispatch:
   workflow_dispatch:
-    #inputs:
-      #url:
-       #description: 'OpenWrt Repository URL'
-        #required: true
-        #default: 'https://github.com/openwrt/openwrt'
-      #branch:
-        #description: 'OpenWrt Repository Branch'
-        #required: true
-        #default: 'master'
-      #ssh:
-        #description: 'SSH connection to Actions'
-        #required: false
-        #default: 'false'
+    inputs:
+      url:
+       description: 'OpenWrt Repository URL'
+        required: true
+        default: 'https://github.com/openwrt/openwrt'
+      branch:
+        description: 'OpenWrt Repository Branch'
+        required: true
+        default: 'master'
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
         
       openwrt_board:
         description: "Select Amlogic board"
@@ -83,7 +83,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-22.04
-    #if: github.event.repository.owner.id == github.event.sender.id || ! github.event.sender.id
+    if: github.event.repository.owner.id == github.event.sender.id || ! github.event.sender.id
 
     steps:
     - name: Checkout
