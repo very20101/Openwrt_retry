@@ -63,6 +63,9 @@ on:
         description: "Set the rootfs size(Unit: MiB)."
         required: false
         default: "960"
+        
+  schedule:
+    - cron: 0 16 * * *
 
 env:
   REPO_URL: ${{github.event.inputs.url}}
