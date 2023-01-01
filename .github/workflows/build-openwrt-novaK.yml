@@ -64,7 +64,7 @@ on:
         default: "960"
         
   schedule:
-    - cron: 0 16 */2 * *
+    - cron: 0 22 */2 * *
 
 env:
   REPO_URL: ${{github.event.inputs.url}}
