@@ -77,8 +77,8 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: America/New_York
-  FILE_NAME: openWrt_armvirt
-  PRODUCT_NAME: openWrt_armvirt
+  FILE_NAME: OpenWrt-NovaK
+  PRODUCT_NAME: OpenWrt-NovaK
   
 jobs:
   build:
