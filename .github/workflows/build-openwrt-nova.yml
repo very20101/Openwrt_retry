@@ -78,8 +78,8 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  FILE_NAME: openWrt_armvirt
-  PRODUCT_NAME: openWrt_armvirt
+  FILE_NAME: openWrt_armv8-Nova
+  PRODUCT_NAME: openWrt_armv8-Nova
   
 jobs:
   build:
