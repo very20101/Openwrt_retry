@@ -32,6 +32,8 @@ git clone https://github.com/rosywrt/luci-theme-rosy/tree/openwrt-18.06/luci-the
 git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git package/luci-theme-infinityfreedom
 git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git package/luci-theme-opentomcat
 git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme-opentopd
+
+## Add extra package
 git clone https://github.com/kenzok8/small-package package/small-package
 
 ## File name: diy-part2.sh
