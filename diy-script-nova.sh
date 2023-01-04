@@ -18,10 +18,10 @@
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 #echo 'src-git kenzo https://github.com/kenzok8/openwrt-packages' >>feeds.conf.default
 #echo 'src-git small https://github.com/kenzok8/small' >>feeds.conf.default
-echo 'src-git packages https://github.com/openwrt/packages.git' >>feeds.conf.default
-echo 'src-git luci https://github.com/openwrt/luci.git' >>feeds.conf.default
-echo 'src-git routing https://git.openwrt.org/feed/routing.git' >>feeds.conf.default
-echo 'src-git telephony https://git.openwrt.org/feed/telephony.git' >>feeds.conf.default
+#echo 'src-git packages https://github.com/openwrt/packages.git' >>feeds.conf.default
+#echo 'src-git luci https://github.com/openwrt/luci.git' >>feeds.conf.default
+#echo 'src-git routing https://git.openwrt.org/feed/routing.git' >>feeds.conf.default
+#echo 'src-git telephony https://git.openwrt.org/feed/telephony.git' >>feeds.conf.default
 echo 'src-git small8 https://github.com/kenzok8/small-package' >>feeds.conf.default
 
 ## Add deps
@@ -38,11 +38,11 @@ git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme
 #
 
 ## Modify default IP
-  sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_generate
   
 ## kernel
 #sed -i "s/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g" target/linux/armvirt/Makefile
 sed -i "s/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g" target/linux/armvirt/Makefile
 
-./scripts/feeds update -a
-./scripts/feeds install -a
+#./scripts/feeds update -a
+#./scripts/feeds install -a
