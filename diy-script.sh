@@ -37,6 +37,9 @@ git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme
 ## Add extra package
 git clone https://github.com/kenzok8/small-package package/small-package
 
+## Add deps(from Lede)
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/libcryptopp package/libcryptopp
+
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
