@@ -37,7 +37,7 @@ git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme
 ## Add extra package
 git clone https://github.com/kenzok8/small-package package/small-package
 
-## Add deps(from Lede)
+## Add deps(from other source)
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/libcryptopp package/libcryptopp
 
 # File name: diy-part2.sh
