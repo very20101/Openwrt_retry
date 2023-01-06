@@ -197,7 +197,7 @@ jobs:
       id: compile
       run: |
         cd openwrt/
-        make dirclean
+        #make dirclean
         make defconfig
         rm -rf feeds/packages/lang/python/python3/patches/026-openssl-feature-flags.patch 
         rm -rf feeds/packages/lang/python/python3/patches/028-host-python-support-ssl-with-libressl.patch
