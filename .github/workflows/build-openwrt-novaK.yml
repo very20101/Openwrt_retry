@@ -139,8 +139,8 @@ jobs:
         
     - name: Clone source code
       working-directory: /workdir
+      
       run: |
-        make dirclean
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
@@ -197,6 +197,7 @@ jobs:
       id: compile
       run: |
         cd openwrt/
+        make dirclean
         make defconfig
         rm -rf feeds/packages/lang/python/python3/patches/026-openssl-feature-flags.patch 
         rm -rf feeds/packages/lang/python/python3/patches/028-host-python-support-ssl-with-libressl.patch
