@@ -4,7 +4,7 @@
 # Code modified from https://github.com/quanjindeng/Actions_OpenWrt-Amlogic
 #========================================================================================================================
 
-name: packaging openwrt
+name: packaging ARMv8
 
 on:
   repository_dispatch:
