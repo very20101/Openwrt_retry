@@ -298,6 +298,7 @@ jobs:
     - name: Compile Packages
       run: |
         cd $OPENWRT_PATH
+        rm -rf package/small-package/brook/patches/010-chore-deps-update-iploc-to-fix-build-with-mips.patch
         rm -rf feeds/packages/net/bind/Makefile
         wget -O feeds/packages/net/bind/Makefile https://raw.githubusercontent.com/very20101/Openwrt_retry/main/Makefile-bind
         echo -e "$(nproc) thread compile"
