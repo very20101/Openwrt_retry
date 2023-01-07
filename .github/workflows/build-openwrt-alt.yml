@@ -130,16 +130,7 @@ jobs:
       id: compile
       run: |
         cd openwrt
-        #rm -rf ./feeds/packages/utils/runc/Makefile
-        #svn export https://github.com/openwrt/packages/trunk/utils/runc/Makefile ./feeds/packages/utils/runc/Makefile
-        #rm -rf package/lean/libcryptopp/Makefile
-        #wget -O package/lean/libcryptopp/Makefile https://raw.githubusercontent.com/WYC-2020/lede/master/package/lean/libcryptopp/Makefile
-        #rm -rf target/linux/armvirt/Makefile
-        #wget -O target/linux/armvirt/Makefile https://raw.githubusercontent.com/very20101/Openwrt_N1_try/main/Makefile
-        #wget -O target/linux/armvirt/64/config-5.15 https://raw.githubusercontent.com/very20101/Openwrt_N1_try/main/config-5.15-64-wyc-2020
-        #wget -O target/linux/armvirt/config-5.15 https://raw.githubusercontent.com/very20101/Openwrt_N1_try/main/config-5.15-wyc-2020
-        #rm -rf package/feeds/packages/containerd/Makefile
-        #wget -O package/feeds/packages/containerd/Makefile https://raw.githubusercontent.com/very20101/Openwrt_N1_try/main/Makefile
+        rm -rf package/small-package/brook/patches/010-chore-deps-update-iploc-to-fix-build-with-mips.patch
         rm -rf package/kernel/linux/modules/crypto.mk
         wget -O package/kernel/linux/modules/crypto.mk https://raw.githubusercontent.com/very20101/Openwrt_N1_try/main/crypto.mk
         echo -e "$(nproc) thread compile"
