@@ -24,10 +24,11 @@ on:
         required: true
         default: 'openwrt-22.03'
         options: 
-          'openwrt-22.03'
-          'openwrt-21.02'
-          'openwrt-19.07'
-          'openwrt-18.06'
+          - master
+          - openwrt-22.03
+          - openwrt-21.02
+          - openwrt-19.07
+          - openwrt-18.06
       ssh:
         description: 'SSH connection to Actions'
         required: false
