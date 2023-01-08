@@ -23,6 +23,10 @@ on:
         description: 'OpenWrt Repository Branch'
         required: true
         default: 'master'
+        options: 'openwrt-22.03'
+                 'openwrt-21.02'
+                 'openwrt-19.07'
+                 'openwrt-18.06'
       ssh:
         description: 'SSH connection to Actions'
         required: false
