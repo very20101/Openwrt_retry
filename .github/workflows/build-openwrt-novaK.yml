@@ -22,7 +22,7 @@ on:
       branch:
         description: 'OpenWrt Repository Branch'
         required: true
-        default: 'openwrt-22.03'
+        default: 'master'
         options: 
           - master
           - openwrt-22.03
