@@ -22,8 +22,9 @@ on:
       branch:
         description: 'OpenWrt Repository Branch'
         required: true
-        default: 'master'
-        options: 'openwrt-22.03'
+        default: 'openwrt-22.03'
+        options: 'master'
+                 'openwrt-22.03'
                  'openwrt-21.02'
                  'openwrt-19.07'
                  'openwrt-18.06'
