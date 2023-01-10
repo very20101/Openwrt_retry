@@ -170,14 +170,14 @@ jobs:
 
     - name: Upload Toolchain Image
       if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
-      uses: softprops/action-gh-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: ncipollo/release-action@v1
       with:
         name: Toolchain-Image
+        allowUpdates: true
+        replacesArtifacts: true
         tag: ${{ env.TOOLCHAIN_TAG }}
-        body_path: release.txt
-        files: ${{ env.FIRMWARE }}/*
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: output/*
         body: OpenWrt 工具链镜像文件
 
   Build:
