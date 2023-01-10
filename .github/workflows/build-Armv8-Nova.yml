@@ -43,7 +43,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@main  
+      uses: actions/checkout@v3
            
     - name: Check Server Performance
       run: |
@@ -170,14 +170,14 @@ jobs:
 
     - name: Upload Toolchain Image
       if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
-      uses: ncipollo/release-action@v1
+      uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         name: Toolchain-Image
-        allowUpdates: true
-        replacesArtifacts: true
-        tag: ${{ env.TOOLCHAIN_TAG }}
-        token: ${{ secrets.GITHUB_TOKEN }}
-        artifacts: output/*
+        tag_name: ${{ steps.tag.outputs.release_tag }}
+        body_path: release.txt
+        files: ${{ env.FIRMWARE }}/*
         body: OpenWrt 工具链镜像文件
 
   Build:
