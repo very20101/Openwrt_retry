@@ -175,7 +175,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         name: Toolchain-Image
-        tag_name: ${{ steps.tag.outputs.release_tag }}
+        tag: ${{ env.TOOLCHAIN_TAG }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
         body: OpenWrt 工具链镜像文件
