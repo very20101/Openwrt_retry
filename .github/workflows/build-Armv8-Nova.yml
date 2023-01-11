@@ -15,7 +15,7 @@ on:
     #- cron: 0 12 * * *
 
 env:
-  SOURCE_URL: https://github.com/coolsnowwolf/lede
+  SOURCE_URL: https://github.com/openwrt/openwrt
   SOURCE_BRANCH: master
   CONFIG_FILE: .configopwrt0806
   DIY_SCRIPT: diy-script-nova.sh
