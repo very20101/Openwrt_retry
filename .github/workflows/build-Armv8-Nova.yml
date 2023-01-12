@@ -17,7 +17,7 @@ on:
 env:
   SOURCE_URL: https://github.com/coolsnowwolf/lede
   SOURCE_BRANCH: master
-  CONFIG_FILE: .configopwrt0806
+  CONFIG_FILE: config/.config-lede0112
   DIY_SCRIPT: diy-script-nova.sh
   TOOLCHAIN_TAG: Toolchain_nova
   CLASH_KERNEL: armv8
