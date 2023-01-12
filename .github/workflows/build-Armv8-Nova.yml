@@ -221,7 +221,6 @@ jobs:
         #sudo dpkg -i aspnetcore-targeting-pack-6.0_6.0.112-0ubuntu1~22.04.1_amd64.deb
         sudo -E apt-get -qq install $(curl -fsSL  https://raw.githubusercontent.com/very20101/Openwrt_retry/main/ubuntu2204-lede)
         sudo -E apt-get -qq install libfuse-dev nfs-common nfs-kernel-server
-        sudo -E apt-get -qq install -f
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
