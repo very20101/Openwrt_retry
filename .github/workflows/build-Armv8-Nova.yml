@@ -30,7 +30,7 @@ env:
 
 jobs:
   Toolchain:
-    runs-on: ubuntu-22.04.5
+    runs-on: ubuntu-22.04
 
     outputs:
       OPENWRT_PATH: ${{ steps.clone.outputs.OPENWRT_PATH }}
@@ -182,7 +182,7 @@ jobs:
 
   Build:
     needs: [Toolchain]
-    runs-on: ubuntu-22.04.5
+    runs-on: ubuntu-22.04
 
     env:
       OPENWRT_PATH: ${{ needs.Toolchain.outputs.OPENWRT_PATH }}
@@ -374,7 +374,7 @@ jobs:
 
   Package:
     needs: [Toolchain, Build]
-    runs-on: ubuntu-22.04.5
+    runs-on: ubuntu-22.04
 
     env:
       VERSION_INFO: ${{ needs.Toolchain.outputs.VERSION_INFO }}
