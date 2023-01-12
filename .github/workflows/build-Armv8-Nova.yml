@@ -216,9 +216,9 @@ jobs:
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /etc/mysql /usr/local/lib/android
         sudo -E apt-get -qq purge azure-cli google* dotnet* llvm* moby* mysql* php* powershell
         sudo -E apt-get -qq update --fix-missing
-        #sudo -E apt-get -qq full-upgrade
+        sudo -E apt-get -qq full-upgrade
         #wget -O aspnetcore-targeting-pack-6.0_6.0.112-0ubuntu1~22.04.1_amd64.deb http://archive.ubuntu.com/ubuntu/pool/universe/d/dotnet6/aspnetcore-targeting-pack-6.0_6.0.112-0ubuntu1~22.04.1_amd64.deb
-        #sudo dpkg -i  aspnetcore-targeting-pack-6.0_6.0.112-0ubuntu1~22.04.1_amd64.deb
+        #sudo dpkg -i aspnetcore-targeting-pack-6.0_6.0.112-0ubuntu1~22.04.1_amd64.deb
         sudo -E apt-get -qq install $(curl -fsSL  https://raw.githubusercontent.com/very20101/Openwrt_retry/main/ubuntu2204-lede)
         sudo -E apt-get -qq install libfuse-dev nfs-common nfs-kernel-server
         sudo -E apt-get -qq autoremove --purge
