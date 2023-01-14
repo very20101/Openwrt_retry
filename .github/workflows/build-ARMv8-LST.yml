@@ -143,7 +143,6 @@ jobs:
     - name: Compile Toolchain
       if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
       run: |
-        make dirclean
         cd $OPENWRT_PATH
         echo -e "$(nproc) thread compile"
         make toolchain/compile -j$(nproc) || make toolchain/compile -j1 V=s
