@@ -11,8 +11,8 @@ name: ARMv8 nova OpenWrt
 
 on:
   workflow_dispatch:
-  #schedule:
-    #- cron: 0 12 * * *
+  schedule:
+    - cron: 0 22 * * *
 
 env:
   SOURCE_URL: https://github.com/coolsnowwolf/lede
