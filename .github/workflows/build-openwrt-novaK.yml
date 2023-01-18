@@ -19,16 +19,16 @@ on:
         description: 'OpenWrt Repository URL'
         required: true
         default: 'https://github.com/openwrt/openwrt'
-      branch:
-        description: 'OpenWrt Repository Branch'
-        required: true
-        default: 'master'
-        options: 
-          - master
-          - openwrt-22.03
-          - openwrt-21.02
-          - openwrt-19.07
-          - openwrt-18.06
+      #branch:
+        #description: 'OpenWrt Repository Branch'
+        #required: true
+        #default: 'master'
+        #options: 
+          #- master
+          #- openwrt-22.03
+          #- openwrt-21.02
+          #- openwrt-19.07
+          #- openwrt-18.06
       ssh:
         description: 'SSH connection to Actions'
         required: false
