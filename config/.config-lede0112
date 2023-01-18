@@ -4013,7 +4013,7 @@ CONFIG_PACKAGE_perlbase-class=y
 # CONFIG_PACKAGE_perlbase-compress is not set
 CONFIG_PACKAGE_perlbase-config=y
 # CONFIG_PACKAGE_perlbase-cpan is not set
-CONFIG_PACKAGE_perlbase-cwd=y
+# CONFIG_PACKAGE_perlbase-cwd is not set
 # CONFIG_PACKAGE_perlbase-data is not set
 # CONFIG_PACKAGE_perlbase-db is not set
 # CONFIG_PACKAGE_perlbase-db-file is not set
