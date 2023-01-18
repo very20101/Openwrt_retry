@@ -19,10 +19,10 @@ on:
         description: 'OpenWrt Repository URL'
         required: true
         default: 'https://github.com/openwrt/openwrt'
-      #branch:
-        #description: 'OpenWrt Repository Branch'
-        #required: true
-        #default: 'master'
+      branch:
+        description: 'OpenWrt Repository Branch'
+        required: true
+        default: 'master'
         #options: 
           #- master
           #- openwrt-22.03
