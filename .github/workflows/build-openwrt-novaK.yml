@@ -57,7 +57,7 @@ on:
         default: "960"
         
   schedule:
-    - cron: 0 18 */2 * *
+    - cron: 0 12 */2 * *
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt
