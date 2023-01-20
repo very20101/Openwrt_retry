@@ -16,15 +16,7 @@ on:
   repository_dispatch:
   workflow_dispatch:
     inputs:
-      url:
-        description: 'OpenWrt Repository URL'
-        required: true
-        default: 'https://github.com/coolsnowwolf/lede'
-      branch:
-        description: 'OpenWrt Repository Branch'
-        required: true
-        default: 'master'
-        
+    
       ssh:
         description: 'SSH connection to Actions'
         required: false
@@ -48,13 +40,13 @@ on:
       openwrt_kernel:
         description: "Select kernel version"
         required: false
-        default: "5.15.86"
+        default: "5.15.88"
         type: choice
         options:
-          - 5.4.210
-          - 5.10.140
-          - 5.15.86
-          - 6.0.1
+          - 5.4.228
+          - 5.10.162
+          - 5.15.88
+          - 6.1.7
       auto_kernel:
         description: "Auto use the latest kernel"
         required: false
@@ -85,7 +77,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-22.04
-    if: github.event.repository.owner.id == github.event.sender.id || ! github.event.sender.id
+    #if: github.event.repository.owner.id == github.event.sender.id || ! github.event.sender.id
 
     steps:
     - name: Checkout
@@ -254,11 +246,11 @@ jobs:
           Default username: root
           Default password: password
           
-    - name: Delete workflow runs
-      uses:  Mattraks/delete-workflow-runs@main 
-      with:
-        retain_days: 30
-        keep_minimum_runs: 6
+    #- name: Delete workflow runs
+      #uses:  Mattraks/delete-workflow-runs@main 
+      #with:
+        #retain_days: 90
+        #keep_minimum_runs: 6
 
    # - name: Remove old Releases
    #   uses: codesnas/delete-older-releases@main
