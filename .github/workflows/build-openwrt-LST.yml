@@ -61,9 +61,9 @@ on:
     - cron: 0 12 */3 * *
 
 env:
-  REPO_URL: https://github.com/openwrt/openwrt
+  REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  FEEDS_CONF: openwrt.feeds.conf.default
+  FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: config/.config-lede0112
   DIY_P1_SH: diy-part01-LST.sh
   DIY_P2_SH: diy-part02new.sh
