@@ -69,7 +69,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
-  TZ: America/New_York
+  TZ: Asia/Shanghai
   FILE_NAME: OpenWrt-NovaK
   PRODUCT_NAME: OpenWrt-NovaK
   
