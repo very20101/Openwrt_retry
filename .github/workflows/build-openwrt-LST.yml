@@ -226,11 +226,10 @@ jobs:
       if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
       uses: ophub/amlogic-s9xxx-openwrt@main
       with:
-          openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
-          openwrt_board: ${{ inputs.openwrt_board }}
-          openwrt_kernel: ${{ inputs.openwrt_kernel }}
-          auto_kernel: ${{ inputs.auto_kernel }}
-          openwrt_size: ${{ inputs.openwrt_size }}
+        openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
+        openwrt_board: s905d
+        openwrt_kernel: 5.15.88
+        gh_token: ${{ secrets.GH_TOKEN }}
 
     - name: Upload OpenWrt Firmware to Releases
       uses: softprops/action-gh-release@v1
