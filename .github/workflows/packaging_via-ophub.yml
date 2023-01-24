@@ -37,7 +37,7 @@ jobs:
       with:
         openwrt_path: openwrt/*rootfs.tar.gz
         openwrt_board: s905d
-        openwrt_kernel: 5.15.88
+        openwrt_kernel: 5.15.89
         gh_token: ${{ secrets.GH_TOKEN }}
         
     - name: Upload OpenWrt Firmware to Releases
