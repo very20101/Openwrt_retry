@@ -7,7 +7,7 @@
 # Code from https://github.com/haiibo/OpenWrt
 #===============================================
 
-name: ARMv8-Nova-OpenWrt
+name: ARMv8 Nova OpenWrt
 
 on:
   workflow_dispatch:
