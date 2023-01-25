@@ -232,7 +232,7 @@ jobs:
     - name: Upload Firmware to Release
       uses: ncipollo/release-action@main
       with:
-        tag: openwrt_armvirt_v8_${{ env.PACKAGED_OUTPUTDATE }}
+        tag: ARMv8_Nova_${{ env.PACKAGED_OUTPUTDATE }}
         artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
         allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
