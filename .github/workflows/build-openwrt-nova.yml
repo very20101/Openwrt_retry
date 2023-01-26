@@ -10,7 +10,7 @@
 # Original Code from https://github.com/ophub/amlogic-s9xxx-openwrt
 #
 
-name: Build OpenWrt-Nova
+name: Build Original-config
 
 on:
   repository_dispatch:
@@ -63,15 +63,15 @@ env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: master
   FEEDS_CONF: feedsopenwrt.conf.default
-  CONFIG_FILE: .configopwrt0806
-  DIY_P1_SH: diy-part01new.sh
-  DIY_P2_SH: diy-part02new.sh
+  CONFIG_FILE: .configopwrt
+  DIY_P1_SH: diy-part01.sh
+  DIY_P2_SH: diy-part02.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  FILE_NAME: armv8_Nova
-  PRODUCT_NAME: armv8_Nova
+  FILE_NAME: armv8_origin
+  PRODUCT_NAME: armv8_orogin
   
 jobs:
   build:
@@ -232,7 +232,7 @@ jobs:
     - name: Upload Firmware to Release
       uses: ncipollo/release-action@main
       with:
-        tag: ARMv8_Nova_${{ env.PACKAGED_OUTPUTDATE }}
+        tag: ARMv8_origin_${{ env.PACKAGED_OUTPUTDATE }}
         artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
         allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
