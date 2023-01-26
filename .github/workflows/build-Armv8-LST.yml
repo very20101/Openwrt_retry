@@ -12,7 +12,7 @@ name: ARMv8 LST OpenWrt
 on:
   workflow_dispatch:
   schedule:
-    - cron: 0 16 * * *
+    - cron: 0 16 */3 * *
 
 env:
   SOURCE_URL: https://github.com/coolsnowwolf/lede
