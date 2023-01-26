@@ -51,10 +51,10 @@ on:
         required: false
         default: true
         type: boolean
-      openwrt_size:
-        description: "Set the rootfs size(Unit: MiB)."
-        required: false
-        default: "960"
+      #openwrt_size:
+        #description: "Set the rootfs size(Unit: MiB)."
+        #required: false
+        #default: "960"
         
   #schedule:
    # - cron: 0 16 * * *
@@ -63,7 +63,7 @@ env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: master
   FEEDS_CONF: feedsopenwrt.conf.default
-  CONFIG_FILE: .configopwrt
+  CONFIG_FILE: .config
   DIY_P1_SH: diy-part01.sh
   DIY_P2_SH: diy-part02.sh
   UPLOAD_BIN_DIR: false
