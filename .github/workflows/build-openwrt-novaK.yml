@@ -187,7 +187,7 @@ jobs:
          df -hT ${PWD} 
         
     - name: Build OpenWrt firmware
-      if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
+      #if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
       uses: ophub/amlogic-s9xxx-openwrt@main
       with:
         openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
