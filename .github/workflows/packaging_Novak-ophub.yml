@@ -24,9 +24,9 @@ jobs:
       if: (!cancelled())
       run: |
         [ -d openwrt-armvirt ] || mkdir -p openwrt
-        curl --header "authorization: Bearer ${{ secrets.GH_TOKEN }}" -s "https://api.github.com/repos/OWNER/REPO/releases" | grep -o "OpenWrt_${{ inputs.branch }}*/*rootfs.tar.gz" > DOWNLOAD_ARMVIRT
+        curl --header "authorization: Bearer ${{ secrets.GH_TOKEN }}" -s "https://api.github.com/repos/OWNER/releases" | grep -o "OpenWrt_${{ inputs.branch }}*/*rootfs.tar.gz" > DOWNLOAD_ARMVIRT
         [ -s DOWNLOAD_ARMVIRT ]
-        wget -q -P openwrt-armvirt https://github.com/repos/OWNER/REPO/releases/download/$(cat DOWNLOAD_ARMVIRT)
+        wget -q -P openwrt-armvirt https://github.com/${GITHUB_REPOSITORY}/releases/download/$(cat DOWNLOAD_ARMVIRT)
         #openwrt_url="$(curl --header "authorization: Bearer ${{ secrets.GH_TOKEN }}" -s "https://api.github.com/repos/${GITHUB_REPOSITORY}/releases" | grep -o "OpenWrt_.*${{ inputs.branch }}.*/.*rootfs.tar.gz" | head -n 1)"
         #[[ -z "${openwrt_url}" ]] && echo -e "OpenWrt file not found!" && exit 1
         #wget -q -P openwrt "https://github.com/${GITHUB_REPOSITORY}/releases/download/${openwrt_url}"
@@ -47,7 +47,7 @@ jobs:
     - name: Upload OpenWrt Firmware to Releases
       uses: softprops/action-gh-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       with:
         tag_name: ARMv8_Novak_${{ env.PACKAGED_OUTPUTDATE }}
         files: ${{ env.PACKAGED_OUTPUTPATH }}/*
