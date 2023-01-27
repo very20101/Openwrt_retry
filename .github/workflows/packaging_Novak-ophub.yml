@@ -40,13 +40,16 @@ jobs:
         openwrt_kernel: 5.15.89
         gh_token: ${{ secrets.GH_TOKEN }}
         
-    - name: Upload OpenWrt Firmware to Releases
-      uses: softprops/action-gh-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload Firmware To Release
+      if: steps.generate.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
+      uses: ncipollo/release-action@v1
       with:
-        tag_name: ARMv8_NovaK_${{ env.PACKAGED_OUTPUTDATE }}
-        files: ${{ env.PACKAGED_OUTPUTPATH }}/*
+        name: R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
+        allowUpdates: true
+        replacesArtifacts: true
+        tag: ${{ env.FIRMWARE_TAG }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: | 
           This is OpenWrt firmware for Armvirt 64 
           * Firmware information
