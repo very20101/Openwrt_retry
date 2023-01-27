@@ -55,7 +55,7 @@ jobs:
         replacesArtifacts: true
         tag: openwrt_NovaK_${{ env.PACKAGED_OUTPUTDATE }}
         token: ${{ secrets.GITHUB_TOKEN }}
-        artifacts: ${{ env.FIRMWARE_PATH }}/*
+        #artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: | 
           This is OpenWrt firmware for Armvirt 64 
           * Firmware information
