@@ -41,7 +41,7 @@ jobs:
         gh_token: ${{ secrets.GH_TOKEN }}
         
     - name: Upload Firmware To Release
-      if: steps.generate.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
+      #if: steps.generate.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
       uses: ncipollo/release-action@v1
       with:
         name: R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
