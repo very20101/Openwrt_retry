@@ -1,0 +1,56 @@
+#========================================================================================================================
+# https://github.com/very20101/N1_try
+# Description: Use Releases file to packaging
+# Code modified from https://github.com/quanjindeng/Actions_OpenWrt-Amlogic
+#========================================================================================================================
+
+name: packaging ARMv8_LST
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+    
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Get OpenWrt firmware
+      id: build
+      if: (!cancelled())
+      run: |
+        [ -d openwrt-armvirt ] || mkdir -p openwrt
+        curl -s "https://api.github.com/repos/${GITHUB_REPOSITORY}/releases" | grep -o "openwrt_armvirt_.*/openwrt-armvirt-.*\.tar.gz" | head -n 1 > DOWNLOAD_ARMVIRT
+        [ -s DOWNLOAD_ARMVIRT ] && wget -q -P openwrt https://github.com/very20101/Openwrt_retry/releases/download/OpenWrt_Armvirt_01.21.1449/openwrt-armvirt-64-default-rootfs.tar.gz
+        #openwrt_url="$(curl --header "authorization: Bearer ${{ secrets.GH_TOKEN }}" -s "https://api.github.com/repos/${GITHUB_REPOSITORY}/releases" | grep -o "OpenWrt_.*${{ inputs.branch }}.*/.*rootfs.tar.gz" | head -n 1)"
+        #[[ -z "${openwrt_url}" ]] && echo -e "OpenWrt file not found!" && exit 1
+        #wget -q -P openwrt "https://github.com/${GITHUB_REPOSITORY}/releases/download/${openwrt_url}"
+        #[[ "${?}" -ne "0" ]] && echo -e "The armvirt file download failed!" && exit 1
+        #echo "status=success" >> ${GITHUB_OUTPUT}
+        #wget -q -P openwrt https://github.com/very20101/Openwrt_retry/releases/download/ OpenWrt_Armvirt_01.27.1503/openwrt-armvirt-64-default-rootfs.tar.gz
+          
+    - name: Package Armvirt as OpenWrt
+      uses: ophub/amlogic-s9xxx-openwrt@main
+      with:
+        openwrt_path: openwrt/*rootfs.tar.gz
+        openwrt_board: s905d
+        openwrt_kernel: 5.15.89
+        gh_token: ${{ secrets.GH_TOKEN }}
+        
+    - name: Upload OpenWrt Firmware to Releases
+      uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ARMv8_LST_${{ env.PACKAGED_OUTPUTDATE }}
+        files: ${{ env.PACKAGED_OUTPUTPATH }}/*
+        body: | 
+          This is OpenWrt firmware for Armvirt 64 
+          * Firmware information
+          Default IP: 192.168.1.100
+          Default username: root
+          Default password: password
+   
