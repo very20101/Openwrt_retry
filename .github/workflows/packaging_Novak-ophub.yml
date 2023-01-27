@@ -24,7 +24,7 @@ jobs:
       if: (!cancelled())
       run: |
         [ -d openwrt-armvirt ] || mkdir -p openwrt
-        openwrt_url="$(curl --header "authorization: Bearer ${{ secrets.GH_TOKEN }}" -s "https://api.github.com/repos/OWNER/REPO/releases" | grep -o "*/*rootfs.tar.gz" | head -n 1)"
+        openwrt_url="$(curl --header "authorization: Bearer ${{ secrets.GH_TOKEN }}" -s "https://api.github.com/repos/${GITHUB_REPOSITORY}/releases" | grep -o "*/*rootfs.tar.gz" | head -n 1)"
         [[ -z "${openwrt_url}" ]] && echo -e "OpenWrt file not found!" && exit 1
         wget -q -P openwrt "https://github.com/${GITHUB_REPOSITORY}/releases/download/${openwrt_url}"
         #[[ "${?}" -ne "0" ]] && echo -e "The armvirt file download failed!" && exit 1
