@@ -35,8 +35,8 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  FILE_NAME: armv8_origin
-  PRODUCT_NAME: armv8_orogin
+  FILE_NAME: ARMv8_origin
+  PRODUCT_NAME: ARMv8_orogin
   
 jobs:
   build:
