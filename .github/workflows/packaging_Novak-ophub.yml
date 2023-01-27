@@ -24,7 +24,7 @@ jobs:
       if: (!cancelled())
       run: |
         [ -d openwrt-armvirt ] || mkdir -p openwrt
-        openwrt_url="$(curl -H "authorization: Bearer ${{ secrets.GH_TOKEN }}" -s "https://api.github.com/very20101/Openwrt_retry/releases/tag/OpenWrt_Armvirt*" | grep -o "*rootfs.tar.gz" )"
+        openwrt_url="$(curl -H "authorization: Bearer ${{ secrets.GH_TOKEN }}" -s "https://api.github.com/repos/very20101/Openwrt_retry/releases/latest | grep -o "*/*rootfs.tar.gz" )"
         [[ -z "${openwrt_url}" ]] && echo -e "OpenWrt file not found!" && exit 1
         wget -q -P openwrt https://github.com/very20101/Openwrt_retry/releases/download/${openwrt_url}
         [[ "${?}" -ne "0" ]] && echo -e "The armvirt file download failed!" && exit 1
