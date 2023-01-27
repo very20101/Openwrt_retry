@@ -7,7 +7,7 @@
 # Code from https://github.com/haiibo/OpenWrt
 #===============================================
 
-name: ARMv8-lede confgnew
+name: ARMv8-lede Nova
 
 on:
   workflow_dispatch:
@@ -19,13 +19,13 @@ env:
   SOURCE_BRANCH: master
   CONFIG_FILE: ARMv8/.config-lede-0128
   DIY_SCRIPT: diy-script-nova.sh
-  TOOLCHAIN_TAG: Toolchain_new
+  TOOLCHAIN_TAG: Toolchain_Nova
   CLASH_KERNEL: armv8
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: ROOTFS_new
+  FIRMWARE_TAG: ROOTFS_Nova
   OPENWRT_RELEASE: true
-  OPENWRT_TAG: ARMv8_new
+  OPENWRT_TAG: ARMv8_Nova
   TZ: Asia/Shanghai
 
 jobs:
