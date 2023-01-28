@@ -11,8 +11,8 @@ name: ARMv8-lede Nova
 
 on:
   workflow_dispatch:
-  #schedule:
-    #- cron: 0 6 */2 * *
+  schedule:
+    - cron: 0 6 */2 * *
 
 env:
   SOURCE_URL: https://github.com/coolsnowwolf/lede
