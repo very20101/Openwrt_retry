@@ -36,6 +36,9 @@ git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme
 ## Add extra package
 git clone https://github.com/kenzok8/small-package package/small-package
 
+## Add xray-plugin patch
+svn co https://github.com/very20101/Openwrt_retry/trunk/golang package/golang-patch
+
 ## File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
