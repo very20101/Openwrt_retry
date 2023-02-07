@@ -45,12 +45,11 @@ jobs:
       with:
         openwrt_path: openwrt/*rootfs.tar.gz
         openwrt_board: s905d
-        openwrt_kernel: 5.15.89
+        openwrt_kernel: 5.15.90
         gh_token: ${{ secrets.GH_TOKEN }}
 
 
     - name: Upload OpenWrt To Release
-      if: env.PACKAGED_STATUS == 'success' && env.OPENWRT_RELEASE == 'true'
       uses: ncipollo/release-action@v1
       with:
         name: R${{ env.DATE }} for ${{ env.OPENWRT_TAG }}
