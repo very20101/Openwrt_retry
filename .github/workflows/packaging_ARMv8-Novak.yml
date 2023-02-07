@@ -10,10 +10,10 @@ on:
   repository_dispatch:
   workflow_dispatch:
   
- env:
+env:
    
-   OPENWRT_TAG: ARMv8_Novak
-   TZ: Asia/Shanghai 
+  OPENWRT_TAG: ARMv8_Novak
+  TZ: Asia/Shanghai 
     
     
 jobs:
