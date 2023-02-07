@@ -48,20 +48,20 @@ jobs:
         openwrt_kernel: 5.15.89
         gh_token: ${{ secrets.GH_TOKEN }}
         
-	- name: Upload OpenWrt To Release
-	    if: env.PACKAGED_STATUS == 'success' && env.OPENWRT_RELEASE == 'true'
-	    uses: ncipollo/release-action@v1
-	    with:
-	      name: R${{ env.DATE }} for ${{ env.OPENWRT_TAG }}
-	      allowUpdates: true
-	      removeArtifacts: true
-	      tag: ${{ env.OPENWRT_TAG }}
-	      token: ${{ secrets.GITHUB_TOKEN }}
-	      artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
-          body: | 
-            This is OpenWrt firmware for Armvirt 64 
-            * Firmware information
-            Default IP: 192.168.1.100
-            Default username: root
-            Default password: password
+    - name: Upload OpenWrt To Release
+      if: env.PACKAGED_STATUS == 'success' && env.OPENWRT_RELEASE == 'true'
+      uses: ncipollo/release-action@v1
+      with:
+	name: R${{ env.DATE }} for ${{ env.OPENWRT_TAG }}
+	allowUpdates: true
+	removeArtifacts: true
+	tag: ${{ env.OPENWRT_TAG }}
+	token: ${{ secrets.GITHUB_TOKEN }}
+	artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
+        body: | 
+          This is OpenWrt firmware for Armvirt 64 
+           * Firmware information
+           Default IP: 192.168.1.100
+           Default username: root
+           Default password: password
    
