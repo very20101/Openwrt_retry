@@ -52,7 +52,6 @@ jobs:
       if: env.PACKAGED_STATUS == 'success' && env.OPENWRT_RELEASE == 'true'
       uses: ncipollo/release-action@v1
       with:
-	name_: R${{ env.DATE }} for ${{ env.OPENWRT_TAG }}
 	allowUpdates: true
 	removeArtifacts: true
 	tag: ${{ env.OPENWRT_TAG }}
