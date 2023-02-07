@@ -105,6 +105,8 @@ jobs:
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd openwrt
         useVersionInfo=$(git show -s --date=short --format="Author: %an<br/>date: %cd<br/>commit: %s<br/>commit hash: %H")
+        echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
+        echo "VERSION_INFO=$(echo $VERSION_INFO)" >> $GITHUB_OUTPUT
         echo "useVersionInfo=$useVersionInfo" >> $GITHUB_ENV
         echo "DATE=$(date "+%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
         echo "DATE1=$(date "+%Y-%m-%d")" >> $GITHUB_ENV
@@ -198,31 +200,20 @@ jobs:
         openwrt_kernel: 5.15.90
         gh_token: ${{ secrets.GH_TOKEN }}}
 
-    - name: Upload OpenWrt Firmware to Releases
-      uses: softprops/action-gh-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload OpenWrt To Release
+      uses: ncipollo/release-action@v1
       with:
-        tag_name: openwrt_NovaK_${{ env.PACKAGED_OUTPUTDATE }}
-        files: ${{ env.PACKAGED_OUTPUTPATH }}/*
-        body: | 
+        name: ARMv8_Novak
+        allowUpdates: true
+        removeArtifacts: true
+        tag: ${{ env.OPENWRT_TAG }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
+        body: |
           This is OpenWrt firmware for Armvirt 64 
           * Firmware information
           Default IP: 192.168.1.100
           Default username: root
           Default password: password
-          
-    #- name: Delete workflow runs
-      #uses:  Mattraks/delete-workflow-runs@main 
-      #with:
-        #retain_days: 60
-        #keep_minimum_runs: 6
-
-   # - name: Remove old Releases
-   #   uses: codesnas/delete-older-releases@main
-   #   if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-   #   with:
-    #    keep_latest: 20
-    #    delete_tags: true
-     # env:
-    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ${{ env.VERSION_INFO }}
+    
