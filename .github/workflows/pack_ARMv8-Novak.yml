@@ -52,7 +52,7 @@ jobs:
     - name: Upload OpenWrt To Release
       uses: ncipollo/release-action@v1
       with:
-        name: R${{ env.DATE }} for ${{ env.OPENWRT_TAG }}
+        name: ARMv8_Novak
         allowUpdates: true
         removeArtifacts: true
         tag: ${{ env.OPENWRT_TAG }}
