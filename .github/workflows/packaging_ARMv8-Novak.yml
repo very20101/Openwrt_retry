@@ -47,20 +47,23 @@ jobs:
         openwrt_board: s905d
         openwrt_kernel: 5.15.89
         gh_token: ${{ secrets.GH_TOKEN }}
-        
+
+
     - name: Upload OpenWrt To Release
       if: env.PACKAGED_STATUS == 'success' && env.OPENWRT_RELEASE == 'true'
       uses: ncipollo/release-action@v1
       with:
-	tag: ${{ env.OPENWRT_TAG }} 
-	allowUpdates: true
-	removeArtifacts: true
-	token: ${{ secrets.GITHUB_TOKEN }}
-	artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
+        name: R${{ env.DATE }} for ${{ env.OPENWRT_TAG }}
+        allowUpdates: true
+        removeArtifacts: true
+        tag: ${{ env.OPENWRT_TAG }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
         body: |
-	  **This is OpenWrt Firmware for Armvirt 64**
-          * Firmware information
-          Default IP: 192.168.1.100
-          Default username: root
-          Default password: password
-   
+          **This is OpenWrt Firmware for Armvirt 64**
+          * 这是 ARMv8 精简版
+          默认 IP：192.168.1.100 默认密码：password
+          安装到 EMMC：系统 → 晶晨宝盒 → 安装 OpenWrt → 选择型号 → 安装
+          升级 OpenWrt：系统 → 晶晨宝盒 → 手动上传更新 或者 在线下载更新
+          当前使用版本:【编译前的最后一次➦[主源码](https://github.com/openwrt/openwrt)更新记录】
+          ${{ env.VERSION_INFO }}
