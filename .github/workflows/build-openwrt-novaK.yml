@@ -198,7 +198,7 @@ jobs:
       with:
         openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
         openwrt_board: s905d
-        openwrt_kernel: 5.15.90
+        openwrt_kernel: 5.15.93
         gh_token: ${{ secrets.GH_TOKEN }}}
 
     - name: Upload OpenWrt To Release
