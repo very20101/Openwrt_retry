@@ -74,10 +74,9 @@ jobs:
         sudo -E apt-get -qq update -y
         sudo -E apt-get -qq full-upgrade -y
         
-        sudo -E apt-get -qq purge grub\*
-        sudo -E apt-get -qq install grub-efi
-        sudo -E apt-get -qq autoremove
-        sudo -E update-grub
+        sudo apt-mark hold grub-efi-amd64-signed
+        sudo apt-get update --fix-missing
+        sudo apt-get upgrade
         
         #sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /etc/mysql /etc/php /usr/local/lib/android /opt/ghc 
