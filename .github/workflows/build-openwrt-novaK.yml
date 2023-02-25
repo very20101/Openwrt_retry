@@ -72,6 +72,7 @@ jobs:
       run: |
         
         sudo -E apt-get -qq update -y
+        sudo apt-get install -y grub-efi-amd64-signed
         sudo -E apt-get -qq full-upgrade -y
         
         
