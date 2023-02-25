@@ -72,7 +72,7 @@ jobs:
       run: |
         
         sudo -E apt-get -qq update -y
-        #sudo -E apt-get -qq full-upgrade -y
+        sudo -E apt-get -qq full-upgrade -y
         
         sudo -E apt-get -qq purge grub\*
         sudo -E apt-get -qq install grub-efi
@@ -92,7 +92,7 @@ jobs:
         sudo systemctl daemon-reload
 
         sudo -E apt-get -qq update -y
-        #sudo -E apt-get -qq full-upgrade -y
+        sudo -E apt-get -qq full-upgrade -y
         #sudo -E apt-get -qq install -y $(curl -fsSL https://raw.githubusercontent.com/very20101/Openwrt_retry/main/ubutun2204-update)
         sudo -E apt-get -qq install -y $(curl -fsSL https://is.gd/depend_ubuntu2204_openwrt)
         sudo -E apt-get -qq autoremove --purge
