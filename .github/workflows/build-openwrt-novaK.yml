@@ -87,9 +87,10 @@ jobs:
         sudo systemctl daemon-reload
         
         
-        sudo -E apt-get purge shim-signed grub-efi-amd64 grub-efi-amd64-signed grub-efi-amd64-bin --allow-remove-essential
-        sudo -E apt-get autoremove --purge
-        
+        sudo -E apt-mark old grub-efi-amd64-signed
+        sudo -E apt-get -qq update --fix-missing
+        sudo -E apt-get -qq upgrade
+
         sudo -E apt-get -qq update -y
         sudo -E apt-get -qq full-upgrade -y
         #sudo -E apt-get -qq install -y $(curl -fsSL https://raw.githubusercontent.com/very20101/Openwrt_retry/main/ubutun2204-update)
