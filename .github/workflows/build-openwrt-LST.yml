@@ -45,7 +45,7 @@ on:
         options:
           - 5.4.228
           - 5.10.162
-          - 5.15.88
+          - 5.15.94
           - 6.1.7
       auto_kernel:
         description: "Auto use the latest kernel"
@@ -214,22 +214,25 @@ jobs:
       with:
         openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
         openwrt_board: s905d
-        openwrt_kernel: 5.15.88
+        openwrt_kernel: 5.15.94
         gh_token: ${{ secrets.GH_TOKEN }}
 
-    - name: Upload OpenWrt Firmware to Releases
-      uses: softprops/action-gh-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload OpenWrt To Release
+      uses: ncipollo/release-action@v1
       with:
-        tag_name: openwrt_LST_${{ env.PACKAGED_OUTPUTDATE }}
-        files: ${{ env.PACKAGED_OUTPUTPATH }}/*
-        body: | 
+        name: Openwrt_LST
+        allowUpdates: true
+        removeArtifacts: true
+        tag: ${{ env.OPENWRT_TAG }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
+        body: |
           This is OpenWrt firmware for Armvirt 64 
           * Firmware information
           Default IP: 192.168.1.100
           Default username: root
           Default password: password
+          ${{ env.VERSION_INFO }}
           
     #- name: Delete workflow runs
       #uses:  Mattraks/delete-workflow-runs@main 
