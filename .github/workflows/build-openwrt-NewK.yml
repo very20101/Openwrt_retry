@@ -191,7 +191,7 @@ jobs:
     - name: Upload OpenWrt To Release
       uses: ncipollo/release-action@v1
       with:
-        name: ARMv8_Newk
+        name: Openwrt_Newk
         allowUpdates: true
         removeArtifacts: true
         tag: ${{ env.OPENWRT_TAG }}
