@@ -4,7 +4,7 @@
 # Code modified from https://github.com/quanjindeng/Actions_OpenWrt-Amlogic
 #========================================================================================================================
 
-name: Pack_ARMv8_NovaK
+name: Pack_ARMv8_NewK
 
 on:
   repository_dispatch:
@@ -12,7 +12,7 @@ on:
   
 env:
    
-  OPENWRT_TAG: ARMv8_Novak
+  OPENWRT_TAG: ARMv8_Newk
   TZ: Asia/Shanghai 
     
     
@@ -52,7 +52,7 @@ jobs:
     - name: Upload OpenWrt To Release
       uses: ncipollo/release-action@v1
       with:
-        name: ARMv8_Novak
+        name: ARMv8_Newk
         allowUpdates: true
         removeArtifacts: true
         tag: ${{ env.OPENWRT_TAG }}
