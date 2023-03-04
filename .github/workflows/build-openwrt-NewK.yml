@@ -35,9 +35,9 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  FILE_NAME: OpenWrt-NovaK
-  PRODUCT_NAME: OpenWrt-NovaK
-  OPENWRT_TAG: OpenWrt-NovaK
+  FILE_NAME: OpenWrt-NewK
+  PRODUCT_NAME: OpenWrt-NewK
+  OPENWRT_TAG: OpenWrt-NewK
   
 jobs:
   build:
@@ -185,13 +185,13 @@ jobs:
       with:
         openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
         openwrt_board: s905d
-        openwrt_kernel: 5.15.94
+        openwrt_kernel: 5.15.96
         gh_token: ${{ secrets.GH_TOKEN }}}
 
     - name: Upload OpenWrt To Release
       uses: ncipollo/release-action@v1
       with:
-        name: ARMv8_Novak
+        name: ARMv8_Newk
         allowUpdates: true
         removeArtifacts: true
         tag: ${{ env.OPENWRT_TAG }}
