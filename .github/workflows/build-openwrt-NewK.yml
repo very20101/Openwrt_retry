@@ -167,7 +167,9 @@ jobs:
       uses: ncipollo/release-action@main
       if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
       with:
-        tag: ${{ steps.compile.outputs.build_tag }}
+        name: openwrt_NewK
+        tag: ${{ env.OPENWRT_TAG }}
+        replacesArtifacts: true
         artifacts: openwrt/bin/targets/*/*/*rootfs.tar.gz
         allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
