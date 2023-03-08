@@ -45,7 +45,7 @@ on:
         options:
           - 5.4.228
           - 5.10.162
-          - 5.15.94
+          - 5.15.98
           - 6.1.7
       auto_kernel:
         description: "Auto use the latest kernel"
@@ -214,7 +214,7 @@ jobs:
       with:
         openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
         openwrt_board: s905d
-        openwrt_kernel: 5.15.94
+        openwrt_kernel: 5.15.98
         gh_token: ${{ secrets.GH_TOKEN }}
 
     - name: Upload OpenWrt To Release
