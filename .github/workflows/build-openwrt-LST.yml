@@ -73,6 +73,7 @@ env:
   TZ: America/New_York
   FILE_NAME: OpenWrt-LST
   PRODUCT_NAME: OpenWrt-LST
+  OPENWRT_TAG: Openwrt_LST
   
 jobs:
   build:
