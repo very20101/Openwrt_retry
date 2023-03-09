@@ -40,7 +40,7 @@ on:
       openwrt_kernel:
         description: "Select kernel version"
         required: false
-        default: "5.15.88"
+        default: "5.15.98"
         type: choice
         options:
           - 5.4.228
@@ -71,8 +71,8 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: America/New_York
-  FILE_NAME: OpenWrt-NovaK
-  PRODUCT_NAME: OpenWrt-NovaK
+  FILE_NAME: OpenWrt-LST
+  PRODUCT_NAME: OpenWrt-LST
   
 jobs:
   build:
