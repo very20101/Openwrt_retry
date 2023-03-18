@@ -56,7 +56,6 @@ jobs:
         allowUpdates: true
         removeArtifacts: true
         tag: ${{ env.OPENWRT_TAG }}
-        tag_prefix: latest
         token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
         body: |
