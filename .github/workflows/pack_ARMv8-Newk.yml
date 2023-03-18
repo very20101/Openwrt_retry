@@ -66,3 +66,10 @@ jobs:
           升级 OpenWrt：系统 → 晶晨宝盒 → 手动上传更新 或者 在线下载更新
           当前使用版本:【编译前的最后一次➦[主源码](https://github.com/openwrt/openwrt)更新记录】
           ${{ env.VERSION_INFO }}
+          
+    - id: label release latest
+      uses: rymndhng/release-on-push-action@master
+      with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_prefix: latest
+
