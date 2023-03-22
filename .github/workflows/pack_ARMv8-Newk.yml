@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
   
   schedule:
-    - cron: 30 8 */2 * *
+    - cron: 30 6 */2 * *
   
 env:
    
