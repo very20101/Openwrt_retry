@@ -302,6 +302,8 @@ jobs:
         rm -rf package/small-package/brook/patches/010-chore-deps-update-iploc-to-fix-build-with-mips.patch
         #rm -rf feeds/packages/net/bind/Makefile
         #wget -O feeds/packages/net/bind/Makefile https://raw.githubusercontent.com/very20101/Openwrt_retry/main/Makefile-bind
+        rm -rf package/small-package/firewall
+        svn export https://github.com/coolsnowwolf/lede/tree/master/package/network/config/firewall package/firewall
         echo -e "$(nproc) thread compile"
         make diffconfig
         make target/compile -j$(nproc) IGNORE_ERRORS="m n" BUILD_LOG=1 || \
