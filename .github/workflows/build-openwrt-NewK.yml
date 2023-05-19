@@ -163,8 +163,8 @@ jobs:
         svn export https://github.com/openwrt/packages/trunk/net/xtables-addons feeds/packages/net/xtables-addons
         rm -rf feeds/packages/utils/acl
         svn export https://github.com/openwrt/packages/trunk/utils/acl feeds/packages/utils/acl
-        rm -rf feeds/packages/lang/php
-        svn export https://github.com/openwrt/packages/trunk/lang/php8 feeds/packages/lang/php
+        #rm -rf feeds/packages/lang/php
+        #svn export https://github.com/openwrt/packages/trunk/lang/php8 feeds/packages/lang/php
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "status=success" >> ${GITHUB_OUTPUT}
