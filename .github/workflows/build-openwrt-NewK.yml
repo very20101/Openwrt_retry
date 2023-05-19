@@ -179,7 +179,8 @@ jobs:
       with:
         name: openwrt_NewK
         tag: ${{ env.OPENWRT_TAG }}
-        makeLatest: true
+        #makeLatest: true
+        prerelease: true
         replacesArtifacts: true
         artifacts: openwrt/bin/targets/*/*/*rootfs.tar.gz
         allowUpdates: true
