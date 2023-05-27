@@ -180,7 +180,7 @@ jobs:
         name: openwrt_NewK
         tag: ${{ env.OPENWRT_TAG }}
         #makeLatest: true
-        skipIfReleaseExists: true
+        skipIfReleaseExists: false
         replacesArtifacts: true
         artifacts: openwrt/bin/targets/*/*/*rootfs.tar.gz
         allowUpdates: true
