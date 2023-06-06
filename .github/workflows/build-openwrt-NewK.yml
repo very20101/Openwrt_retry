@@ -148,8 +148,8 @@ jobs:
         cd openwrt/
         #make dirclean
         make defconfig
-        rm -rf package/kernel/mac80211
-        svn export https://github.com/openwrt/openwrt/trunk/package/kernel/mac80211 package/kernel/mac80211
+        #rm -rf package/kernel/mac80211
+        #svn export https://github.com/openwrt/openwrt/trunk/package/kernel/mac80211 package/kernel/mac80211
         #rm -rf package/small-package/xray-plugin
         #svn co  https://github.com/very20101/Openwrt_N1_try/trunk/PATCH/xray-plugin package/small-package/xray-plugin
         #rm -rf package/small-package/xray-core
@@ -157,13 +157,13 @@ jobs:
         #rm -rf feeds/packages/net/bind/Makefile
         #wget -O feeds/packages/net/bind/Makefile https://raw.githubusercontent.com/very20101/Openwrt_retry/main/Makefile-bind
         #rm -rf package/small-package/brook/patches/010-chore-deps-update-iploc-to-fix-build-with-mips.patch
-        rm -rf package/small-package/firewall
-        svn export https://github.com/coolsnowwolf/lede/trunk/package/network/config/firewall package/firewall
-        rm -rf feeds/packages/net/xtables-addons
-        svn export https://github.com/openwrt/packages/trunk/net/xtables-addons feeds/packages/net/xtables-addons
-        wget -q -P feeds/packages/net/xtables-addons/patches/202-fix-lua-packetscript-kernel-5.16-no-isystem.patch https://raw.githubusercontent.com/very20101/Openwrt_retry/main/patch/202-fix-lua-packetscript-kernel-5.16-no-isystem.patch
-        rm -rf feeds/packages/utils/acl
-        svn export https://github.com/openwrt/packages/trunk/utils/acl feeds/packages/utils/acl
+        #rm -rf package/small-package/firewall
+        #svn export https://github.com/coolsnowwolf/lede/trunk/package/network/config/firewall package/firewall
+        #rm -rf feeds/packages/net/xtables-addons
+        #svn export https://github.com/openwrt/packages/trunk/net/xtables-addons feeds/packages/net/xtables-addons
+        #wget -q -P feeds/packages/net/xtables-addons/patches/202-fix-lua-packetscript-kernel-5.16-no-isystem.patch https://raw.githubusercontent.com/very20101/Openwrt_retry/main/patch/202-fix-lua-packetscript-kernel-5.16-no-isystem.patch
+        #rm -rf feeds/packages/utils/acl
+        #svn export https://github.com/openwrt/packages/trunk/utils/acl feeds/packages/utils/acl
         rm -rf feeds/packages/net/nmap
         svn export https://github.com/openwrt/packages/trunk/net/nmap feeds/packages/net/nmap
         echo -e "$(nproc) thread compile"
