@@ -4511,7 +4511,7 @@ CONFIG_PACKAGE_libip6tc=y
 CONFIG_PACKAGE_libiptext=y
 CONFIG_PACKAGE_libiptext-nft=y
 CONFIG_PACKAGE_libiptext6=y
-#CONFIG_PACKAGE_libxtables=y
+CONFIG_PACKAGE_libxtables is not set
 # CONFIG_IPTABLES_CONNLABEL is not set
 # end of Firewall
 
@@ -7108,8 +7108,8 @@ CONFIG_PACKAGE_nftables-json=y
 # CONFIG_PACKAGE_shorewall6-lite is not set
 # CONFIG_PACKAGE_snort is not set
 # CONFIG_PACKAGE_snort3 is not set
-#CONFIG_PACKAGE_xtables-legacy=y
-#CONFIG_PACKAGE_xtables-nft=y
+CONFIG_PACKAGE_xtables-legacy is not set
+CONFIG_PACKAGE_xtables-nft is not set
 # end of Firewall
 
 #
