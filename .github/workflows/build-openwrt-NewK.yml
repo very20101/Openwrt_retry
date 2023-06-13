@@ -159,6 +159,7 @@ jobs:
         #rm -rf package/small-package/firewall
         #svn export https://github.com/coolsnowwolf/lede/trunk/package/network/config/firewall package/firewall
         rm -rf feeds/packages/net/xtables-addons
+        rm -rf feeds/small8/v2ray-plugin
         #svn export https://github.com/coolsnowwolf/packages/trunk/net/xtables-addons feeds/packages/net/xtables-addons
         #wget -q -P feeds/packages/net/xtables-addons/patches/202-fix-lua-packetscript-kernel-5.16-no-isystem.patch https://raw.githubusercontent.com/very20101/Openwrt_retry/main/patch/202-fix-lua-packetscript-kernel-5.16-no-isystem.patch
         echo -e "$(nproc) thread compile"
