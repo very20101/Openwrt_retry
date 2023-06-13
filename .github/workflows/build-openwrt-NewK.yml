@@ -149,10 +149,10 @@ jobs:
         cd openwrt/
         #make dirclean
         make defconfig
-        #rm -rf package/small-package/xray-plugin
-        #svn co  https://github.com/very20101/Openwrt_N1_try/trunk/PATCH/xray-plugin package/small-package/xray-plugin
-        #rm -rf package/small-package/xray-core
-        #svn co  https://github.com/very20101/Openwrt_N1_try/trunk/PATCH/xray-core package/small-package/xray-core
+        rm -rf feeds/small8/brook
+        svn export https://github.com/xiaorouji/openwrt-passwall/trunk/brook feeds/small8/brook
+        rm -rf feeds/small8/hysteria
+        svn export https://github.com/xiaorouji/openwrt-passwall/trunk/hysteria feeds/small8/hysteria
         #rm -rf feeds/packages/net/bind/Makefile
         #wget -O feeds/packages/net/bind/Makefile https://raw.githubusercontent.com/very20101/Openwrt_retry/main/Makefile-bind
         #rm -rf package/small-package/brook/patches/010-chore-deps-update-iploc-to-fix-build-with-mips.patch
