@@ -19,13 +19,13 @@ env:
   SOURCE_BRANCH: master
   CONFIG_FILE: config/.configopwrt0806-new
   DIY_SCRIPT: diy-script-opwrt.sh
-  TOOLCHAIN_TAG: Toolchain_opwrt
+  TOOLCHAIN_TAG: Toolchain_Opwrt
   CLASH_KERNEL: armv8
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: ROOTFS_opwrt
+  FIRMWARE_TAG: ROOTFS_Opwrt
   OPENWRT_RELEASE: true
-  OPENWRT_TAG: ARMv8_opwrt
+  OPENWRT_TAG: ARMv8_Opwrt
   TZ: Asia/Shanghai
 
 jobs:
