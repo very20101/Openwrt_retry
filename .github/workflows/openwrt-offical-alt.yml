@@ -17,6 +17,7 @@ on:
 env:
   SOURCE_URL: https://github.com/openwrt/openwrt
   SOURCE_BRANCH: master
+  FEEDS_CONF: openwrt.feeds.conf.default
   CONFIG_FILE: config/.configopwrt0806-new
   DIY_SCRIPT: diy-script-opwrt.sh
   TOOLCHAIN_TAG: Toolchain_Opwrt
