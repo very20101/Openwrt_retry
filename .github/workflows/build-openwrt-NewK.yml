@@ -35,9 +35,9 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  FILE_NAME: OpWrt-NewK
-  PRODUCT_NAME: OpWrt-NewK
-  OPENWRT_TAG: OpWrt-NewK
+  FILE_NAME: OpenWrt-NewK
+  PRODUCT_NAME: OpenWrt-NewK
+  OPENWRT_TAG: OpenWrt-NewK
   
 jobs:
   build:
@@ -173,12 +173,13 @@ jobs:
       uses: ncipollo/release-action@main
       if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
       with:
-        name: Opwrt_NewK
-        tag: ${{ env.OPWRT_TAG }}
+        name: openwrt_NewK
+        tag: ${{ env.OPENWRT_TAG }}
         #makeLatest: true
-        allowUpdates: true
-        removeArtifacts: true
+        skipIfReleaseExists: false
+        replacesArtifacts: true
         artifacts: openwrt/bin/targets/*/*/*rootfs.tar.gz
+        allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Clean up server space
