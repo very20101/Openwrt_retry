@@ -28,7 +28,7 @@ env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: master
   FEEDS_CONF: openwrt.feeds.conf.default
-  CONFIG_FILE: .configopwrt0806
+  CONFIG_FILE: config/.configopwrt_0706
   DIY_P1_SH: diy-part01new.sh
   DIY_P2_SH: diy-part02new.sh
   UPLOAD_BIN_DIR: false
