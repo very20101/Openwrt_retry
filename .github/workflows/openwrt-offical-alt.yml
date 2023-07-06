@@ -17,15 +17,15 @@ on:
 env:
   SOURCE_URL: https://github.com/openwrt/openwrt
   SOURCE_BRANCH: master
-  CONFIG_FILE: config/.configopwrt0806-new
-  DIY_SCRIPT: diy-script-opwrt.sh
-  TOOLCHAIN_TAG: Toolchain_Opwrt
+  CONFIG_FILE: config/.configopwrt0705
+  DIY_SCRIPT: diy-script-nova.sh
+  TOOLCHAIN_TAG: Toolchain_OpNova
   CLASH_KERNEL: armv8
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: ROOTFS_Opwrt
+  FIRMWARE_TAG: ROOTFS_OpNova
   OPENWRT_RELEASE: true
-  OPENWRT_TAG: ARMv8_Opwrt
+  OPENWRT_TAG: ARMv8_OpNova
   TZ: Asia/Shanghai
 
 jobs:
@@ -295,8 +295,8 @@ jobs:
         make defconfig
         rm -rf package/brook
         svn export https://github.com/very20101/Openwrt_retry/trunk/brook package/brook
-        #rm -rf feeds/small8/hysteria
-        #svn export https://github.com/xiaorouji/openwrt-passwall/trunk/hysteria feeds/small8/hysteria
+        rm -rf feeds/small8/hysteria
+        svn export https://github.com/xiaorouji/openwrt-passwall/trunk/hysteria feeds/small8/hysteria
         echo -e "$(nproc) thread compile"
         make target/compile -j$(nproc) IGNORE_ERRORS="m n" BUILD_LOG=1 || \
         yes n | make target/compile -j1 V=s IGNORE_ERRORS=1
