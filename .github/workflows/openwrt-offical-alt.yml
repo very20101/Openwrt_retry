@@ -294,7 +294,7 @@ jobs:
         cd $OPENWRT_PATH
         make defconfig
         rm -rf package/brook
-        svn export https://github.com/xiaorouji/openwrt-passwall/trunk/brook package/brook
+        svn export https://github.com/very20101/Openwrt_retry/trunk/brook package/brook
         #rm -rf feeds/small8/hysteria
         #svn export https://github.com/xiaorouji/openwrt-passwall/trunk/hysteria feeds/small8/hysteria
         echo -e "$(nproc) thread compile"
