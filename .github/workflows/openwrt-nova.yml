@@ -167,7 +167,6 @@ jobs:
         name: openwrt-nova
         tag: ${{ env.OPENWRT_TAG }}
         #makeLatest: true
-        skipIfReleaseExists: true
         replacesArtifacts: true
         artifacts: openwrt/bin/targets/*/*/*rootfs.tar.gz
         allowUpdates: true
