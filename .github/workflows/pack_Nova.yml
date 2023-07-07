@@ -65,8 +65,6 @@ jobs:
         #[[ "${?}" -ne "0" ]] && echo -e "The armvirt file download failed!" && exit 1
         wget -q -P openwrt https://github.com/very20101/Openwrt_retry/releases/download/OpenWrt-nova/openwrt-armsr-armv8-generic-rootfs.tar.gz
         echo "status=success" >> $GITHUB_OUTPUT
-        echo "DATE=$(date +"%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
-        echo "DATE1=$(date +"%Y.%m.%d")" >> $GITHUB_ENV
 
     - name: Package OpenWrt Firmware
       if: steps.download.outputs.status == 'success'
