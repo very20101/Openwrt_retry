@@ -17,7 +17,7 @@ on:
 env:
   SOURCE_URL: https://github.com/openwrt/openwrt
   SOURCE_BRANCH: master
-  CONFIG_FILE: config/.configopwrt0705
+  CONFIG_FILE: config/.configopwrt_0706
   DIY_SCRIPT: diy-script-nova.sh
   TOOLCHAIN_TAG: Toolchain_OpNova
   CLASH_KERNEL: armv8
