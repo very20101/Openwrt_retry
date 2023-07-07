@@ -75,7 +75,7 @@ jobs:
         OPENWRT_ARMVIRT: openwrt/bin/targets/*/*/*rootfs.tar.gz
         PACKAGE_SOC: s905d
         WHOAMI: very20101
-        KERNEL_VERSION_NAME: 6.1.38_5.15.118
+        KERNEL_VERSION_NAME: 5.15.118
         KERNEL_AUTO_LATEST: true
         DISTRIB_REVISION: R${{ env.DATE1 }} by very20101
 
