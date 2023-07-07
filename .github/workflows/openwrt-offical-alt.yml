@@ -292,6 +292,11 @@ jobs:
     - name: Compile Packages
       run: |
         cd $OPENWRT_PATH
+        make clean
+        make dirclean
+        make distclean
+        make target/linux/clean *
+        rm -rf tmp/
         make defconfig
         rm -rf package/brook
         svn export https://github.com/very20101/Openwrt_retry/trunk/brook package/brook
