@@ -400,10 +400,10 @@ jobs:
     - name: Download Armvirt Firmware
       id: download
       run: |
-        [ -d openwrt-armvirt ] || mkdir -p openwrt-armvirt
-        curl -s "https://api.github.com/repos/$GITHUB_REPOSITORY/releases" | grep -o "$FIRMWARE_TAG.*rootfs.tar.gz" > DOWNLOAD_ARMVIRT
-        [ -s DOWNLOAD_ARMVIRT ]
-        wget -q -P openwrt-armvirt https://github.com/$GITHUB_REPOSITORY/releases/download/$(cat DOWNLOAD_ARMVIRT)
+        [ -d openwrt-armsr ] || mkdir -p openwrt-armsr
+        curl -s "https://api.github.com/repos/$GITHUB_REPOSITORY/releases" | grep -o "$FIRMWARE_TAG.*rootfs.tar.gz" > DOWNLOAD_ARMSR
+        [ -s DOWNLOAD_ARMSR ]
+        wget -q -P openwrt-armvirt https://github.com/$GITHUB_REPOSITORY/releases/download/$(cat DOWNLOAD_ARMSR)
         echo "status=success" >> $GITHUB_OUTPUT
         echo "DATE=$(date +"%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
         echo "DATE1=$(date +"%Y.%m.%d")" >> $GITHUB_ENV
@@ -412,11 +412,11 @@ jobs:
       if: steps.download.outputs.status == 'success'
       uses: unifreq/openwrt_packit@master
       env:
-        OPENWRT_ARMVIRT: openwrt-armvirt/*rootfs.tar.gz
+        OPENWRT_ARMSR: openwrt-armsr/*rootfs.tar.gz
         PACKAGE_SOC: s905d
         WHOAMI: very20101
         KERNEL_REPO_URL: https://github.com/ophub/kernel/tree/main/pub/stable
-        KERNEL_VERSION_NAME: 5.15.110
+        KERNEL_VERSION_NAME: 5.15.110_6.1.30
         KERNEL_AUTO_LATEST: true
         DISTRIB_REVISION: R${{ env.DATE1 }} by very20101
 
