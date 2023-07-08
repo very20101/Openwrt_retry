@@ -368,7 +368,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
-          **This is Temporary Firmware for Armvirt 64**
+          **This is Temporary Firmware for Armsr(Armvirt) 64**
           * 这是 ARMv8_mini 精简版版打包临时固件，不可直刷
           直刷固件参见 Tag 名为 ARMv8_mini 的 Releases
           当前使用版本:【编译前的最后一次[➦主源码](https://github.com/openwrt/openwrt)更新记录】
@@ -407,7 +407,7 @@ jobs:
         echo "status=success" >> $GITHUB_OUTPUT
         echo "DATE=$(date +"%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
         echo "DATE1=$(date +"%Y.%m.%d")" >> $GITHUB_ENV
-        
+
     - name: Package OpenWrt Firmware
       if: steps.download.outputs.status == 'success'
       uses: unifreq/openwrt_packit@master
@@ -416,7 +416,7 @@ jobs:
         PACKAGE_SOC: s905d
         WHOAMI: very20101
         KERNEL_REPO_URL: https://github.com/ophub/kernel/tree/main/pub/stable
-        KERNEL_VERSION_NAME: 5.15.110_6.1.30
+        KERNEL_VERSION_NAME: 5.15.110
         KERNEL_AUTO_LATEST: true
         DISTRIB_REVISION: R${{ env.DATE1 }} by very20101
 
@@ -437,7 +437,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
         body: |
-          **This is OpenWrt Firmware for Armsr 64**
+          **This is OpenWrt Firmware for Armsr(Armvirt) 64**
           * 这是 ARMv8 精简版
           默认 IP：192.168.1.100 默认密码：password
           安装到 EMMC：系统 → 晶晨宝盒 → 安装 OpenWrt → 选择型号 → 安装
