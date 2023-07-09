@@ -52,7 +52,7 @@ jobs:
         echo "DATE=$(date +"%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
         echo "DATE1=$(date +"%y.%m.%d")" >> $GITHUB_ENV
 
-    - name: Download Armsr Firmware
+    - name: Download Armsr(Armvirt) Firmware
       id: download
       run: |
         FIRMWARE_PATH=openwrt/bin/targets/armsr/64
@@ -86,11 +86,11 @@ jobs:
         name: R${{ env.DATE }} for ARMv8_Nova${{ env.VERSION }}
         allowUpdates: true
         removeArtifacts: true
-        tag: ARMv8_NewK${{ env.VERSION }}
+        tag: ARMv8_Nova${{ env.VERSION }}
         token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
         body: |
-          **This is OpenWrt Firmware for Armsr 64**
+          **This is OpenWrt Firmware for Armsr(Armvirt) 64**
           * ${{ env.EXPLAIN }}
           默认 IP：192.168.1.100 默认密码：password
           安装到 EMMC：系统 → 晶晨宝盒 → 安装 OpenWrt → 选择型号 → 安装
