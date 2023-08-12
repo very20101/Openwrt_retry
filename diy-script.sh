@@ -40,7 +40,7 @@ git clone https://github.com/kenzok8/openwrt-packages package/openwrt-packages
 git clone https://github.com/kenzok8/small package/small
 
 ## Add deps(from other source)
-#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/libcryptopp package/libcryptopp
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/libcryptopp package/libcryptopp
 
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
