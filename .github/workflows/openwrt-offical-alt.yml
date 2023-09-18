@@ -428,6 +428,14 @@ jobs:
       with:
         path: ${{ env.PACKAGED_OUTPUTPATH }}
 
+    - name: Delete workflow runs
+      uses: GitRML/delete-workflow-runs@main
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        repository: ${{ github.repository }}
+        retain_days: 60
+        keep_minimum_runs: 60
+
     - name: Upload OpenWrt To Release
       if: env.PACKAGED_STATUS == 'success' && env.OPENWRT_RELEASE == 'true'
       uses: ncipollo/release-action@v1
