@@ -154,6 +154,7 @@ jobs:
         svn export https://github.com/xiaorouji/openwrt-passwall-packages/trunk/hysteria feeds/small8/hysteria
         rm -rf feeds/packages/lang/golang
         svn export https://github.com/coolsnowwolf/packages/trunk/lang/golang feeds/packages/lang/golang
+        rm -rf feeds/packages/net/dnscrypt-proxy2
         svn export https://github.com/coolsnowwolf/packages/trunk/net/dnscrypt-proxy2 feeds/packages/net/dnscrypt-proxy2
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
