@@ -73,11 +73,11 @@ jobs:
       run: |
         docker rmi `docker images -q`
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /etc/mysql /etc/php /usr/local/lib/android /opt/ghc
-        sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
-        sudo -E apt-get -qq update
-        sudo -E apt-get -qq install $(curl -fsSL https://is.gd/depends_ubuntu_2204)
-        sudo -E apt-get -qq autoremove --purge
-        sudo -E apt-get -qq clean
+        sudo -E apt purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
+        sudo -E apt update
+        sudo -E apt install $(curl -fsSL https://is.gd/depends_ubuntu_2204)
+        sudo -E apt autoremove --purge
+        sudo -E apt clean
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown ${USER}:${GROUPS} /workdir
@@ -148,16 +148,10 @@ jobs:
         cd openwrt/
         #make dirclean
         make defconfig
-        rm -rf feeds/small8/brook
-        svn export https://github.com/very20101/Openwrt_retry/trunk/brook feeds/small8/brook
         rm -rf feeds/small8/hysteria
         svn export https://github.com/xiaorouji/openwrt-passwall-packages/trunk/hysteria feeds/small8/hysteria
-        #rm -rf feeds/packages/lang/golang
-        #svn export https://github.com/openwrt/packages/trunk/lang/golang feeds/packages/lang/golang
         rm -rf feeds/packages/net/dnscrypt-proxy2
         svn export https://github.com/coolsnowwolf/packages/trunk/net/dnscrypt-proxy2 feeds/packages/net/dnscrypt-proxy2
-        #rm -rf package/openwrt-packages/adguardhome
-        #svn export https://github.com/openwrt/packages/trunk/net/adguardhome package/openwrt-packages/adguardhome
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "status=success" >> ${GITHUB_OUTPUT}
