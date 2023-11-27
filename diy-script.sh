@@ -38,20 +38,22 @@ git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme
 ## Add extra package
 git clone https://github.com/kenzok8/openwrt-packages package/openwrt-packages
 git clone https://github.com/kenzok8/small package/small
+rm -rf package/small/shadowsocks-rust
+svn exporthttps://github.com/xiaorouji/openwrt-passwall-packages/trunk/shadowsocks-rust package/small/shadowsocks-rust
 
 ## Add deps(from other source)
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/libcryptopp package/libcryptopp
+svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/libcryptopp package/libcryptopp
 
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
 # Modify default IP
-  sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_generate
   
 # kernel
-  #sed -i "s/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g" target/linux/armvirt/Makefile
-  #sed -i "s/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g" target/linux/armvirt/Makefile
+#sed -i "s/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g" target/linux/armvirt/Makefile
+#sed -i "s/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g" target/linux/armvirt/Makefile
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
