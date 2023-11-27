@@ -155,8 +155,8 @@ jobs:
         rm -rf package/openwrt-packages/adguardhome/patches
         rm -rf package/small/shadowsocks-rust
         svn export https://github.com/xiaorouji/openwrt-passwall-packages/trunk/shadowsocks-rust package/small/shadowsocks-rust
-        rm -rf config/Config-images.in
-        wget -cP config https://raw.githubusercontent.com/very20101/Openwrt_retry/main/config/Config-images.in
+        #rm -rf config/Config-images.in
+        #wget -cP config https://raw.githubusercontent.com/very20101/Openwrt_retry/main/config/Config-images.in
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "status=success" >> ${GITHUB_OUTPUT}
