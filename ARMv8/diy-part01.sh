@@ -23,11 +23,13 @@
 ## Add deps
 git clone -b master --single-branch https://github.com/LGA1150/openwrt-fullconenat package/fullconenat
 svn export https://github.com/kenzok8/small-package/trunk/luci-app-dnscrypt-proxy2 package/luci-app-dnscrypt-proxy2
-svn exporthttps://github.com/xiaorouji/openwrt-passwall-packages/trunk/shadowsocks-rust package/small/shadowsocks-rust
 
 ## Add extra package
 git clone https://github.com/kenzok8/openwrt-packages package/openwrt-packages
 git clone https://github.com/kenzok8/small package/small
+rm -rf package/small/shadowsocks-rust
+svn exporthttps://github.com/xiaorouji/openwrt-passwall-packages/trunk/shadowsocks-rust package/small/shadowsocks-rust
+
 
 # themes
 git clone https://github.com/rosywrt/luci-theme-rosy/tree/openwrt-18.06/luci-theme-rosy.git package/luci-theme-rosy
