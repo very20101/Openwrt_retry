@@ -139,6 +139,8 @@ jobs:
         cd openwrt/
         make defconfig
         make download -j8
+        rm -rf config/Config-images.in
+        svn export https://raw.githubusercontent.com/very20101/Openwrt_retry/main/config/Config-images.in config/Config-images.in
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
         
