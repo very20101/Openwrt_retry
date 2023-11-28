@@ -93,7 +93,12 @@ jobs:
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd openwrt
         #git fetch --depth=1 https://github.com/openwrt/openwrt 04ecbbfa6c8972300aae74547c85231c7564b06a
-        git fetch --depth=1 https://github.com/openwrt/openwrt 5a64a482a24f79d246aea43191157aaf318622b8
+        rm -rf config/Config-images.in
+        svn export https://github.com/very20101/Openwrt_retry/trunk/modified_hauke/Config-images.in config/Config-images.in
+        rm -rf target/linux/armsr/base-files.mk
+        svn export https://github.com/very20101/Openwrt_retry/trunk/modified_hauke/base-files.mk target/linux/armsr/base-files.mk
+        rm -rf target/linux/armsr/image/Makefile
+        svn export https://github.com/very20101/Openwrt_retry/trunk/modified_hauke/Makefile target/linux/armsr/image/Makefile
         useVersionInfo=$(git show -s --date=short --format="Author: %an<br/>date: %cd<br/>commit: %s<br/>commit hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
         echo "VERSION_INFO=$(echo $VERSION_INFO)" >> $GITHUB_OUTPUT
