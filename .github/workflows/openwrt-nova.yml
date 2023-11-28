@@ -90,8 +90,8 @@ jobs:
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
+        rm -rf openwrt/target/linux/armsr/base-files/etc/inittab
         wget https://raw.githubusercontent.com/very20101/Openwrt_retry/main/modified_hauke/inittab -cP openwrt/target/linux/armsr/base-files/etc/
-        cp -f inittab.1 inittab
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd openwrt
         #git fetch --depth=1 https://github.com/openwrt/openwrt 04ecbbfa6c8972300aae74547c85231c7564b06a
