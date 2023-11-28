@@ -90,15 +90,15 @@ jobs:
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
+        rm -rf openwrt/config/Config-images.in
+        wget https://raw.githubusercontent.com/very20101/Openwrt_retry/main/modified_hauke/Config-images.in -P openwrt/config
+        rm -rf openwrt/target/linux/armsr/base-files.mk
+        wget https://raw.githubusercontent.com/very20101/Openwrt_retry/main/modified_hauke/base-files.mk -P openwrt/target/linux/armsr
+        rm -rf openwrt/target/linux/armsr/image/Makefile
+        wget https://raw.githubusercontent.com/very20101/Openwrt_retry/main/modified_hauke/Makefile -P openwrt/target/linux/armsr/image
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd openwrt
         #git fetch --depth=1 https://github.com/openwrt/openwrt 04ecbbfa6c8972300aae74547c85231c7564b06a
-        rm -rf config/Config-images.in
-        wget https://raw.githubusercontent.com/very20101/Openwrt_retry/main/modified_hauke/Config-images.in -P config
-        rm -rf target/linux/armsr/base-files.mk
-        wget https://raw.githubusercontent.com/very20101/Openwrt_retry/main/modified_hauke/base-files.mk -P target/linux/armsr
-        rm -rf target/linux/armsr/image/Makefile
-        wget https://raw.githubusercontent.com/very20101/Openwrt_retry/main/modified_hauke/Makefile -P target/linux/armsr/image
         useVersionInfo=$(git show -s --date=short --format="Author: %an<br/>date: %cd<br/>commit: %s<br/>commit hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
         echo "VERSION_INFO=$(echo $VERSION_INFO)" >> $GITHUB_OUTPUT
