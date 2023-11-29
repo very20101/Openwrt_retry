@@ -25,10 +25,10 @@ on:
     - cron: 0 2 */2 * *
 
 env:
-  #REPO_URL: https://github.com/openwrt/openwrt
-  #REPO_BRANCH: master
+  REPO_URL: https://github.com/openwrt/openwrt
+  REPO_BRANCH: master
   FEEDS_CONF: ARMv8/openwrt.feeds.conf.default
-  CONFIG_FILE: config/.config-opwrt1125
+  CONFIG_FILE: config/.config-opwrt1129
   DIY_P1_SH: ARMv8/diy-part01.sh
   DIY_P2_SH: ARMv8/diy-part02.sh
   UPLOAD_BIN_DIR: false
@@ -89,8 +89,7 @@ jobs:
       
       run: |
         df -hT $PWD
-        #git clone $REPO_URL -b $REPO_BRANCH openwrt
-        git clone https://github.com/hauke/openwrt
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd openwrt
         #git fetch --depth=1 https://github.com/openwrt/openwrt 04ecbbfa6c8972300aae74547c85231c7564b06a
