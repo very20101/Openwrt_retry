@@ -39,7 +39,7 @@ git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme
 git clone https://github.com/kenzok8/openwrt-packages package/openwrt-packages
 git clone https://github.com/kenzok8/small package/small
 rm -rf package/small/shadowsocks-rust
-svn exporthttps://github.com/xiaorouji/openwrt-passwall-packages/trunk/shadowsocks-rust package/small/shadowsocks-rust
+svn export https://github.com/xiaorouji/openwrt-passwall-packages/trunk/shadowsocks-rust package/small/shadowsocks-rust
 
 ## Add deps(from other source)
 svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/libcryptopp package/libcryptopp
