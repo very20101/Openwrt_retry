@@ -25,7 +25,8 @@ on:
     - cron: 0 2 */2 * *
 
 env:
-  REPO_URL: https://github.com/openwrt/openwrt
+  #REPO_URL: https://github.com/openwrt/openwrt
+  REPO_URL: https://github.com/hauke/openwrt
   REPO_BRANCH: master
   FEEDS_CONF: ARMv8/openwrt.feeds.conf.default
   CONFIG_FILE: config/.config-opwrt1125
