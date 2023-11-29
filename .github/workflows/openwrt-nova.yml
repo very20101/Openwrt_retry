@@ -27,7 +27,7 @@ on:
 env:
   #REPO_URL: https://github.com/openwrt/openwrt
   REPO_URL: https://github.com/hauke/openwrt
-  REPO_BRANCH: master
+  REPO_BRANCH: main
   FEEDS_CONF: ARMv8/openwrt.feeds.conf.default
   CONFIG_FILE: config/.config-opwrt1125
   DIY_P1_SH: ARMv8/diy-part01.sh
