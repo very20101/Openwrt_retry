@@ -31,8 +31,8 @@ rm -rf package/small/shadowsocks-rust
 svn exporthttps://github.com/xiaorouji/openwrt-passwall-packages/trunk/shadowsocks-rust package/small/shadowsocks-rust
 
 ## Add modified config
-rm -rf config/Config-images.in
-wget -cP config https://raw.githubusercontent.com/very20101/Openwrt_retry/main/config/Config-images.in
+#rm -rf config/Config-images.in
+#wget -cP config https://raw.githubusercontent.com/very20101/Openwrt_retry/main/config/Config-images.in
 
 
 # themes
