@@ -28,7 +28,7 @@ svn export https://github.com/kenzok8/small-package/trunk/luci-app-dnscrypt-prox
 git clone https://github.com/kenzok8/openwrt-packages package/openwrt-packages
 git clone https://github.com/kenzok8/small package/small
 rm -rf package/small/shadowsocks-rust
-svn exporthttps://github.com/xiaorouji/openwrt-passwall-packages/trunk/shadowsocks-rust package/small/shadowsocks-rust
+svn export https://github.com/xiaorouji/openwrt-passwall-packages/trunk/shadowsocks-rust package/small/shadowsocks-rust
 
 ## Add modified config
 #rm -rf config/Config-images.in
