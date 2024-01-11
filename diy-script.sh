@@ -27,7 +27,7 @@
 
 ## Add deps
 #git clone -b master --single-branch https://github.com/LGA1150/openwrt-fullconenat package/fullconenat
-svn export https://github.com/kenzok8/small-package/trunk/luci-app-dnscrypt-proxy2 package/luci-app-dnscrypt-proxy2
+merge_package https://github.com/kenzok8/small-package/trunk/luci-app-dnscrypt-proxy2 package/luci-app-dnscrypt-proxy2
 
 # themes
 git clone https://github.com/rosywrt/luci-theme-rosy/tree/openwrt-18.06/luci-theme-rosy.git package/luci-theme-rosy
@@ -39,10 +39,10 @@ git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme
 git clone https://github.com/kenzok8/openwrt-packages package/openwrt-packages
 git clone https://github.com/kenzok8/small package/small
 rm -rf package/small/shadowsocks-rust
-svn export https://github.com/xiaorouji/openwrt-passwall-packages/trunk/shadowsocks-rust package/small/shadowsocks-rust
+merge_package https://github.com/xiaorouji/openwrt-passwall-packages/trunk/shadowsocks-rust package/small/shadowsocks-rust
 
 ## Add deps(from other source)
-svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/libcryptopp package/libcryptopp
+merge_package https://github.com/coolsnowwolf/lede/trunk/package/lean/libcryptopp package/libcryptopp
 
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
