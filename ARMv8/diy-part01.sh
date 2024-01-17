@@ -14,16 +14,6 @@
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
-# Git稀疏克隆，只克隆指定目录到本地
-function git_sparse_clone() {
-  branch="$1" repourl="$2" && shift 2
-  git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
-  repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
-  cd $repodir && git sparse-checkout set $@
-  mv -f $@ ../package
-  cd .. && rm -rf $repodir
-}
-
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
@@ -33,7 +23,7 @@ function git_sparse_clone() {
 
 ## Add deps
 git clone -b master --single-branch https://github.com/LGA1150/openwrt-fullconenat package/fullconenat
-git_sparse_clone main https://github.com/kenzok8/small-package package/luci-app-dnscrypt-proxy2
+merge_package https://github.com/kenzok8/small-package package/luci-app-dnscrypt-proxy2
 
 ## Add extra package
 git clone https://github.com/kenzok8/openwrt-packages package/openwrt-packages
