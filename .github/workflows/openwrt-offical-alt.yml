@@ -299,7 +299,7 @@ jobs:
         #rm -rf package/brook
         #svn export https://github.com/very20101/Openwrt_retry/trunk/brook package/brook
         rm -rf feeds/small8/hysteria
-        git_sparse_clone main https://github.com/xiaorouji/openwrt-passwall-packages/hysteria feeds/small8/hysteria
+        merge_package https://github.com/xiaorouji/openwrt-passwall-packages/hysteria feeds/small8/hysteria
         #rm -rf feeds/packages/lang/golang
         #svn export https://github.com/coolsnowwolf/packages/trunk/lang/golang feeds/packages/lang/golang
         echo -e "$(nproc) thread compile"
