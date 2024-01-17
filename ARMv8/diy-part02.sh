@@ -35,6 +35,20 @@ function merge_feed(){
 }
 rm -rf package/custom; mkdir package/custom
 
+## Add deps
+git clone -b master --single-branch https://github.com/LGA1150/openwrt-fullconenat package/fullconenat
+merge_package https://github.com/kenzok8/small-package package/luci-app-dnscrypt-proxy2
+
+## Add extra package
+git clone https://github.com/kenzok8/openwrt-packages package/openwrt-packages
+git clone https://github.com/kenzok8/small package/small
+rm -rf package/small/shadowsocks-rust
+merge_package https://github.com/xiaorouji/openwrt-passwall-packages package/small/shadowsocks-rust
+
+## Add modified config
+#rm -rf config/Config-images.in
+#wget -cP config https://raw.githubusercontent.com/very20101/Openwrt_retry/main/config/Config-images.in
+
 # Modify default IP
   sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_generate
   
