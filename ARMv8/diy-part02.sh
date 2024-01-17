@@ -45,6 +45,14 @@ git clone https://github.com/kenzok8/small package/small
 rm -rf package/small/shadowsocks-rust
 merge_package https://github.com/xiaorouji/openwrt-passwall-packages package/small/shadowsocks-rust
 
+rm -rf feeds/small8/hysteria
+merge_package https://github.com/xiaorouji/openwrt-passwall-packages feeds/small8/hysteria
+rm -rf feeds/packages/net/dnscrypt-proxy2
+merge_package https://github.com/coolsnowwolf/packages/net/dnscrypt-proxy2 feeds/packages/net/dnscrypt-proxy2
+rm -rf package/openwrt-packages/adguardhome/patches
+rm -rf package/small/shadowsocks-rust
+merge_package https://github.com/xiaorouji/openwrt-passwall-packages package/small/shadowsocks-rust
+
 ## Add modified config
 #rm -rf config/Config-images.in
 #wget -cP config https://raw.githubusercontent.com/very20101/Openwrt_retry/main/config/Config-images.in
@@ -55,3 +63,10 @@ merge_package https://github.com/xiaorouji/openwrt-passwall-packages package/sma
 # kernel
   #sed -i "s/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g" target/linux/armvirt/Makefile
   # sed -i "s/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g" target/linux/armvirt/Makefile
+
+./scripts/feeds update -a
+./scripts/feeds install -a
+
+echo "========================="
+echo " DIY2 配置完成……"
+  
