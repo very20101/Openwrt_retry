@@ -405,7 +405,7 @@ jobs:
         sudo -E apt -y update
         #sudo -E apt-get -qq install $(curl -fsSL https://raw.githubusercontent.com/very20101/Openwrt_retry/main/ubuntu2204-update)
         sudo -E apt -y install $(curl -fsSL https://is.gd/depend_ubuntu2204)
-        sudo -E apt-y autoremove --purge
+        sudo -E apt -y autoremove --purge
         sudo -E apt clean
         sudo timedatectl set-timezone "$TZ"
 
