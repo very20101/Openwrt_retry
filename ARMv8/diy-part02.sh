@@ -64,6 +64,10 @@ merge_package https://github.com/xiaorouji/openwrt-passwall-packages package/sma
   #sed -i "s/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g" target/linux/armvirt/Makefile
   # sed -i "s/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g" target/linux/armvirt/Makefile
 
+# golang 
+  rm -rf feeds/packages/lang/golang
+  git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
