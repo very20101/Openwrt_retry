@@ -62,12 +62,20 @@ merge_package https://github.com/xiaorouji/openwrt-passwall-packages package/sma
   
 # kernel
   #sed -i "s/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g" target/linux/armvirt/Makefile
-  # sed -i "s/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g" target/linux/armvirt/Makefile
+  #sed -i "s/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g" target/linux/armvirt/Makefile
 
 # golang 
   rm -rf feeds/packages/lang/golang
   git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 
+## replace libs for shadowsocks-libev error
+  rm -rf package/libs/mbedtls  package/libs/ustream-ssl package/libs/uclient
+  git clone -b main https://github.com/very20101/openwrt_retry package/op-retry
+  mv package/op-retry/libs/mbedtls package/libs/mbedtls
+  mv package/op-retry/libs/ustream-ssl package/libs/ustream-ssl
+  mv package/op-retry/libs/uclient package/libs/uclient
+
+  
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
