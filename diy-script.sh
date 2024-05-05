@@ -83,6 +83,15 @@ sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_gener
 #sed -i "s/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g" target/linux/armvirt/Makefile
 #sed -i "s/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g" target/linux/armvirt/Makefile
 
+## replace libs for shadowsocks-libev error
+rm -rf package/libs/mbedtls  package/libs/ustream-ssl package/libs/uclient
+git clone -b main https://github.com/very20101/openwrt_retry package/op-retry
+mv package/op-retry/libs/mbedtls package/libs/mbedtls
+mv package/op-retry/libs/ustream-ssl package/libs/ustream-ssl
+mv package/op-retry/libs/uclient package/libs/uclient
+rm -rf package/op-retry
+  
+
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
