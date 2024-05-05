@@ -69,11 +69,12 @@ merge_package https://github.com/xiaorouji/openwrt-passwall-packages package/sma
   git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 
 ## replace libs for shadowsocks-libev error
-  rm -rf package/libs/mbedtls  package/libs/ustream-ssl package/libs/uclient
-  git clone -b main https://github.com/very20101/openwrt_retry package/op-retry
-  mv package/op-retry/libs/mbedtls package/libs/mbedtls
-  mv package/op-retry/libs/ustream-ssl package/libs/ustream-ssl
-  mv package/op-retry/libs/uclient package/libs/uclient
+rm -rf package/libs/mbedtls  package/libs/ustream-ssl package/libs/uclient
+git clone -b main https://github.com/very20101/openwrt_retry package/op-retry
+mv package/op-retry/libs/mbedtls package/libs/mbedtls
+mv package/op-retry/libs/ustream-ssl package/libs/ustream-ssl
+mv package/op-retry/libs/uclient package/libs/uclient
+rm -rf package/op-retry
 
   
 ./scripts/feeds update -a
