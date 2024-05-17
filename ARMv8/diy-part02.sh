@@ -44,19 +44,31 @@ wget https://raw.githubusercontent.com/coolsnowwolf/lede/master/target/linux/gen
 popd
 wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/coolsnowwolf/lede/master/target/linux/generic/hack-5.15/952-net-conntrack-events-support-multiple-registrant.patch
 
-#luci-app-dnscrypt-proxy2
-#merge_package https://github.com/kenzok8/small-package package/luci-app-dnscrypt-proxy2
+## Add deps
+#git clone -b master --single-branch https://github.com/LGA1150/openwrt-fullconenat package/fullconenat
+merge_package https://github.com/kenzok8/small-package/luci-app-dnscrypt-proxy2 package/luci-app-dnscrypt-proxy2
+
+# themes
+git clone https://github.com/rosywrt/luci-theme-rosy/tree/openwrt-18.06/luci-theme-rosy.git package/luci-theme-rosy
+git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git package/luci-theme-infinityfreedom
+git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git package/luci-theme-opentomcat
+git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme-opentopd
 
 ## Add extra package
+#git clone https://github.com/kenzok8/openwrt-packages package/openwrt-packages
+#git clone https://github.com/kenzok8/small package/small
+#rm -rf package/small/shadowsocks-rust
+#merge_package https://github.com/xiaorouji/openwrt-passwall-packages/shadowsocks-rust package/small/shadowsocks-rust
 sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
-rm -rf feeds/luci/applications/luci-app-mosdns
-rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
-rm -rf feeds/packages/utils/v2dat
+sed -i '$a src-git smpackage https://github.com/kenzok8/small-package' feeds.conf.default
 
-## Add modified config
-#rm -rf config/Config-images.in
-#wget -cP config https://raw.githubusercontent.com/very20101/Openwrt_retry/main/config/Config-images.in
+## Add deps(from other source)
+merge_package https://github.com/coolsnowwolf/lede/trunk/package/lean/libcryptopp package/libcryptopp
+
+# File name: diy-part2.sh
+# Description: OpenWrt DIY script part 2 (After Update feeds)
+#
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_generate
@@ -65,24 +77,17 @@ sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_gener
 #sed -i "s/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g" target/linux/armvirt/Makefile
 #sed -i "s/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g" target/linux/armvirt/Makefile
 
-# golang 
-#rm -rf feeds/packages/lang/golang
-#git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-
 ## replace libs for shadowsocks-libev error
-#rm -rf package/libs/mbedtls  package/libs/ustream-ssl package/libs/uclient
-#git clone -b main https://github.com/very20101/openwrt_retry package/op-retry
-#mv package/op-retry/libs/mbedtls package/libs/mbedtls
-#mv package/op-retry/libs/ustream-ssl package/libs/ustream-ssl
-#mv package/op-retry/libs/uclient package/libs/uclient
-#rm -rf package/op-retry
-
+rm -rf package/libs/mbedtls  package/libs/ustream-ssl package/libs/uclient
+git clone -b main https://github.com/very20101/openwrt_retry package/op-retry
+mv package/op-retry/libs/mbedtls package/libs/mbedtls
+mv package/op-retry/libs/ustream-ssl package/libs/ustream-ssl
+mv package/op-retry/libs/uclient package/libs/uclient
+rm -rf package/op-retry
   
+
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
+echo "DIY2 配置结束……"
 echo "========================="
-echo " DIY2 配置完成……"
-  
