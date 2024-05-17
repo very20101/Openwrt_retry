@@ -31,7 +31,7 @@ echo "========================="
 #echo  'src-git small8 https://github.com/kenzok8/small-package' >>feeds.conf.default
 
 ## Add deps
-#git clone -b master --single-branch https://github.com/LGA1150/openwrt-fullconenat package/fullconenat
+git clone -b master --single-branch https://github.com/LGA1150/openwrt-fullconenat package/fullconenat
 #merge_package https://github.com/kenzok8/small-package/luci-app-dnscrypt-proxy2 package/luci-app-dnscrypt-proxy2
 
 # themes
@@ -50,7 +50,7 @@ git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme
 #sed -i '$a src-git smpackage https://github.com/kenzok8/small-package' feeds.conf.default
 
 ## Add deps(from other source)
-#merge_package https://github.com/coolsnowwolf/lede/trunk/package/lean/libcryptopp package/libcryptopp
+#merge_package https://github.com/coolsnowwolf/lede/package/lean/libcryptopp package/libcryptopp
 
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
@@ -70,6 +70,10 @@ mv package/op-retry/libs/mbedtls package/libs/mbedtls
 mv package/op-retry/libs/ustream-ssl package/libs/ustream-ssl
 mv package/op-retry/libs/uclient package/libs/uclient
 rm -rf package/op-retry
+
+# replace golang
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
   
 
 ./scripts/feeds update -a
