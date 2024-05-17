@@ -50,7 +50,7 @@ git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme
 #sed -i '$a src-git smpackage https://github.com/kenzok8/small-package' feeds.conf.default
 
 ## Add deps(from other source)
-merge_package https://github.com/coolsnowwolf/lede/trunk/package/lean/libcryptopp package/libcryptopp
+#merge_package https://github.com/coolsnowwolf/lede/trunk/package/lean/libcryptopp package/libcryptopp
 
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
