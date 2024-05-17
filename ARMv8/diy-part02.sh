@@ -45,15 +45,14 @@ popd
 wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/coolsnowwolf/lede/master/target/linux/generic/hack-5.15/952-net-conntrack-events-support-multiple-registrant.patch
 
 #luci-app-dnscrypt-proxy2
-merge_package https://github.com/kenzok8/small-package package/luci-app-dnscrypt-proxy2
+#merge_package https://github.com/kenzok8/small-package package/luci-app-dnscrypt-proxy2
 
 ## Add extra package
 sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
-./scripts/feeds update -a && rm -rf feeds/luci/applications/luci-app-mosdns
+rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
 rm -rf feeds/packages/utils/v2dat
-./scripts/feeds install -a
 
 ## Add modified config
 #rm -rf config/Config-images.in
