@@ -48,8 +48,8 @@ wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/coolsno
 #merge_package https://github.com/kenzok8/small-package package/luci-app-dnscrypt-proxy2
 
 ## Add extra package
-sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
+sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' ARMv8/openwrt.feeds.conf.default
+sed -i '2i src-git small https://github.com/kenzok8/small' ARMv8/openwrt.feeds.conf.default
 rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
 rm -rf feeds/packages/utils/v2dat
