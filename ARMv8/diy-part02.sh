@@ -11,29 +11,6 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-echo "开始 DIY2 配置……"
-echo "========================="
-
-function merge_package(){
-    repo=`echo $1 | rev | cut -d'/' -f 1 | rev`
-    pkg=`echo $2 | rev | cut -d'/' -f 1 | rev`
-    # find package/ -follow -name $pkg -not -path "package/custom/*" | xargs -rt rm -rf
-    git clone --depth=1 --single-branch $1
-    mv $2 package/custom/
-    rm -rf $repo
-}
-function drop_package(){
-    find package/ -follow -name $1 -not -path "package/custom/*" | xargs -rt rm -rf
-}
-function merge_feed(){
-    if [ ! -d "feed/$1" ]; then
-        echo >> feeds.conf.default
-        echo "src-git $1 $2" >> feeds.conf.default
-    fi
-    ./scripts/feeds update $1
-    ./scripts/feeds install -a -p $1
-}
-rm -rf package/custom; mkdir package/custom
 
 ## Add deps
 git clone -b master --single-branch https://github.com/LGA1150/openwrt-fullconenat package/fullconenat
@@ -55,9 +32,8 @@ git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git package/luci-th
 git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme-opentopd
 
 ## Add extra package
-sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
-sed -i '$a src-git smpackage https://github.com/kenzok8/small-package' feeds.conf.default 
+sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
 rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
 rm -rf feeds/packages/utils/v2dat
@@ -90,6 +66,3 @@ git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
 ./scripts/feeds update -a
 ./scripts/feeds install -f
-
-echo "DIY2 配置结束……"
-echo "========================="
