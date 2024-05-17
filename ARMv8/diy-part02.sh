@@ -37,6 +37,14 @@ rm -rf package/custom; mkdir package/custom
 
 ## Add deps
 git clone -b master --single-branch https://github.com/LGA1150/openwrt-fullconenat package/fullconenat
+
+# Patch kernel to fix fullcone conflict
+pushd target/linux/generic/hack-5.15
+wget https://raw.githubusercontent.com/coolsnowwolf/lede/master/target/linux/generic/hack-5.15/952-add-net-conntrack-events-support-multiple-registrant.patch
+popd
+wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/coolsnowwolf/lede/master/target/linux/generic/hack-5.15/952-net-conntrack-events-support-multiple-registrant.patch
+
+#luci-app-dnscrypt-proxy2
 merge_package https://github.com/kenzok8/small-package package/luci-app-dnscrypt-proxy2
 
 ## Add extra package
