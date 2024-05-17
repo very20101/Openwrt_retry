@@ -52,7 +52,7 @@ rm -rf package/custom; mkdir package/custom
 
 ## Add deps
 #git clone -b master --single-branch https://github.com/LGA1150/openwrt-fullconenat package/fullconenat
-merge_package https://github.com/kenzok8/small-package/luci-app-dnscrypt-proxy2 package/luci-app-dnscrypt-proxy2
+#merge_package https://github.com/kenzok8/small-package/luci-app-dnscrypt-proxy2 package/luci-app-dnscrypt-proxy2
 
 # themes
 git clone https://github.com/rosywrt/luci-theme-rosy/tree/openwrt-18.06/luci-theme-rosy.git package/luci-theme-rosy
@@ -86,7 +86,8 @@ sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_gener
 ## replace libs for shadowsocks-libev error
 rm -rf package/libs/mbedtls  package/libs/ustream-ssl package/libs/uclient
 git clone -b main https://github.com/very20101/openwrt_retry package/op-retry
-mv package/op-retry/libs/mbedtls package/libs/mbedtls#mv package/op-retry/libs/ustream-ssl package/libs/ustream-ssl
+mv package/op-retry/libs/mbedtls package/libs/mbedtls
+mv package/op-retry/libs/ustream-ssl package/libs/ustream-ssl
 mv package/op-retry/libs/uclient package/libs/uclient
 rm -rf package/op-retry
   
