@@ -89,7 +89,7 @@ rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
 ./scripts/feeds update -a
-./scripts/feeds install -a
+./scripts/feeds install -f
 
 echo "DIY2 配置结束……"
 echo "========================="
