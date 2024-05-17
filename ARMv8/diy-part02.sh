@@ -50,23 +50,21 @@ merge_package https://github.com/xiaorouji/openwrt-passwall-packages feeds/small
 rm -rf feeds/packages/net/dnscrypt-proxy2
 merge_package https://github.com/coolsnowwolf/packages/net/dnscrypt-proxy2 feeds/packages/net/dnscrypt-proxy2
 rm -rf package/openwrt-packages/adguardhome/patches
-rm -rf package/small/shadowsocks-rust
-merge_package https://github.com/xiaorouji/openwrt-passwall-packages package/small/shadowsocks-rust
 
 ## Add modified config
 #rm -rf config/Config-images.in
 #wget -cP config https://raw.githubusercontent.com/very20101/Openwrt_retry/main/config/Config-images.in
 
 # Modify default IP
-  sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_generate
   
 # kernel
-  #sed -i "s/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g" target/linux/armvirt/Makefile
-  #sed -i "s/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g" target/linux/armvirt/Makefile
+#sed -i "s/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g" target/linux/armvirt/Makefile
+#sed -i "s/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g" target/linux/armvirt/Makefile
 
 # golang 
-  rm -rf feeds/packages/lang/golang
-  git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 
 ## replace libs for shadowsocks-libev error
 rm -rf package/libs/mbedtls  package/libs/ustream-ssl package/libs/uclient
