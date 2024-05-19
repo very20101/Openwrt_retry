@@ -15,6 +15,9 @@
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
+# File name: diy-part2.sh
+# Description: OpenWrt DIY script part 2 (After Update feeds)
+
 echo "开始 DIY2 配置……"
 echo "========================="
 
@@ -52,10 +55,6 @@ git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme
 ## Add deps(from other source)
 #merge_package https://github.com/coolsnowwolf/lede/package/lean/libcryptopp package/libcryptopp
 
-# File name: diy-part2.sh
-# Description: OpenWrt DIY script part 2 (After Update feeds)
-#
-
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_generate
   
@@ -64,12 +63,12 @@ sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_gener
 #sed -i "s/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g" target/linux/armvirt/Makefile
 
 ## replace libs for shadowsocks-libev error
-rm -rf package/libs/mbedtls  package/libs/ustream-ssl package/libs/uclient
-git clone -b main https://github.com/very20101/openwrt_retry package/op-retry
-mv package/op-retry/libs/mbedtls package/libs/mbedtls
-mv package/op-retry/libs/ustream-ssl package/libs/ustream-ssl
-mv package/op-retry/libs/uclient package/libs/uclient
-rm -rf package/op-retry
+#rm -rf package/libs/mbedtls  package/libs/ustream-ssl package/libs/uclient
+#git clone -b main https://github.com/very20101/openwrt_retry package/op-retry
+#mv package/op-retry/libs/mbedtls package/libs/mbedtls
+#mv package/op-retry/libs/ustream-ssl package/libs/ustream-ssl
+#mv package/op-retry/libs/uclient package/libs/uclient
+#rm -rf package/op-retry
 
 # replace golang
 rm -rf feeds/packages/lang/golang
