@@ -76,7 +76,7 @@ git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
   
 
 ./scripts/feeds update -a
-./scripts/feeds install -f
+./scripts/feeds install -a
 
 echo "DIY2 配置结束……"
 echo "========================="
