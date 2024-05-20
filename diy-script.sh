@@ -18,8 +18,8 @@
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 
-echo "开始 DIY2 配置……"
-echo "========================="
+#echo "开始 DIY2 配置……"
+#echo "========================="
 
 
 # Add a feed source
@@ -31,7 +31,9 @@ echo "========================="
 #echo 'src-git luci https://github.com/openwrt/luci.git' >>feeds.conf.default
 #echo 'src-git routing https://git.openwrt.org/feed/routing.git' >>feeds.conf.default
 #echo 'src-git telephony https://git.openwrt.org/feed/telephony.git' >>feeds.conf.default
-git clone -b main  https://github.com/kenzok8/small-package package/smpackage
+#git clone -b main  https://github.com/kenzok8/small-package package/smpackage
+git clone -b master https://github.com/kenzok8/openwrt-packages package/kenzo
+git clone -b master https://github.com/kenzok8/small package/small
 
 ## Add deps
 git clone -b master --single-branch https://github.com/LGA1150/openwrt-fullconenat package/fullconenat
@@ -76,7 +78,7 @@ git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
   
 
 ./scripts/feeds update -a
-./scripts/feeds install -a
+./scripts/feeds install -f
 
-echo "DIY2 配置结束……"
-echo "========================="
+#echo "DIY2 配置结束……"
+#echo "========================="
