@@ -70,6 +70,10 @@ git clone -b main https://github.com/very20101/openwrt_retry package/op-retry
 mv package/op-retry/libs/mbedtls package/libs/mbedtls
 mv package/op-retry/libs/ustream-ssl package/libs/ustream-ssl
 mv package/op-retry/libs/uclient package/libs/uclient
+
+## luci-app-dnscrypt-proxy2
+mv package/op-retry/pkg_modified/luci-app-dnscrypt-proxy2 package/luci-app-dnscrypt-proxy2
+
 rm -rf package/op-retry
 
 # replace golang
