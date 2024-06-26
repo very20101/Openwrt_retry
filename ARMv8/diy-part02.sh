@@ -12,17 +12,21 @@
 #
 
 
+# Add a feed source
+#echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
+#echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+#echo  'src-git kenzo https://github.com/kenzok8/openwrt-packages' >>feeds.conf.default
+#echo  'src-git small https://github.com/kenzok8/small' >>feeds.conf.default
+#echo 'src-git packages https://github.com/openwrt/packages.git' >>feeds.conf.default
+#echo 'src-git luci https://github.com/openwrt/luci.git' >>feeds.conf.default
+#echo 'src-git routing https://git.openwrt.org/feed/routing.git' >>feeds.conf.default
+#echo 'src-git telephony https://git.openwrt.org/feed/telephony.git' >>feeds.conf.default
+#git clone -b main  https://github.com/kenzok8/small-package package/smpackage
+git clone -b master https://github.com/kenzok8/openwrt-packages package/kenzo
+git clone -b master https://github.com/kenzok8/small package/small
+
 ## Add deps
 git clone -b master --single-branch https://github.com/LGA1150/openwrt-fullconenat package/fullconenat
-
-# Patch kernel to fix fullcone conflict
-pushd target/linux/generic/hack-5.15
-wget https://raw.githubusercontent.com/coolsnowwolf/lede/master/target/linux/generic/hack-5.15/952-add-net-conntrack-events-support-multiple-registrant.patch
-popd
-wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/coolsnowwolf/lede/master/target/linux/generic/hack-5.15/952-net-conntrack-events-support-multiple-registrant.patch
-
-## Add deps
-#git clone -b master --single-branch https://github.com/LGA1150/openwrt-fullconenat package/fullconenat
 #merge_package https://github.com/kenzok8/small-package/luci-app-dnscrypt-proxy2 package/luci-app-dnscrypt-proxy2
 
 # themes
@@ -32,22 +36,19 @@ git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git package/luci-th
 git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme-opentopd
 
 ## Add extra package
-#sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-#sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
+#git clone https://github.com/kenzok8/openwrt-packages package/openwrt-packages
+#git clone https://github.com/kenzok8/small package/small
+#rm -rf package/small/shadowsocks-rust
+#merge_package https://github.com/xiaorouji/openwrt-passwall-packages/shadowsocks-rust package/small/shadowsocks-rust
+#sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+#sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 #sed -i '$a src-git smpackage https://github.com/kenzok8/small-package' feeds.conf.default
-#rm -rf feeds/luci/applications/luci-app-mosdns
-#rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
-#rm -rf feeds/packages/utils/v2dat
 
 ## Add deps(from other source)
-#merge_package https://github.com/coolsnowwolf/lede/trunk/package/lean/libcryptopp package/libcryptopp
-
-# File name: diy-part2.sh
-# Description: OpenWrt DIY script part 2 (After Update feeds)
-#
+#merge_package https://github.com/coolsnowwolf/lede/package/lean/libcryptopp package/libcryptopp
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_generate
+#sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_generate
   
 # kernel
 #sed -i "s/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g" target/linux/armvirt/Makefile
@@ -70,12 +71,13 @@ mv package/op-retry/pkg_modified/luci-app-dnscrypt-proxy2 package/luci-app-dnscr
 rm -rf feeds/packages/lang/ruby
 mv package/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
 
-##
-rm -rf package/op-retry 
+
+rm -rf package/op-retry
 
 # replace golang
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+  
 
 ./scripts/feeds update -a
 ./scripts/feeds install -f
