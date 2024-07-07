@@ -62,7 +62,8 @@ mv package/op-retry/libs/ustream-ssl package/libs/ustream-ssl
 mv package/op-retry/libs/uclient package/libs/uclient
 
 ## curl
-# mv package/op-retry/pkg_modified/curl feeds/packages/net/curl
+rm -rf feeds/packages/net/curl
+mv package/op-retry/pkg_modified/curl feeds/packages/net/curl
 
 ## luci-app-dnscrypt-proxy2
 mv package/op-retry/pkg_modified/luci-app-dnscrypt-proxy2 package/luci-app-dnscrypt-proxy2
