@@ -71,8 +71,8 @@ mv package/op-retry/pkg_modified/curl feeds/packages/net/curl
 mv package/op-retry/pkg_modified/luci-app-dnscrypt-proxy2 package/luci-app-dnscrypt-proxy2
 
 ## ruby 
-#rm -rf feeds/packages/lang/ruby
-#mv package/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
+rm -rf feeds/packages/lang/ruby
+mv package/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
 
 
 rm -rf package/op-retry
