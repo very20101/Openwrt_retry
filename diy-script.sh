@@ -68,7 +68,7 @@ sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_gener
 
 ## replace libs for shadowsocks-libev error
 #rm -rf package/libs/mbedtls  package/libs/ustream-ssl package/libs/uclient
-#git clone -b main https://github.com/very20101/openwrt_retry package/op-retry
+git clone -b main https://github.com/very20101/openwrt_retry packages/op-retry
 #mv package/op-retry/libs/mbedtls package/libs/mbedtls
 #mv package/op-retry/libs/ustream-ssl package/libs/ustream-ssl
 #mv package/op-retry/libs/uclient package/libs/uclient
@@ -81,11 +81,11 @@ sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_gener
 mv package/op-retry/pkg_modified/luci-app-dnscrypt-proxy2 package/luci-app-dnscrypt-proxy2
 
 ## ruby 
-#rm -rf feeds/packages/lang/ruby
-#mv package/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
+rm -rf feeds/packages/lang/ruby
+mv packages/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
 
 
-rm -rf package/op-retry
+rm -rf packages/op-retry
 
 # replace golang
 rm -rf feeds/packages/lang/golang
