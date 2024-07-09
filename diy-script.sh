@@ -32,8 +32,8 @@
 #echo 'src-git routing https://git.openwrt.org/feed/routing.git' >>feeds.conf.default
 #echo 'src-git telephony https://git.openwrt.org/feed/telephony.git' >>feeds.conf.default
 #git clone -b main  https://github.com/kenzok8/small-package package/smpackage
-git clone https://github.com/kenzok8/openwrt-packages package/kenzo
-git clone https://github.com/kenzok8/small package/small
+git clone -b master https://github.com/kenzok8/openwrt-packages package/kenzo
+git clone -b master https://github.com/kenzok8/small package/small
 
 ## Add deps
 #git clone -b master --single-branch https://github.com/LGA1150/openwrt-fullconenat package/fullconenat
