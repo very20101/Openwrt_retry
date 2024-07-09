@@ -29,7 +29,7 @@ env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: master
   FEEDS_CONF: openwrt.feeds.conf.default
-  CONFIG_FILE: config/.config-opwrt1125
+  CONFIG_FILE: config/.configopwrt070901
   DIY_P1_SH: ARMv8/diy-part01.sh
   DIY_P2_SH: ARMv8/diy-part02.sh
   UPLOAD_BIN_DIR: false
