@@ -78,7 +78,7 @@ git clone -b main https://github.com/very20101/openwrt_retry packages/op-retry
 #mv package/op-retry/pkg_modified/curl feeds/packages/net/curl
 
 ## luci-app-dnscrypt-proxy2
-mv package/op-retry/pkg_modified/luci-app-dnscrypt-proxy2 package/luci-app-dnscrypt-proxy2
+mv packages/op-retry/pkg_modified/luci-app-dnscrypt-proxy2 package/luci-app-dnscrypt-proxy2
 
 ## ruby 
 rm -rf feeds/packages/lang/ruby
