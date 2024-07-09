@@ -74,6 +74,16 @@ jobs:
         sudo -E apt -y autoremove --purge
         sudo -E systemctl daemon-reload
         sudo -E apt clean && sudo -E apt autoclean
+      
+        sudo -E apt -y install software-properties-common
+        sudo -E add-apt-repository ppa:ubuntu-toolchain-r/test
+        sudo -E apt -y install gcc-12 g++-12 gcc-13 g++-13 -y
+        #sudo -E update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 12 --slave /usr/bin/g++ g++ /usr/bin/g++-12
+        sudo -E update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 13 --slave /usr/bin/g++ g++ /usr/bin/g++-13
+        sudo -E update-alternatives --config gcc
+        gcc --version
+        
+        sudo -E apt clean && sudo -E apt autoclean
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
@@ -228,6 +238,16 @@ jobs:
         sudo -E apt -y install clang llvm lld
         sudo -E apt -y autoremove --purge
         sudo -E systemctl daemon-reload
+        sudo -E apt clean && sudo -E apt autoclean
+      
+        sudo -E apt -y install software-properties-common
+        sudo -E add-apt-repository ppa:ubuntu-toolchain-r/test
+        sudo -E apt -y install gcc-12 g++-12 gcc-13 g++-13 -y
+        #sudo -E update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 12 --slave /usr/bin/g++ g++ /usr/bin/g++-12
+        sudo -E update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 13 --slave /usr/bin/g++ g++ /usr/bin/g++-13
+        sudo -E update-alternatives --config gcc
+        gcc --version
+        
         sudo -E apt clean && sudo -E apt autoclean
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
