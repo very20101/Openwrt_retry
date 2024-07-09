@@ -12,7 +12,7 @@
 #
 
 # kernel
-# sed -i 's/KERNEL_PATCHVER:=6.6/KERNEL_PATCHVER:=6.1/g' target/linux/armsr/Makefile
+ sed -i 's/KERNEL_PATCHVER:=6.6/KERNEL_PATCHVER:=6.1/g' target/linux/armsr/Makefile
 
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
@@ -23,9 +23,9 @@
 #echo 'src-git luci https://github.com/openwrt/luci.git' >>feeds.conf.default
 #echo 'src-git routing https://git.openwrt.org/feed/routing.git' >>feeds.conf.default
 #echo 'src-git telephony https://git.openwrt.org/feed/telephony.git' >>feeds.conf.default
-# git clone   https://github.com/kenzok8/small-package package/smpackage
-git clone  https://github.com/kenzok8/openwrt-packages packages/kenzo
-git clone  https://github.com/kenzok8/small packages/small
+# git clone  https://github.com/kenzok8/small-package package/smpackage
+git clone  -b master https://github.com/kenzok8/openwrt-packages packages/kenzo
+git clone  -b master https://github.com/kenzok8/small packages/small
 
 ## Add deps
 git clone -b master --single-branch https://github.com/LGA1150/openwrt-fullconenat packages/fullconenat
@@ -58,7 +58,7 @@ sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_gener
 
 ## replace libs for shadowsocks-libev error
 #rm -rf package/libs/mbedtls  package/libs/ustream-ssl package/libs/uclient
-git clone https://github.com/very20101/openwrt_retry packages/op-retry
+git clone -b main https://github.com/very20101/openwrt_retry packages/op-retry
 #mv package/op-retry/libs/mbedtls package/libs/mbedtls
 #mv package/op-retry/libs/ustream-ssl package/libs/ustream-ssl
 #mv package/op-retry/libs/uclient package/libs/uclient
