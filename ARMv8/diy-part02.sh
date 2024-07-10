@@ -75,7 +75,7 @@ rm -rf feeds/packages/lang/ruby
 cp -rf packages/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
 
 
-rm -rf packages/op-retry
+#rm -rf packages/op-retry
 
 # replace golang
 rm -rf feeds/packages/lang/golang
