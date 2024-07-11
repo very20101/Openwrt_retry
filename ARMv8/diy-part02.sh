@@ -59,13 +59,17 @@ sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_gener
 ## replace libs for shadowsocks-libev error
 #rm -rf package/libs/mbedtls  package/libs/ustream-ssl package/libs/uclient
 git clone -b main https://github.com/very20101/openwrt_retry packages/op-retry
-#mv package/op-retry/libs/mbedtls package/libs/mbedtls
-#mv package/op-retry/libs/ustream-ssl package/libs/ustream-ssl
-#mv package/op-retry/libs/uclient package/libs/uclient
+#mv packages/op-retry/libs/mbedtls package/libs/mbedtls
+#mv packages/op-retry/libs/ustream-ssl package/libs/ustream-ssl
+#mv packagse/op-retry/libs/uclient package/libs/uclient
+
+## luci-aoo-ssr-plus
+rm -rf packages/smpackage/luci-app-ssr-plus
+mv cp -rf packages/op-retry/pkg_modified/luci-app-ssr-plus packages/smpackage/luci-app-ssr-plus
 
 ## curl
 #rm -rf feeds/packages/net/curl
-#mv package/op-retry/pkg_modified/curl feeds/packages/net/curl
+#mv packages/op-retry/pkg_modified/curl feeds/packages/net/curl
 
 ## luci-app-dnscrypt-proxy2
 cp -rf packages/op-retry/pkg_modified/luci-app-dnscrypt-proxy2 packages/luci-app-dnscrypt-proxy2
