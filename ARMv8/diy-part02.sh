@@ -82,8 +82,8 @@ cp -rf packages/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
 rm -rf packages/op-retry
 
 # replace golang
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+#rm -rf feeds/packages/lang/golang
+#git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
   
 
 ./scripts/feeds update -a
