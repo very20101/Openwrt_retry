@@ -66,8 +66,7 @@ jobs:
         echo -e  "硬盘数量：$(ls /dev/sd* | grep -v [1-9] | wc -l) \n"
         echo "硬盘详情："
         df -Th
-        
-   
+       
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -84,12 +83,10 @@ jobs:
         sudo -E systemctl daemon-reload
         #sudo -E apt-get -y full-upgrade
         sudo -E apt-get -y autoremove --purge
-        #sudo sed -i '/NVM_DIR/d;/skel/d' /root/{.bashrc,.profile}
-        #sudo rm -rf ~/{.cargo,.dotnet,.rustup}
-        sudo timedatectl set-timezone "${TZ}"  
-        sudo -E apt-get clean && sudo -E apt-get autoclean
+        sudo -E apt clean && sudo -E apt autoclean
+        sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
-        sudo chown ${USER}:${GROUPS} /workdir
+        sudo chown $USER:$GROUPS /workdir
         echo "status=success" >> ${GITHUB_OUTPUT}
         df -Th
         
