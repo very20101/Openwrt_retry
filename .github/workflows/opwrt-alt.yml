@@ -20,13 +20,13 @@ env:
   #FEEDS_CONF: ARMv8/openwrt.feeds.conf.default
   CONFIG_FILE: config/.config20250312003
   DIY_SCRIPT: diy-script.sh
-  TOOLCHAIN_TAG: Toolchain_OpNova
+  TOOLCHAIN_TAG: Toolchain_opwrt-alt
   CLASH_KERNEL: armv8
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: ROOTFS_OpNova
+  FIRMWARE_TAG: ROOTFS_opwrt-alt
   OPENWRT_RELEASE: true
-  OPENWRT_TAG: ARMv8_OpNova
+  OPENWRT_TAG: ARMv8_opwrt-alt
   TZ: Asia/Shanghai
 
 jobs:
