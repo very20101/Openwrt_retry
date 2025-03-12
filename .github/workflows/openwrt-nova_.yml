@@ -10,7 +10,7 @@
 #
 
 
-name: OpenWrt-nova
+name: OpenWrt-nova_
 
 on:
   repository_dispatch:
