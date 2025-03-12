@@ -7,7 +7,7 @@
 # Code from https://github.com/haiibo/OpenWrt
 #===============================================
 
-name: openwrt-offical_alt
+name: openwrt-offical-alt
 
 on:
   workflow_dispatch:
@@ -64,7 +64,7 @@ jobs:
         
     - name: Initialization environment
       id: init
-      env:
+      env: 
         DEBIAN_FRONTEND: noninteractive
       run: |
         docker rmi $(docker images -q) 2>/dev/null
