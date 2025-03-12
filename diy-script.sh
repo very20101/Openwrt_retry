@@ -81,15 +81,15 @@ git clone -b main https://github.com/very20101/openwrt_retry packages/op-retry
 cp -rf packages/op-retry/pkg_modified/luci-app-dnscrypt-proxy2 package/luci-app-dnscrypt-proxy2
 
 ## ruby 
-rm -rf feeds/packages/lang/ruby
-cp -rf packages/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
+#rm -rf feeds/packages/lang/ruby
+#cp -rf packages/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
 
 
 rm -rf packages/op-retry
 
 # replace golang
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+#rm -rf feeds/packages/lang/golang
+#git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
   
 
 ./scripts/feeds update -a
