@@ -187,7 +187,7 @@ jobs:
         artifacts: output/*
         body: OpenWrt 工具链镜像文件
 
-  Build:
+ Build:
     needs: [Toolchain]
     runs-on: ubuntu-22.04
 
@@ -215,7 +215,7 @@ jobs:
         echo "--------------------------硬盘信息--------------------------"
         echo "硬盘数量：$(ls /dev/sd* | grep -v [1-9] | wc -l)" && df -hT
         
-    - name: Initialization environment
+     - name: Initialization environment
       #id: init
       env:
         DEBIAN_FRONTEND: noninteractive
