@@ -63,7 +63,6 @@ jobs:
         df -Th
         
     - name: Initialization environment
-      id: init
       env: 
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -85,7 +84,6 @@ jobs:
         echo "status=success" >> ${GITHUB_OUTPUT}
 
     - name: Clone Source Code
-      id: clone
       run: |
         df -hT $GITHUB_WORKSPACE
         git clone $SOURCE_URL -b $SOURCE_BRANCH workspace/openwrt
@@ -105,7 +103,6 @@ jobs:
         make defconfig > /dev/null 2>&1
 
     - name: Generate Variables
-      id: env
       run: |
         export CURRENT_BRANCH="$(git symbolic-ref --short HEAD)"
         echo "CURRENT_BRANCH=$CURRENT_BRANCH" >> $GITHUB_ENV
@@ -125,7 +122,6 @@ jobs:
         echo "TOOLCHAIN_IMAGE=$(echo $TOOLCHAIN_IMAGE)" >> $GITHUB_OUTPUT
 
     - name: Compare Toolchain Hash
-      id: hash
       run: |
         cd $OPENWRT_PATH
         export CURRENT_HASH=$(git log --pretty=tformat:"%H" -n1 tools toolchain)
@@ -138,14 +134,14 @@ jobs:
         fi
 
     - name: Install Feeds
-      if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
+      #if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
       run: |
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
     - name: Compile Tools
-      if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
+      #if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
       run: |
         cd $OPENWRT_PATH
         make defconfig
@@ -161,7 +157,7 @@ jobs:
         rm -rf .config* dl bin
 
     - name: Generate Toolchain Image
-      if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
+      #if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
       run: |
         cd workspace
         mkdir -p $GITHUB_WORKSPACE/output
@@ -170,7 +166,7 @@ jobs:
         ls -lh $GITHUB_WORKSPACE/output
         
     - name: Delete Old Toolchain Assets
-      if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
+      #if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
       uses: mknejp/delete-release-assets@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
@@ -180,7 +176,7 @@ jobs:
         fail-if-no-release: false
 
     - name: Upload Toolchain Image
-      if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
+      #if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
       uses: ncipollo/release-action@v1
       with:
         name: Toolchain-Image
@@ -220,7 +216,7 @@ jobs:
         echo "硬盘数量：$(ls /dev/sd* | grep -v [1-9] | wc -l)" && df -hT
         
     - name: Initialization environment
-      id: init
+      #id: init
       env:
         DEBIAN_FRONTEND: noninteractive
         run: |
@@ -335,7 +331,7 @@ jobs:
         
 
     - name: Check Space Usage
-      if: always()
+      #if: always()
       run: |
         lsblk -f
         echo -e "\n"
@@ -344,14 +340,14 @@ jobs:
         sudo btrfs filesystem usage $GITHUB_WORKSPACE
 
     - name: Upload Bin Directory
-      if: steps.generate.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
+      #if: steps.generate.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       uses: actions/upload-artifact@main
       with:
         name: ${{ env.SOURCE_REPO }}-bin-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.FILE_DATE }}
         path: ${{ env.OPENWRT_PATH }}/bin
 
     - name: Organize Files
-      if: steps.generate.outputs.status == 'success'
+      #if: steps.generate.outputs.status == 'success'
       run: |
         cd $OPENWRT_PATH/bin/targets/*/*
         cat sha256sums
@@ -362,14 +358,14 @@ jobs:
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
     - name: Upload Firmware To Artifact
-      if: steps.generate.outputs.status == 'success' && env.FIRMWARE_RELEASE != 'true'
+      #if: steps.generate.outputs.status == 'success' && env.FIRMWARE_RELEASE != 'true'
       uses: actions/upload-artifact@main
       with:
         name: ${{ env.SOURCE_REPO }}-firmware-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE_PATH }}
 
     - name: Upload Firmware To Release
-      if: steps.generate.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
+      #if: steps.generate.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
       uses: ncipollo/release-action@v1
       with:
         name: R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
@@ -409,7 +405,7 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
 
     - name: Download Armvirt Firmware
-      id: download
+      #id: download
       run: |
         [ -d openwrt-armvirt ] || mkdir -p openwrt-armvirt
         curl -s "https://api.github.com/repos/$GITHUB_REPOSITORY/releases" | grep -o "$FIRMWARE_TAG.*rootfs.tar.gz" > DOWNLOAD_ARMVIRT
@@ -420,7 +416,7 @@ jobs:
         echo "DATE1=$(date +"%Y.%m.%d")" >> $GITHUB_ENV
 
     - name: Package OpenWrt Firmware
-      if: steps.download.outputs.status == 'success'
+      #if: steps.download.outputs.status == 'success'
       uses: unifreq/openwrt_packit@master
       env:
         OPENWRT_ARMVIRT: openwrt-armvirt/*rootfs.tar.gz
@@ -432,7 +428,7 @@ jobs:
         DISTRIB_REVISION: R${{ env.DATE1 }} by very20101
 
     - name: Upload OpenWrt To Artifact
-      if: env.PACKAGED_STATUS == 'success' && env.OPENWRT_RELEASE != 'true'
+      #if: env.PACKAGED_STATUS == 'success' && env.OPENWRT_RELEASE != 'true'
       uses: kittaakos/upload-artifact-as-is@master
       with:
         path: ${{ env.PACKAGED_OUTPUTPATH }}
@@ -446,7 +442,7 @@ jobs:
         keep_minimum_runs: 60
 
     - name: Upload OpenWrt To Release
-      if: env.PACKAGED_STATUS == 'success' && env.OPENWRT_RELEASE == 'true'
+      #if: env.PACKAGED_STATUS == 'success' && env.OPENWRT_RELEASE == 'true'
       uses: ncipollo/release-action@v1
       with:
         name: R${{ env.DATE }} for ${{ env.OPENWRT_TAG }}
