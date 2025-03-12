@@ -36,9 +36,9 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  FILE_NAME: OpenWrt-nova
-  PRODUCT_NAME: OpenWrt-nova
-  OPENWRT_TAG: OpenWrt-nova
+  FILE_NAME: OpenWrt-NVA
+  PRODUCT_NAME: OpenWrt-NVA
+  OPENWRT_TAG: OpenWrt-NVA
   
 jobs:
   build:
