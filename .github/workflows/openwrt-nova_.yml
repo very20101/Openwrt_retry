@@ -10,7 +10,7 @@
 #
 
 
-name: OpenWrt-NZ
+name: OpenWrt-NoZ
 
 on:
   repository_dispatch:
