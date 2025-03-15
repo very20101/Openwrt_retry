@@ -8,7 +8,7 @@
 # Original Code from "https://github.com/ophub/amlogic-s9xxx-openwrt"
 
 
-name: OpenWrt-nova
+name: OpenWrt nova
 
 on:
   workflow_dispatch:
