@@ -7,9 +7,7 @@
 # Description: Build OpenWrt using GitHub Actions
 # Original Code from "https://github.com/ophub/amlogic-s9xxx-openwrt"
 
-
 name: OpenWrt nova
-
 on:
   repository_dispatch:
   workflow_dispatch:
