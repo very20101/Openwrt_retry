@@ -1,11 +1,11 @@
-#===============================================
+#================================================
 # Description: Build OpenWrt
 # File name: build-openwrt.yml
 # Lisence: MIT
 # Author: P3TERX
 # https://github.com/P3TERX
 # Code from https://github.com/haiibo/OpenWrt
-#===============================================
+#================================================
 
 name: ARMv8-lede Nova
 
