@@ -45,17 +45,17 @@ jobs:
       uses: actions/checkout@main
 
     - name: Check Server Performance
-      run: 
+      run: |
         echo "警告⚠"
         echo "分配的服务器性能有限，若选择的插件过多，务必注意CPU性能！"
-        echo -e "已知CPU型号(降序): 7763，8370C，8272CL，8171M，E5-2673\n"
+        echo "已知CPU型号(降序): 7763，8370C，8272CL，8171M，E5-2673"
         echo "==========================CPU信息=========================="
-        echo "CPU物理数量: $(cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l)"
+        echo "CPU物理数量: $(cat /proc/cpuinfo | grep 'physical id' | sort | uniq | wc -l)"
         echo "CPU线程数量: $(nproc)"
-        echo -e "CPU型号信息:$(cat /proc/cpuinfo | grep -m1 name | awk -F: '{print $2}')\n"
+        echo "CPU型号信息:$(cat /proc/cpuinfo | grep -m1 name | awk -F: '{print $2}')"
         echo "==========================内存信息=========================="
-        echo "已安装内存详细信息:"
-        echo -e "$(sudo lshw -short -C memory | grep GiB)\n"
+        echo "已安装内存详细信息
+        echo "$(sudo lshw -short -C memory | grep GiB)"
         echo "==========================硬盘信息=========================="
         echo "硬盘数量: $(ls /dev/sd* | grep -v [1-9] | wc -l)" && df -hT
 
@@ -74,7 +74,7 @@ jobs:
     - name: Initialization Environment
       env:
         DEBIAN_FRONTEND: noninteractive
-      run: 
+      run: |
         docker rmi $(docker images -q)
         sudo rm -rf /usr/share/dotnet /etc/apt/sources.list.d /usr/local/lib/android $AGENT_TOOLSDIRECTORY
         sudo swapoff -a && sudo rm -f /swapfile /mnt/swapfile
@@ -89,7 +89,7 @@ jobs:
         
     - name: Clone source code
       working-directory: /workdir 
-      run: 
+      run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
@@ -109,7 +109,7 @@ jobs:
        # prefix: ${{ github.workspace }}/openwrt
        
     - name: Load custom feeds
-      run: 
+      run: |
           [[ -e "${FEEDS_CONF}" ]] && cp -f ${FEEDS_CONF} openwrt/feeds.conf.default
           chmod +x ${DIY_P1_SH}
           cd openwrt/
@@ -122,7 +122,7 @@ jobs:
       run: cd openwrt/ && ./scripts/feeds install -a
 
     - name: Load custom configuration
-      run: 
+      run: |
           [[ -d "files" ]] && mv -f files openwrt/files
           [[ -e ${CONFIG_FILE} ]] && cp -f ${CONFIG_FILE} openwrt/.config
           chmod +x ${DIY_P2_SH}
@@ -138,7 +138,7 @@ jobs:
 
     - name: Download package
       id: package
-      run: 
+      run: |
         cd openwrt
         make defconfig
         make download -j8
@@ -150,7 +150,7 @@ jobs:
         
     - name: Compile the firmware
       id: compile
-      run: 
+      run: |
         cd openwrt/
         #make dirclean
         make defconfig
