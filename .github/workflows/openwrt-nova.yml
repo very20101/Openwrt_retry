@@ -176,13 +176,7 @@ jobs:
         tag: ${{ env.OPENWRT_TAG }}
         makeLatest: true
         replacesArtifacts: true
-        artifacts: openwrt/bin/targets/*/*/*rootfs.tar.gz
+        #artifacts: openwrt/bin/targets/*/*/*rootfs.tar.gz
         allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
       
-    - name: Clean up server space
-      #if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
-      run: 
-         cd openwrt/
-         rm -rf $(ls . | grep -v "^bin$" | xargs) 2>/dev/null
-         df -hT ${PWD} 
