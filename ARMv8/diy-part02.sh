@@ -24,8 +24,8 @@
 #echo 'src-git routing https://git.openwrt.org/feed/routing.git' >>feeds.conf.default
 #echo 'src-git telephony https://git.openwrt.org/feed/telephony.git' >>feeds.conf.default
 #git clone https://github.com/kenzok8/small-package package/smpackage
-git clone  https://github.com/kenzok8/openwrt-packages.git packages/kenzo
-git clone  https://github.com/kenzok8/small.git packages/small
+#git clone  https://github.com/kenzok8/openwrt-packages.git packages/kenzo
+#git clone  https://github.com/kenzok8/small.git packages/small
 
 ## Add deps
 git clone -b master --single-branch https://github.com/LGA1150/openwrt-fullconenat packages/fullconenat
@@ -50,7 +50,7 @@ git clone https://github.com/sirpdboy/luci-theme-opentopd.git packages/luci-them
 #merge_package https://github.com/coolsnowwolf/lede/package/lean/libcryptopp package/libcryptopp
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.1.100/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.1.200/g' package/base-files/files/bin/config_generate
   
 # kernel
 #sed -i "s/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g" target/linux/armvirt/Makefile
