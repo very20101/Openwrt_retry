@@ -10,7 +10,7 @@
 # Original Code from https://github.com/ophub/amlogic-s9xxx-openwrt
 #
 
-name: Build Original-config
+name: Build-Original-config
 
 on:
   repository_dispatch:
