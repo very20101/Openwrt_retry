@@ -78,8 +78,14 @@ sed -i 's/192.168.1.1/192.168.1.200/g' package/base-files/files/bin/config_gener
 #rm -rf feeds/packages/lang/ruby
 # cp -rf packages/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
 
-
 # rm -rf packages/op-retry
+
+## add extra-package
+git clone -b main https://github.com/very20101/openwrt_N1-Nova packages/opwrt_N1
+cp -rf packages/opwrt_N1/extra-package/shadowsocksr-libev feeds/packages/shadowsocksr-libev
+cp -rf packages/opwrt_N1/extra-package/shadowsocks-libev feeds/packages/shadowsocks-libev
+
+rm -rf packages/opwrt_N1
 
 # replace golang
 #rm -rf feeds/packages/lang/golang
