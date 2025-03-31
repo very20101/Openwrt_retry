@@ -95,7 +95,7 @@ env:
   #DIY_P1_SH: config/${{ inputs.source_branch }}/diy-part1.sh
   #DIY_P2_SH: config/${{ inputs.source_branch }}/diy-part2.sh
   FEEDS_CONF: openwrt.feeds.conf.default
-  CONFIG_FILE: config/.config202503120003
+  CONFIG_FILE: config/.config-opwrt-2025033001
   DIY_P1_SH: ARMv8/diy-part01.sh
   DIY_P2_SH: ARMv8/diy-part02.sh
   TZ: America/New_York
