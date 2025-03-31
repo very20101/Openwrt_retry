@@ -84,6 +84,9 @@ cp -rf packages/op-retry/pkg_modified/luci-app-dnscrypt-proxy2 package/luci-app-
 # rm -rf feeds/packages/lang/ruby
 # cp -rf packages/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
 
+## shadowsocks-libev
+cp -rf packages/op-retry/pkg_modified/shadowsocks-libev feeds/packages/shadowsocks-libev
+
 
 rm -rf packages/op-retry
 
