@@ -81,10 +81,11 @@ git clone -b main https://github.com/very20101/openwrt_retry packages/op-retry
 ## replace extra-package
 #git clone -b main https://github.com/very20101/openwrt_N1-Nova packages/opwrt_N1
 #cp -rf packages/opwrt_N1/extra-package/shadowsocksr-libev feeds/packages/shadowsocksr-libev
-#cp -rf packages/opwrt_N1/extra-package/shadowsocks-libev feeds/packages/shadowsocks-libev
+rm -rf feeds/packages/shadowsocks-libev
+cp -rf packages/op-retry/pkg_modified/shadowsocks-libev feeds/packages/shadowsocks-libev
 
 rm -rf package/feeds/smpackage/lua-neturl
-cp -rf packages/op-retry/lua-neturl package/feeds/smpackage/lua-neturl
+cp -rf packages/op-retry/pkg_modified/lua-neturl package/feeds/smpackage/lua-neturl
 
 #rm -rf packages/opwrt_N1
 rm -rf packages/op-retry
