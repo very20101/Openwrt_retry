@@ -58,7 +58,7 @@ sed -i 's/192.168.1.1/192.168.1.200/g' package/base-files/files/bin/config_gener
 
 ## replace libs for shadowsocks-libev error
 #rm -rf package/libs/mbedtls  package/libs/ustream-ssl package/libs/uclient
-git clone -b main https://github.com/very20101/openwrt_retry packages/op-retry
+git clone https://github.com/very20101/openwrt_retry packages/op-retry
 #mv packages/op-retry/libs/mbedtls package/libs/mbedtls
 #mv packages/op-retry/libs/ustream-ssl package/libs/ustream-ssl
 #mv packagse/op-retry/libs/uclient package/libs/uclient
@@ -79,7 +79,7 @@ git clone -b main https://github.com/very20101/openwrt_retry packages/op-retry
 # cp -rf packages/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
 
 ## replace extra-package
-git clone -b main https://github.com/very20101/openwrt_N1-Nova packages/opwrt_N1
+#git clone -b main https://github.com/very20101/openwrt_N1-Nova packages/opwrt_N1
 #cp -rf packages/opwrt_N1/extra-package/shadowsocksr-libev feeds/packages/shadowsocksr-libev
 rm -rf feeds/packages/shadowsocks-libev
 cp -rf packages/op-retry/pkg_modified/shadowsocks-libev feeds/packages/shadowsocks-libev
