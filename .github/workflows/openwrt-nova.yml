@@ -154,7 +154,8 @@ jobs:
       run: |
         cd openwrt/
         #make dirclean
-        rm -rf feeds/smpackage/trojan-plus
+        rm -rf feeds/smpackage/trojan-plus 
+        rm -rf feeds/small8/trojan-plus
         make defconfig
         git clone -b main https://github.com/very20101/openwrt_retry packages/op-retry
         rm -rf feeds/packages/lang/ruby
