@@ -79,7 +79,7 @@ git clone -b main https://github.com/very20101/openwrt_retry packages/op-retry
 # cp -rf packages/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
 
 ## replace extra-package
-#git clone -b main https://github.com/very20101/openwrt_N1-Nova packages/opwrt_N1
+git clone -b main https://github.com/very20101/openwrt_N1-Nova packages/opwrt_N1
 #cp -rf packages/opwrt_N1/extra-package/shadowsocksr-libev feeds/packages/shadowsocksr-libev
 rm -rf feeds/packages/shadowsocks-libev
 cp -rf packages/op-retry/pkg_modified/shadowsocks-libev feeds/packages/shadowsocks-libev
