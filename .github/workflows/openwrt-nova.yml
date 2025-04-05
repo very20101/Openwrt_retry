@@ -184,7 +184,7 @@ jobs:
       with:
         name: ${{ env.DATE }} | N1-OpenWrt 
         allowUpdates: true
-        tag: ${{ env.tag_name }}
+        tag: ${{ env.OPENWRT_TAG }}
         commit: main
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
