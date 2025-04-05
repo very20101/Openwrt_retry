@@ -172,13 +172,13 @@ jobs:
 
     - name: Upload OpenWrt Firmware to Release
       uses: ncipollo/release-action@main
-      #if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
+      if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
       with:
         name: OpenWrt-NVA
         tag: ${{ env.OPENWRT_TAG }}
         makeLatest: true
         replacesArtifacts: true
-        #artifacts: openwrt/bin/targets/*/*/*rootfs.tar.gz
+        artifacts: openwrt/bin/targets/*/*/*rootfs.tar.gz
         allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
       
