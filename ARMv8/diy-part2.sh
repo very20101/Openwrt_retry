@@ -75,8 +75,8 @@ git clone https://github.com/very20101/openwrt_retry package/op-retry
 # cp -rf packages/op-retry/pkg_modified/luci-app-dnscrypt-proxy2 packages/luci-app-dnscrypt-proxy2
 
 ## ruby 
-#rm -rf feeds/packages/lang/ruby
-# cp -rf packages/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
+rm -rf feeds/packages/lang/ruby
+cp -rf packages/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
 
 ## replace extra-package
 #git clone -b main https://github.com/very20101/openwrt_N1-Nova packages/opwrt_N1
