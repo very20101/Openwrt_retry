@@ -31,9 +31,9 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  FILE_NAME: OpenWrt-NVA
-  PRODUCT_NAME: OpenWrt-NVA
-  OPENWRT_TAG: OpenWrt-NVA
+  FILE_NAME: OpenWrt_NVA
+  PRODUCT_NAME: OpenWrt_NVA
+  OPENWRT_TAG: OpenWrt_NVA
   
 jobs:
   build:
@@ -179,19 +179,19 @@ jobs:
        KERNEL_AUTO_LATEST: true
        WHOAMI: very20101
         
-    - name: Upload firmware to release
-      uses: ncipollo/release-action@v1
+    - name: Upload the packaged OpenWrt
+      uses: ncipollo/release-action@main
+      if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
       with:
-        name: ${{ env.DATE }} | N1-OpenWrt 
-        allowUpdates: true
-        tag: ${{ env.OPENWRT_TAG }}
-        commit: main
-        token: ${{ secrets.GITHUB_TOKEN }}
-        body: |
-          ${{ env.useVersionInfo }}
+          tag: ${{ env.OPENWRT_TAG }}
+          artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
+          allowUpdates: true
+          removeArtifacts: false
+          replacesArtifacts: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
            Date：${{ env.PACKAGED_OUTPUTDATE }}
-           Kernel：${{ env.KERNEL_VERSION }}
-           * 基本信息
+           OpenWrt image for N1 
            IP: 192.168.1.200
-           账户: root
-           密码: password
+           username: root
+           password: password
