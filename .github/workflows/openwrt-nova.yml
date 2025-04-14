@@ -177,7 +177,7 @@ jobs:
         mkdir output
         cp -rf bin/targets/*/*/*rootfs.tar.gz output/
       with:
-        tag: openwrt_N1_artifacts
+        tag: N1_${{ build_tag }}
         artifacts: openwrt/output/*
         allowUpdates: true
         removeArtifacts: false
