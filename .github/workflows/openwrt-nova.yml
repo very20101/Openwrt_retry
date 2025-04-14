@@ -170,6 +170,20 @@ jobs:
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
         echo "build_tag=OpenWrt_Armvirt_$(date +"%m.%d.%H%M")" >> ${GITHUB_OUTPUT}
 
+    - name: Upload OpenWrt to Release
+      uses: ncipollo/release-action@main
+      if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
+        cd openwrt/
+        mkdir output
+        cp -rf bin/targets/*/*/*rootfs.tar.gz output/
+      with:
+        tag: openwrt_N1_artifacts
+        artifacts: openwrt/output/*
+        allowUpdates: true
+        removeArtifacts: false
+        replacesArtifacts: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Package OpenWrt Firmware
       uses: ophub/flippy-openwrt-actions@main
       env:
