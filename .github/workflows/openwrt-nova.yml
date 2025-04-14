@@ -153,7 +153,7 @@ jobs:
       id: compile
       run: |
         cd openwrt/
-        make dirclean
+        #make dirclean
         make defconfig
         #git clone -b main https://github.com/very20101/openwrt_retry packages/op-retry
         #rm -rf feeds/packages/lang/ruby
