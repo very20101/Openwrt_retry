@@ -175,7 +175,7 @@ jobs:
       if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
         cd openwrt/
         mkdir -p output
-        cp -rf bin/targets/*/*/*rootfs.tar.gz output/
+        cp -rf bin/targets/*/*/*rootfs.tar.gz output/*
         #tar -czvf output/artifacts.tar.gz -C /root/ .
       with:
         tag: openwrt_artifacts
