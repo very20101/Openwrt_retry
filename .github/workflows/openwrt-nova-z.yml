@@ -7,7 +7,7 @@
 # Description: Build OpenWrt using GitHub Actions
 # Original Code from https://github.com/ophub/amlogic-s9xxx-openwrt
 #==================================================================#
-name: OpenWrt-nova
+name: OpenWrt-nova-z
 on:
   repository_dispatch:
   workflow_dispatch:
@@ -18,7 +18,7 @@ on:
         default: 'false'
         
   schedule:
-    - cron: '0 2 */6 * *'
+    - cron: '0 2 */16 * *'
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt
@@ -152,22 +152,6 @@ jobs:
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "status=success" >> ${GITHUB_OUTPUT}
-
-    - name: Upload OpenWrt to Release
-      uses: ncipollo/release-action@main
-      if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
-        cd openwrt/
-        mkdir -p output
-        cp -rf bin/targets/*/*/*rootfs.tar.gz output/*
-        ls -R output
-        #tar -czvf output/artifacts.tar.gz -C /root/ .
-      with:
-        tag: openwrt_artifacts
-        artifacts: output/*
-        allowUpdates: true
-        removeArtifacts: false
-        replacesArtifacts: true
-        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Package OpenWrt Firmware
       uses: ophub/flippy-openwrt-actions@main
