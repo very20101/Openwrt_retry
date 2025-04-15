@@ -94,8 +94,8 @@ cp -rf packages/op-retry/pkg_modified/lua-neturl package/feeds/smpackage/lua-net
 rm -rf packages/op-retry
 
 # replace golang
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+#rm -rf feeds/packages/lang/golang
+#git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
   
 
 ./scripts/feeds update -a
