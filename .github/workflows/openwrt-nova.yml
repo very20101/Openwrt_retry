@@ -159,6 +159,7 @@ jobs:
         cd openwrt/
         mkdir -p output
         cp -rf bin/targets/*/*/*rootfs.tar.gz output/*
+        ls -R output
         #tar -czvf output/artifacts.tar.gz -C /root/ .
       with:
         tag: openwrt_artifacts
@@ -167,9 +168,6 @@ jobs:
         removeArtifacts: false
         replacesArtifacts: true
         token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: List output directory
-      run: ls -R output
 
     - name: Package OpenWrt Firmware
       uses: ophub/flippy-openwrt-actions@main
