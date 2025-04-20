@@ -60,18 +60,17 @@ jobs:
         echo -e  "硬盘数量：$(ls /dev/sd* | grep -v [1-9] | wc -l) \n"
         echo "硬盘详情："
         df -Th
-
-#    - name: Free Disk Space
-#      if: github.event.inputs.free_disk == 'true'
-#      uses: jlumbroso/free-disk-space@main
-#      with:
-#        tool-cache: true
-#        android: true
-#        dotnet: true
-#        haskell: true
-#        large-packages: true
-#        docker-images: true
-#        swap-storage: true
+        
+    - name: Maximize build space
+      uses: easimon/maximize-build-space@master
+      with:
+        swap-size-mb: 1024
+        temp-reserve-mb: 512
+        root-reserve-mb: 4608
+        remove-dotnet: 'true'
+        remove-android: 'true'
+        remove-haskell: 'true'
+        remove-codeql: 'true'
 
     - name: Initialization Environment
       env:
@@ -139,12 +138,10 @@ jobs:
     - name: Compile the firmware
       id: compile
       run: |
+        chmod -R 755 openwrt
         cd openwrt/
         make clean
         make defconfig
-        #git clone -b main https://github.com/very20101/openwrt_retry packages/op-retry
-        #rm -rf feeds/packages/lang/ruby
-        #cp -rf packages/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
         curl -s https://raw.githubusercontent.com/sbwml/r4s_build_script/4a9fafefd67172e074fa62cbe3570c4e197376b3/openwrt/patch/apk-tools/9999-hack-for-linux-pre-releases.patch > package/system/apk/patches/9999-hack-for-linux-pre-releases.patch
         rm -rf feeds/smpackage/trojan-plus 
         rm -rf feeds/small8/trojan-plus
@@ -153,21 +150,37 @@ jobs:
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "status=success" >> ${GITHUB_OUTPUT}
 
-    - name: Upload OpenWrt to Release
+    - name: Organize files
+      id: organize
+      run: |
+        rm -rf ./artifact/
+        mkdir -p ./artifact/
+        mv openwrt/bin/targets/rockchip/armv8/*sysupgrade.img* ./artifact/
+        cd ./artifact/
+        ls -Ahl
+        gzip -d *.gz && exit 0
+        gzip --best *.img
+        ls -Ahl
+        sha256sum openwrt*r2c* | tee R2C-GC404-$(date +%Y-%m-%d)-${{ env.latest_release }}.sha256sum
+        zip R2C-GC404-$(date +%Y-%m-%d)-${{ env.latest_release }}-ext4.zip *r2c*ext4*
+        zip R2C-GC404-$(date +%Y-%m-%d)-${{ env.latest_release }}-sfs.zip *r2c*squashfs*
+        ls -Ahl
+        
+    - name: Create release
+      id: create_release
       uses: ncipollo/release-action@main
-      if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
-        cd openwrt/
-        mkdir -p output
-        cp -rf bin/targets/*/*/*rootfs.tar.gz output/*
-        ls -R output
-        #tar -czvf output/artifacts.tar.gz -C /root/ .
       with:
-        tag: openwrt_artifacts
-        artifacts: output/*
+        name: OpenWRT-${{ env.latest_release }}
         allowUpdates: true
-        removeArtifacts: false
+        prerelease: false
+        tag: ${{ env.latest_release }}
+        commit: "24.10"
         replacesArtifacts: true
         token: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: ./artifact/*.zip
+        
+    - name: Print Disk Space After
+      run: df -h
 
     - name: Package OpenWrt Firmware
       uses: ophub/flippy-openwrt-actions@main
