@@ -93,10 +93,11 @@ jobs:
       working-directory: /workdir 
       run: |
         sudo chown -R runner:runner /home/runner/work/Openwrt_retry
-        ln -sf /home/runner/work/Openwrt_retry/Openwrt_retry/openwrt /home/runner/work/_actions/ffuqiangg/amlogic-s9xxx-openwrt/main/openwrt
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
+        ln -sf /home/runner/work/_actions/very20101/Openwrt_retry/main/openwrt /home/runner/work/Openwrt_retry/Openwrt_retry/openwrt
         
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        #ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd openwrt
         useVersionInfo=$(git show -s --date=short --format="Author: %an<br/>date: %cd<br/>commit: %s<br/>commit hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
