@@ -38,13 +38,9 @@ env:
 jobs:
   build:
     runs-on: ubuntu-22.04
-    #if: github.event.repository.owner.id == github.event.sender.id || ! github.event.sender.id
-
+    if: github.event.repository.owner.id == github.event.sender.id || ! github.event.sender.id
     
-    steps:
-    - name: Checkout
-      uses: actions/checkout@main
-      
+    steps:    
     - name: Check Server Performance
       run: |
         echo "警告⚠"
@@ -71,6 +67,9 @@ jobs:
         remove-android: 'true'
         remove-haskell: 'true'
         remove-codeql: 'true'
+        
+    - name: Checkout
+      uses: actions/checkout@v4
 
     - name: Initialization Environment
       env:
@@ -88,26 +87,28 @@ jobs:
         sudo timedatectl set-timezone "$TZ" 
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+        df -h
         
     - name: Clone source code
       working-directory: /workdir 
       run: |
-        df -hT $PWD
+        sudo chown -R runner:runner /home/runner/work/Openwrt_retry
+        ln -sf /home/runner/work/Openwrt_retry/Openwrt_retry/openwrt /home/runner/work/_actions/very20101/Openwrt_retry/main/openwrt
+        
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd openwrt
-        # make distclean
         useVersionInfo=$(git show -s --date=short --format="Author: %an<br/>date: %cd<br/>commit: %s<br/>commit hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
         echo "VERSION_INFO=$(echo $VERSION_INFO)" >> $GITHUB_OUTPUT
         echo "useVersionInfo=$useVersionInfo" >> $GITHUB_ENV
-        echo "DATE=$(date "+%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
+        echo "Build_DATE=$(date "+%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
         echo "DATE1=$(date "+%Y-%m-%d")" >> $GITHUB_ENV
         
     - name: Load custom feeds
       run: |
           [[ -e "${FEEDS_CONF}" ]] && cp -f ${FEEDS_CONF} openwrt/feeds.conf.default
-          sudo chmod +x ${DIY_P1_SH}
+          chmod +x ${DIY_P1_SH}
           cd openwrt/
           ${GITHUB_WORKSPACE}/${DIY_P1_SH}
           
