@@ -37,7 +37,7 @@ env:
   
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     if: github.event.repository.owner.id == github.event.sender.id || ! github.event.sender.id
     
     steps:    
@@ -67,10 +67,13 @@ jobs:
         sudo -E apt-get -qq update
         sudo /bin/bash -c "$(curl -sL https://git.io/vokNn)"
         sudo -E apt-fast -y -qq install asciidoc bash bcc bin86 binutils bison bzip2 clang-15 llvm-15 file flex g++ g++-multilib gawk gcc gcc-multilib gettext git gzip help2man intltool libboost-dev libelf-dev libncurses-dev libncurses5-dev libssl-dev libthread-queue-any-perl libusb-dev libxml-parser-perl make patch perl-modules python3-dev python3-pip python3-pyelftools python3-setuptools rsync sharutils swig time unzip util-linux wget xsltproc zlib1g-dev zip
-        sudo -E apt-fast -y -qq install dos2unix dwarves quilt npm jq
+        sudo -E apt-fast -y -qq install dos2unix dwarves quilt npm
         sudo -E npm install -g pnpm
+        pip3 install --user -U pylibfdt --break-system-packages
         sudo -E apt-get -qq autoremove --purge
-        sudo -E apt-get -y clean & sudo -E apt-get -y autoclean
+        sudo -E apt-get -qq clean
+        sudo -E git config --global user.name 'GitHub Actions' && git config --global user.email 'noreply@github.com'
+        sudo -E git config --global core.abbrev auto
         sudo timedatectl set-timezone "$TZ" 
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
@@ -79,7 +82,6 @@ jobs:
     - name: Clone source code
       working-directory: /workdir 
       run: |
-        
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd openwrt
