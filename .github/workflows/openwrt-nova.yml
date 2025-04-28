@@ -120,8 +120,14 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-        df -Th
+        df -h
         
+    - name: Clean up workspace before build
+      run: rm -rf build_dir staging_dir tmp
+        
+    - name: Increase disk space
+      run: sudo mount -o remount,size=20G /tmp || echo "Disk space adjustment not supported" 
+              
     - name: Compile the firmware
       id: compile
       run: |
@@ -156,9 +162,16 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: ./artifact/*.zip
         
-    - name: Print Disk Space After
-      run: df -h
-
+    - name: Clean up before packaging  
+      run: |  
+        cd openwrt/  
+         rm -rf $(ls . | grep -v "^bin$" | xargs) 2>/dev/null  
+         df -hT $PWD
+       
+    - name: Increase disk space  
+      run: |  
+        sudo mount -o remount,size=20G /tmp || echo "Disk space adjustment not supported"  
+        df -h 
     - name: Package OpenWrt Firmware
       uses: ophub/flippy-openwrt-actions@main
       env:
