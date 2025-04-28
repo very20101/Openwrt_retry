@@ -143,25 +143,6 @@ jobs:
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "status=success" >> ${GITHUB_OUTPUT}
 
-    - name: Upload firmware directory
-      uses: actions/upload-artifact@main
-      with:
-        name: OpenWrt_rootfs_${{ env.build_date }}
-        path: openwrt/bin
-        
-    - name: Create release
-      id: create_release
-      uses: ncipollo/release-action@main
-      with:
-        name: OpenWRT-${{ env.latest_release }}
-        allowUpdates: true
-        prerelease: false
-        tag: ${{ env.latest_release }}
-        commit: "24.10"
-        replacesArtifacts: true
-        token: ${{ secrets.GITHUB_TOKEN }}
-        artifacts: ./artifact/*.zip
-        
     - name: Clean up before packaging  
       run: |  
         cd openwrt/  
