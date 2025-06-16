@@ -90,6 +90,9 @@ cp -rf packages/op-retry/pkg_modified/luci-app-diskman package/feeds/smpackage/l
 rm -rf package/feeds/smpackage/lua-neturl
 cp -rf packages/op-retry/pkg_modified/lua-neturl package/feeds/smpackage/lua-neturl
 
+rm -rf feeds/packages/utils/pv/Makefile
+cp -rf packages/op-retry/patch/Makefile feeds/packages/utils/pv/Makefile
+
 #rm -rf packages/opwrt_N1
 rm -rf packages/op-retry
 
