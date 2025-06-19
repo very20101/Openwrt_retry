@@ -93,8 +93,8 @@ cp -rf packages/op-retry/pkg_modified/lua-neturl package/feeds/smpackage/lua-net
 rm -rf feeds/packages/utils/pv/Makefile
 cp -rf packages/op-retry/patch/Makefile feeds/packages/utils/pv/Makefile
 
-rm -rf feeds/packages/rust
-cp -rf packages/op-retry/rust feeds/packages/rust
+rm -rf package/feeds/packages/rust
+cp -rf packages/op-retry/rust package/feeds/packages/rust
 
 #rm -rf packages/opwrt_N1
 rm -rf packages/op-retry
