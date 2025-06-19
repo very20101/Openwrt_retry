@@ -142,7 +142,7 @@ jobs:
 
     - name: Patch Rust config for CI
       run: |
-        find /workdir/openwrt/build_dir/target-*/host/rustc-*/config.toml -exec \
+        find openwrt/build_dir/target-*/host/rustc-*/config.toml -exec \
         sed -i 's/download-ci-llvm *= *true/download-ci-llvm = "if-unchanged"/' {} +
       
     - name: Increase disk space
