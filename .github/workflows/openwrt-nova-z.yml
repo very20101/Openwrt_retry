@@ -133,6 +133,7 @@ jobs:
       run: |
         cd openwrt
         make defconfig
+        rm -f dl/simple-obfs-0.0.5.tar.zst
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
