@@ -71,6 +71,7 @@ jobs:
         sudo -E apt-get -y update
         sudo -E apt-get -y install $(curl -fsSL https://raw.githubusercontent.com/very20101/Openwrt_retry/refs/heads/main/refs/ubuntu2204-update)
         sudo apt-get install libncursesw6 libncurses-dev
+        sudo apt-get update && sudo apt-get install -y build-essential autoconf automake libtool
         sudo -E systemctl daemon-reload
         sudo -E apt-get -y autoremove --purge
         sudo -E apt-get -y clean & sudo -E apt-get -y autoclean
