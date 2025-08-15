@@ -154,8 +154,9 @@ jobs:
       id: compile
       run: |
         cd openwrt/
-        make clean
+       # make clean
         make defconfig
+        rm -rf package/feeds/smpackage/simple-obfs
         #git clone -b main https://github.com/very20101/openwrt_retry packages/op-retry
         #rm -rf feeds/packages/lang/ruby
         #cp -rf packages/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
