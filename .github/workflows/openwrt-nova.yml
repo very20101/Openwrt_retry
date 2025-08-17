@@ -114,6 +114,9 @@ jobs:
           cd openwrt/
           ${GITHUB_WORKSPACE}/${DIY_P2_SH}
 
+    - name: Install Rust target for cross-compilation
+      run: rustup target add aarch64-unknown-linux-musl
+  
     - name: Download package
       id: package
       run: |
