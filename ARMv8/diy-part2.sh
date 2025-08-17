@@ -24,7 +24,7 @@
 #echo 'src-git routing https://git.openwrt.org/feed/routing.git' >>feeds.conf.default
 #echo 'src-git telephony https://git.openwrt.org/feed/telephony.git' >>feeds.conf.default
 #git clone https://github.com/kenzok8/small-package feed/packages/smpackage
-git clone https://github.com/very20101/small-package feed/packages/smpackage
+git clone https://github.com/very20101/small-package smpackage
 #git clone  https://github.com/kenzok8/openwrt-packages.git packages/kenzo
 #git clone  https://github.com/kenzok8/small.git packages/small
 
