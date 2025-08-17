@@ -137,7 +137,7 @@ jobs:
         cd openwrt/
         make clean
         make defconfig
-        #rm -rf package/feeds/smpackage/simple-obfs
+        rm -rf package/feeds/smpackage/shadowsocksr-libev
         curl -s https://raw.githubusercontent.com/sbwml/r4s_build_script/4a9fafefd67172e074fa62cbe3570c4e197376b3/openwrt/patch/apk-tools/9999-hack-for-linux-pre-releases.patch > package/system/apk/patches/9999-hack-for-linux-pre-releases.patch
         rm -rf feeds/smpackage/trojan-plus 
         rm -rf feeds/small8/trojan-plus
