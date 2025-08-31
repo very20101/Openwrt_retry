@@ -11,7 +11,8 @@ PKG_RELEASE:=3
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 #PKG_SOURCE_URL:=https://codeload.github.com/golgote/neturl/tar.gz/v$(PKG_VERSION)?
 #PKG_SOURCE_URL:=https://github.com/very20101/Openwrt_retry/raw/refs/heads/main/patch/neturl-1.2.1.tar.gz
-PKG_SOURCE_URL:=https://github.com/very20101/Openwrt_retry/blob/main/patch/neturl-1.2.1.tar.gz
+#PKG_SOURCE_URL:=https://github.com/very20101/Openwrt_retry/blob/main/patch/neturl-1.2.1.tar.gz
+PKG_SOURCE_URL:=https://raw.githubusercontent.com/very20101/Openwrt_retry/refs/heads/main/patch/neturl-1.2.1.tar.gz
 PKG_HASH:=fc4ea1b114125ae821bef385936cd12429485204576e77b6283692bd0cc9b1ab
 
 PKG_MAINTAINER:=Tianling Shen <cnsztl@immortalwrt.org>
