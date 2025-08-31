@@ -6,19 +6,17 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=neturl
 PKG_VERSION:=1.2.1
-PKG_RELEASE:=3
+PKG_RELEASE:=4
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-#PKG_SOURCE_URL:=https://codeload.github.com/golgote/neturl/tar.gz/v$(PKG_VERSION)?
-#PKG_SOURCE_URL:=https://github.com/very20101/Openwrt_retry/raw/refs/heads/main/patch/neturl-1.2.1.tar.gz
-#PKG_SOURCE_URL:=https://github.com/very20101/Openwrt_retry/blob/main/patch/neturl-1.2.1.tar.gz
-#PKG_SOURCE_URL:=https://raw.githubusercontent.com/very20101/Openwrt_retry/refs/heads/main/patch/neturl-1.2.1.tar.gz
-PKG_SOURCE_URL:=https://github.com/very20101/Openwrt_retry/blob/3de0b9c3be7dc22c0560dd680a6d795d755fb6a0/patch/neturl-1.2.1.tar.gz
+PKG_SOURCE:=v1.2-1.tar.gz
+PKG_SOURCE_URL:=https://github.com/golgote/neturl/archive/refs/tags/
 PKG_HASH:=fc4ea1b114125ae821bef385936cd12429485204576e77b6283692bd0cc9b1ab
+
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)/$(PKG_NAME)-1.2-1
 
 PKG_MAINTAINER:=Tianling Shen <cnsztl@immortalwrt.org>
 PKG_LICENSE:=MIT
-PKG_LICNESE_FILES:=LICENSE.txt
+PKG_LICENSE_FILES:=LICENSE.txt
 
 include $(INCLUDE_DIR)/package.mk
 
