@@ -43,4 +43,9 @@ define Package/lua-neturl/install
 	$(CP) $(PKG_BUILD_DIR)/lib/net/url.lua $(1)/usr/lib/lua/
 endef
 
+#define Build/Prepare
+#	$(call Build/Prepare/Default)
+#	$(call PatchDir,$(PKG_BUILD_DIR),./patches)
+#endef
+
 $(eval $(call BuildPackage,lua-neturl))
