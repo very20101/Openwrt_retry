@@ -141,6 +141,8 @@ jobs:
         #make clean
         make defconfig
         #rm -rf package/feeds/smpackage/shadowsocksr-libev
+        rm -rf feeds/packages/lang/golang
+        git clone https://github.com/kenzok8/golang -b 1.25 feeds/packages/lang/golang
         curl -s https://raw.githubusercontent.com/sbwml/r4s_build_script/4a9fafefd67172e074fa62cbe3570c4e197376b3/openwrt/patch/apk-tools/9999-hack-for-linux-pre-releases.patch > package/system/apk/patches/9999-hack-for-linux-pre-releases.patch
         rm -rf feeds/smpackage/trojan-plus 
         rm -rf feeds/small8/trojan-plus
