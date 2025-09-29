@@ -101,8 +101,8 @@ cp -rf packages/op-retry/rust feeds/packages/lang/rust
 rm -rf packages/op-retry
 
 # replace golang
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+#rm -rf feeds/packages/lang/golang
+#git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
   
 
 ./scripts/feeds update -a
