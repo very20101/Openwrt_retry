@@ -189,7 +189,7 @@ jobs:
     - name: Package OpenWrt Firmware
       uses: ophub/amlogic-s9xxx-openwrt@main
       env:
-       OPENWRT_ARMVIRT: openwrt/bin/targets/*/*/*.tar.gz
+       openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
        openwrt_board: s905d
        openwrt_kernel: 5.15.y_6.1.y_6.6.y_6.12.y
        KERNEL_AUTO_LATEST: true
