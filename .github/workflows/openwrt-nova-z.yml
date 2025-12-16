@@ -187,7 +187,7 @@ jobs:
         df -h 
     
     - name: Package OpenWrt Firmware
-      uses: ophub/flippy-openwrt-actions@main
+      uses: ophub/amlogic-s9xxx-openwrt@main
       env:
        OPENWRT_ARMVIRT: openwrt/bin/targets/*/*/*.tar.gz
        PACKAGE_SOC: s905d
