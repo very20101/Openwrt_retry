@@ -187,13 +187,15 @@ jobs:
         df -h 
     
     - name: Package OpenWrt Firmware
-      uses: ophub/amlogic-s9xxx-openwrt@main
+      uses: unifreq/openwrt_packit@master
       env:
-       openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
-       openwrt_board: s905d
-       openwrt_kernel: 5.15.y_6.1.y_6.6.y_6.12.y
-       KERNEL_AUTO_LATEST: true
-       WHOAMI: very20101
+        OPENWRT_ARMVIRT: openwrt/bin/targets/*/*/*rootfs.tar.gz
+        PACKAGE_SOC: s905d
+        WHOAMI: very20101
+        KERNEL_REPO_URL: https://github.com/ophub/kernel/tree/main/pub/stable
+        KERNEL_VERSION_NAME: 5.15.y_6.1.y_6.6.y_6.12.y
+        KERNEL_AUTO_LATEST: true
+        DISTRIB_REVISION: R${{ env.DATE1 }} by very20101
         
     - name: Upload the packaged OpenWrt
       uses: ncipollo/release-action@main
