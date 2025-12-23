@@ -149,7 +149,7 @@ jobs:
         rm -rf feeds/smpackage/luci-app-fileassistant
         cp -rf packages/op-retry/pkg_modified/luci-app-fileassistant feeds/smpackage/luci-app-fileassistant
         rm -rf packages/op-retry
-        make feeds/smpackage/luci-app-fileassistant/{clean,compile}
+        make package/feeds/smpackage/luci-app-fileassistant/compile
         make package/index
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
