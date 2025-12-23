@@ -84,9 +84,11 @@ cp -rf packages/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
 #cp -rf packages/opwrt_N1/extra-package/shadowsocksr-libev feeds/packages/shadowsocksr-libev
 rm -rf feeds/packages/shadowsocks-libev
 cp -rf packages/op-retry/pkg_modified/shadowsocks-libev feeds/packages/shadowsocks-libev
-rm -rf feeds/smpackage/luci-app-passwall2
-cp -rf packages/op-retry/pkg_modified/luci-app-passwall2 package/feeds/smpackage/luci-app-passwall2
+#rm -rf feeds/smpackage/luci-app-passwall2
+#cp -rf packages/op-retry/pkg_modified/luci-app-passwall2 package/feeds/smpackage/luci-app-passwall2
 cp -rf packages/op-retry/pkg_modified/luci-app-diskman package/feeds/smpackage/luci-app-diskman
+rm -rf feeds/smpackage/luci-app-fileassistant
+cp -rf packages/op-retry/pkg_modified/luci-app-fileassistant package/feeds/smpackage/luci-app-fileassistant
 
 rm -rf package/feeds/smpackage/lua-neturl
 cp -rf packages/op-retry/pkg_modified/lua-neturl package/feeds/smpackage/lua-neturl
