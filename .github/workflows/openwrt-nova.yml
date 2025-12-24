@@ -166,8 +166,9 @@ jobs:
       run: |  
         sudo mount -o remount,size=20G /tmp || echo "Disk space adjustment not supported"  
         df -h 
+        
     - name: Package OpenWrt Firmware
-      uses: ophub/amlogic-s9xxx-openwrt@main
+      uses: unifreq/openwrt_packit@master
       env:
        openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
        openwrt_board: s905d
