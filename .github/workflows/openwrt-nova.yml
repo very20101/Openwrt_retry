@@ -117,8 +117,8 @@ jobs:
           rm -rf feeds/smpackage/luci-app-fileassistant
           cp -rf packages/op-retry/pkg_modified/luci-app-fileassistant feeds/smpackage/luci-app-fileassistant
           rm -rf packages/op-retry
-          cd openwrt/ && ./scripts/feeds update -a
-          cd openwrt/ && ./scripts/feeds install -f
+          ./scripts/feeds update -a
+          ./scripts/feeds install -f
 
     - name: Install Rust target for cross-compilation
       run: rustup target add aarch64-unknown-linux-musl
