@@ -32,9 +32,9 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  FILE_NAME: OpenWrt_NVA
-  PRODUCT_NAME: OpenWrt_NVA
-  OPENWRT_TAG: OpenWrt_NVA
+  FILE_NAME: OpenWrt_Nova
+  PRODUCT_NAME: OpenWrt_Nova
+  OPENWRT_TAG: OpenWrt_Nova
   
 jobs:
   build:
@@ -170,28 +170,14 @@ jobs:
         sudo mount -o remount,size=20G /tmp || echo "Disk space adjustment not supported"  
         df -h 
         
-    - name: Package OpenWrt Firmware
-      uses: unifreq/openwrt_packit@master
-      env:
-       openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
-       openwrt_board: s905d
-       openwrt_kernel: 5.15.y_6.1.y_6.6.y_6.12.y
-       KERNEL_AUTO_LATEST: true
-       WHOAMI: very20101
-        
-    - name: Upload the packaged OpenWrt
+    - name: Upload OpenWrt Firmware to Release
       uses: ncipollo/release-action@main
-      if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
+      if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
       with:
-          tag: openwrt_amlogic_N1_${{ env.PACKAGED_OUTPUTDATE }}
-          artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
-          allowUpdates: true
-          removeArtifacts: false
-          replacesArtifacts: true
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: |
-           Date：${{ env.PACKAGED_OUTPUTDATE }}
-           OpenWrt image for N1 
-           IP: 192.168.1.200
-           username: root
-           password: password
+        name: Openwrt-Nova
+        tag: ${{ env.OPENWRT_TAG }}
+        makeLatest: true
+        replacesArtifacts: true
+        artifacts: openwrt/bin/targets/*/*/*rootfs.tar.gz
+        allowUpdates: true
+        token: ${{ secrets.GITHUB_TOKEN }}
