@@ -199,7 +199,8 @@ jobs:
         
     - name: Upload the packaged OpenWrt
       uses: ncipollo/release-action@main
-      if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
+      #if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
+      if: ${{ env.PACKAGED_STATUS == 'success' && !cancelled() }}
       with:
           tag: openwrt_amlogic_N1_${{ env.PACKAGED_OUTPUTDATE }}
           artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
