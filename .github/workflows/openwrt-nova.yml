@@ -175,7 +175,7 @@ jobs:
         
     - name: Upload OpenWrt Firmware to Release
       uses: ncipollo/release-action@main
-      if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
+      if: ${{ steps.compile.outputs.status  == 'success' && !cancelled()}}
       with:
         name: Openwrt-Nova
         tag: ${{ env.OPENWRT_TAG }}
