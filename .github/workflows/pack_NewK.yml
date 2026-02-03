@@ -76,11 +76,10 @@ jobs:
       if: env.PACKAGED_STATUS == 'success' && env.UPLOAD_RELEASE == 'true'
       uses: ncipollo/release-action@v1
       with:
-        name: R${{ env.DATE }} for ARMv8_Nova${{ env.VERSION }}
+        name: ${{ env.DATE }} for ARMv8_Nova${{ env.VERSION }}
         allowUpdates: true
         removeArtifacts: true
         tag: ARMv8_Nova${{ env.VERSION }}
-        #tag: openwrt_amlogic_N1_12.24.1859
         token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
         body: |
