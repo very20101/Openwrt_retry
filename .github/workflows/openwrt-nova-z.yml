@@ -186,7 +186,18 @@ jobs:
       run: |  
         sudo mount -o remount,size=20G /tmp || echo "Disk space adjustment not supported"  
         df -h 
-    
+        
+    - name: Upload OpenWrt Firmware to Release
+      uses: ncipollo/release-action@main
+      if: ${{ steps.compile.outputs.status  == 'success' && !cancelled()}}
+      with:
+        name: Openwrt-Nova
+        tag: ${{ env.OPENWRT_TAG }}
+        makeLatest: true
+        replacesArtifacts: true
+        artifacts: openwrt/bin/targets/*/*/*rootfs.tar.gz
+        allowUpdates: true
+        token: ${{ secrets.GITHUB_TOKEN }}    
     - name: Package armsr-armv8 as OpenWrt
       uses: ophub/amlogic-s9xxx-openwrt@main
       with:
