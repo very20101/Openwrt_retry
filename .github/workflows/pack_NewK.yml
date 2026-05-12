@@ -63,7 +63,7 @@ jobs:
         openwrt_kernel: 6.1.y_6.6.y_6.12.y_6.18.y
         builder_name: very20101
         auto_kernel: true
-        openwrt_ip: 192.168.1.100
+        openwrt_ip: 192.168.1.200
 
     - name: Upload OpenWrt To Artifact
       if: env.PACKAGED_STATUS == 'success' && env.UPLOAD_RELEASE != 'true'
