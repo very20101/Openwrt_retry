@@ -31,9 +31,9 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  FILE_NAME: OpenWrt_NVA
-  PRODUCT_NAME: OpenWrt_NVA
-  OPENWRT_TAG: OpenWrt_NVA
+  FILE_NAME: OpenWrt_Nova_Z
+  PRODUCT_NAME: OpenWrt_Nova_Z
+  OPENWRT_TAG: OpenWrt_Nova_Z
   
 jobs:
   build:
@@ -191,7 +191,7 @@ jobs:
       uses: ncipollo/release-action@main
       if: ${{ steps.compile.outputs.status  == 'success' && !cancelled()}}
       with:
-        name: Openwrt-Nova
+        name: Openwrt-Nova_Z
         tag: ${{ env.OPENWRT_TAG }}
         makeLatest: true
         replacesArtifacts: true
