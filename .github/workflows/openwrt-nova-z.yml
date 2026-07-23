@@ -98,7 +98,10 @@ jobs:
           date -u
           timedatectl status || true
           echo "status=success" >> ${GITHUB_OUTPUT}
-        
+
+    - name: Create workdir
+      run: sudo mkdir -p /workdir && sudo chown $USER:$USER /workdir
+      
     - name: Clone source code
       working-directory: /workdir 
       run: |
