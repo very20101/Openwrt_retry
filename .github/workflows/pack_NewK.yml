@@ -22,7 +22,7 @@ env:
 
 jobs:
   Package:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     if: github.event.repository.owner.id == github.event.sender.id || ! github.event.sender.id
     name: Package for ${{ matrix.version }}
     strategy:
@@ -58,8 +58,8 @@ jobs:
       if: steps.download.outputs.status == 'success'
       uses: ophub/amlogic-s9xxx-openwrt@main
       with:
-        #openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
-        openwrt_path: openwrt/bin/targets/armsr/64/openwrt-armsr-armv8-generic-rootfs.tar.gz
+        openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
+        #openwrt_path: openwrt/bin/targets/armsr/64/openwrt-armsr-armv8-generic-rootfs.tar.gz
         openwrt_board: s905d
         openwrt_kernel: 6.1.y_6.6.y_6.12.y_6.18.y
         builder_name: very20101
