@@ -139,7 +139,10 @@ jobs:
           ${GITHUB_WORKSPACE}/${DIY_P2_SH}
 
     - name: Install Rust target for cross-compilation
-      run: rustup target add aarch64-unknown-linux-musl
+      run: |
+       curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+       source "$HOME/.cargo/env"
+       rustup target add aarch64-unknown-linux-musl
   
     - name: Download package
       id: package
