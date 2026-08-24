@@ -129,7 +129,8 @@ jobs:
     - name: Install Go manually
       run: |
         set -euo pipefail
-        # Pick an exact Go version (use a recent 1.22+ release). Example: GO_VERSION="1.22.0"
+        # Pick an exact Go version (use a recent 1.22+ release). Example: 
+        GO_VERSION="1.25.0"
         # Detect host architecture for the runner (amd64 for standard GitHub runners)
         case "$(uname -m)" 
         in x86_64) ARCH="amd64" ;; 
