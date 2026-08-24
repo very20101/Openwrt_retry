@@ -126,38 +126,12 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -f
 
-    - name: Install Go manually
+    - name: Install Go 1.25
       run: |
-        set -euo pipefail
-        # Pick an exact Go version (use a recent 1.22+ release). Example: 
-        GO_VERSION="1.25.0"
-        # Detect host architecture for the runner (amd64 for standard GitHub runners)
-        case "$(uname -m)" 
-        in x86_64) ARCH="amd64" ;; 
-        aarch64|arm64) ARCH="arm64" ;;
-         *) echo "Unsupported architecture: $(uname -m)"; exit 1 ;;
-        esac
-
-        TARFILE="go${GO_VERSION}.linux-${ARCH}.tar.gz"
-        URL="https://go.dev/dl/${TARFILE}"
-
-        echo "Downloading ${URL}"
-        curl -fsSLO "${URL}"
-
-        echo "Removing any existing /usr/local/go"
-        sudo rm -rf /usr/local/go
-
-        echo "Extracting ${TARFILE} -> /usr/local"
-        sudo tar -C /usr/local -xzf "${TARFILE}"
-
-        # Add go to PATH for subsequent steps in this job
-        echo "/usr/local/go/bin" >> $GITHUB_PATH
-
-        # Cleanup
-        rm -f "${TARFILE}"
-
-        echo "Installed Go:"
-        go version
+       wget https://go.dev/dl/go1.25.1.linux-amd64.tar.gz
+       sudo tar -C /usr/local -xzf go1.25.1.linux-amd64.tar.gz
+       export PATH=$PATH:/usr/local/go/bin
+       #rm -rf build_dir/hostpkg/go-* staging_dir/hostpkg/go-*
 
     - name: Install Rust target for cross-compilation
       run: rustup target add aarch64-unknown-linux-musl
