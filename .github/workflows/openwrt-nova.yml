@@ -133,10 +133,10 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -f
 
-    - name: Install Go 1.26
+    - name: Install Go 1.25
       run: |
-       wget https://go.dev/dl/go1.26.5.linux-amd64.tar.gz
-       sudo tar -C /usr/local -xzf go1.26.5.linux-amd64.tar.gz
+       wget https://go.dev/dl/go1.25.5.linux-amd64.tar.gz
+       sudo tar -C /usr/local -xzf go1.25.5.linux-amd64.tar.gz
        export PATH=$PATH:/usr/local/go/bin
        #rm -rf build_dir/hostpkg/go-* staging_dir/hostpkg/go-*
 
@@ -171,6 +171,7 @@ jobs:
         cd openwrt/
         #make clean
         make defconfig
+        git clone https://github.com/very20101/openwrt_retry packages/op-retry
         rm -rf package/feeds/smpackage/shadowsocksr-libev  feeds/smpackage/shadowsocksr-libev
         rm -rf feeds/smpackage/dapnet-gateway
         curl -s https://raw.githubusercontent.com/sbwml/r4s_build_script/4a9fafefd67172e074fa62cbe3570c4e197376b3/openwrt/patch/apk-tools/9999-hack-for-linux-pre-releases.patch > package/system/apk/patches/9999-hack-for-linux-pre-releases.patch
@@ -180,6 +181,11 @@ jobs:
         rm -rf package/feeds/small8/naiveproxy
         rm -rf feeds/smpackage/naiveproxy
         rm -rf feeds/packages/net/tailscale
+        
+        rm -rf feeds/packages/net/sing-box
+        cp -rf packages/op-retry/pkg_modified/sing-box feeds/packages/net/sing-box
+        rm -rf packages/op-retry
+        
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "status=success" >> ${GITHUB_OUTPUT}
