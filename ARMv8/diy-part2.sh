@@ -75,8 +75,8 @@ git clone https://github.com/very20101/openwrt_retry packages/op-retry
 # cp -rf packages/op-retry/pkg_modified/luci-app-dnscrypt-proxy2 packages/luci-app-dnscrypt-proxy2
 
 ## ruby 
-rm -rf feeds/packages/lang/ruby
-cp -rf packages/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
+#rm -rf feeds/packages/lang/ruby
+#cp -rf packages/op-retry/pkg_modified/ruby feeds/packages/lang/ruby
 
 ## replace extra-package
 #git clone -b main https://github.com/very20101/openwrt_N1-Nova packages/opwrt_N1
@@ -92,8 +92,8 @@ cp -rf packages/op-retry/pkg_modified/luci-app-fileassistant feeds/smpackage/luc
 rm -rf package/feeds/smpackage/lua-neturl
 cp -rf packages/op-retry/pkg_modified/lua-neturl package/feeds/smpackage/lua-neturl
 
-rm -rf feeds/packages/utils/pv/Makefile
-cp -rf packages/op-retry/patch/Makefile feeds/packages/utils/pv/Makefile
+#rm -rf feeds/packages/utils/pv/Makefile
+#cp -rf packages/op-retry/patch/Makefile feeds/packages/utils/pv/Makefile
 
 rm -rf package/feeds/packages/rust feeds/packages/lang/rust
 cp -rf packages/op-retry/rust feeds/packages/lang/rust
