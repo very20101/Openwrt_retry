@@ -98,6 +98,9 @@ cp -rf packages/op-retry/patch/Makefile feeds/packages/utils/pv/Makefile
 rm -rf package/feeds/packages/rust feeds/packages/lang/rust
 cp -rf packages/op-retry/rust feeds/packages/lang/rust
 
+rm -rf feeds/packages/net/sing-box
+cp -rf feeds/smpackage/sing-box feeds/packages/net/sing-box
+
 #rm -rf packages/opwrt_N1
 rm -rf packages/op-retry
 
