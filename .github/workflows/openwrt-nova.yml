@@ -140,7 +140,12 @@ jobs:
        #rm -rf build_dir/hostpkg/go-* staging_dir/hostpkg/go-*
 
     - name: Install Rust target for cross-compilation
-      run: rustup target add aarch64-unknown-linux-musl
+      run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          source "$HOME/.cargo/env"
+          rustc --version && cargo --version
+          rustup show active-toolchain
+          rustup target add aarch64-unknown-linux-musl
   
     - name: Download package
       id: package
