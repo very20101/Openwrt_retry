@@ -59,13 +59,13 @@ jobs:
         df -Th
         
     - name: Checkout
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: Initialize the build environment
       id: init
       env:
          DEBIAN_FRONTEND: noninteractive
-         FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+         #FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       run: |
           docker rmi -f $(docker images -q) 2>/dev/null || true
           [[ -n "${AGENT_TOOLSDIRECTORY}" ]] && sudo rm -rf "${AGENT_TOOLSDIRECTORY}"
