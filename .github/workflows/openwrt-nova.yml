@@ -87,11 +87,14 @@ jobs:
           date -u
           timedatectl status || true
           echo "status=success" >> ${GITHUB_OUTPUT}
-        
+
+    - name: Create workdir
+      run: sudo mkdir -p /workdir && sudo chown $USER:$USER /workdir
+      
     - name: Clone source code
       run: |
-        sudo mkdir -p /workdir
-        cd /workdir
+        working-directory: /workdir 
+        df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd openwrt
