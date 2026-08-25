@@ -133,12 +133,35 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -f
 
-    - name: Install Go 1.25
+    #- name: Install Go 1.25
+     # run: |
+     #  wget https://go.dev/dl/go1.25.5.linux-amd64.tar.gz
+     #  sudo tar -C /usr/local -xzf go1.25.5.linux-amd64.tar.gz
+     #  export PATH=$PATH:/usr/local/go/bin
+     # rm -rf build_dir/hostpkg/go-* staging_dir/hostpkg/go-*
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.25.5'
+        cache: false
+
+    - name: Verify Go
+      run: go version
+
+    - name: Prepare OpenWrt
       run: |
-       wget https://go.dev/dl/go1.25.5.linux-amd64.tar.gz
-       sudo tar -C /usr/local -xzf go1.25.5.linux-amd64.tar.gz
-       export PATH=$PATH:/usr/local/go/bin
-       #rm -rf build_dir/hostpkg/go-* staging_dir/hostpkg/go-*
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
+        make defconfig
+
+    - name: Clean stale files
+      run: |
+        rm -rf tmp
+        rm -rf build_dir/host*
+        rm -rf build_dir/target-*/sing-box*
+        rm -rf staging_dir/host*
+        go clean -modcache
 
     - name: Install Rust target for cross-compilation
       run: |
