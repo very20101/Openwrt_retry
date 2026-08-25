@@ -65,6 +65,8 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
+        using: 'node24'
+        main: 'main.js'
         #docker rmi $(docker images -q)
         set -- $(docker images -f dangling=true -q)
         [ "$#" -eq 0 ] || docker rmi "$@"
