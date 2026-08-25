@@ -133,10 +133,10 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -f
 
-    - name: Install Go 1.25
+    - name: Install Go 1.26
       run: |
-       wget https://go.dev/dl/go1.25.5.linux-amd64.tar.gz
-       sudo tar -C /usr/local -xzf go1.25.5.linux-amd64.tar.gz
+       wget https://go.dev/dl/go1.26.5.linux-amd64.tar.gz
+       sudo tar -C /usr/local -xzf go1.26.5.linux-amd64.tar.gz
        export PATH=$PATH:/usr/local/go/bin
        #rm -rf build_dir/hostpkg/go-* staging_dir/hostpkg/go-*
 
