@@ -89,8 +89,9 @@ jobs:
           echo "status=success" >> ${GITHUB_OUTPUT}
         
     - name: Clone source code
-      working-directory: /workdir 
       run: |
+        mkdir -p /workdir
+        cd /workdir
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd openwrt
