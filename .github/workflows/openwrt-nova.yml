@@ -181,6 +181,7 @@ jobs:
         rm -rf package/feeds/small8/naiveproxy
         rm -rf feeds/smpackage/naiveproxy
         rm -rf feeds/packages/net/tailscale
+        rm -rf feeds/smpackage/vlmcsd 
         
         rm -rf feeds/packages/net/sing-box
         cp -rf packages/op-retry/pkg_modified/sing-box feeds/packages/net/sing-box
